@@ -1,0 +1,9 @@
+# The role of phytic acid in legumes: antinutrient or beneficial function?
+
+This review describes the present state of knowledge about phytic acid (phytate), which is often present in legume seeds. The antinutritional effects of phytic acid primarily relate to the strong chelating associated with its six reactive phosphate groups. Its ability to complex with proteins and particularly with minerals has been a subject of investigation from chemical and nutritional viewpoints. The hydrolysis of phytate into inositol and phosphates or phosphoric acid occurs as a result of phytase or nonenzymatic cleavage. Enzymes capable of hydrolysing phytates are widely distributed in micro-organisms, plants and animals. Phytases act in a stepwise manner to catalyse the hydrolysis of phytic acid. To reduce or eliminate the chelating ability of phytate, dephosphorylation of hexa- and penta-phosphate forms is essential since a high degree of phosphorylation is necessary to bind minerals. There are several methods of decreasing the inhibitory effect of phytic acid on mineral absorption (cooking, germination, fermentation, soaking, autolysis). Nevertheless, inositol hexaphosphate is receiving increased attention owing to its role in cancer prevention and/or therapy and its hypocholesterolaemic effect.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2988
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/11198165

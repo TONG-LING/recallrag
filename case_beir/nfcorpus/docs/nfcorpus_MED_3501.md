@@ -1,0 +1,9 @@
+# Carrageenan induces interleukin-8 production through distinct Bcl10 pathway in normal human colonic epithelial cells.
+
+Carrageenan is a high molecular weight sulfated polygalactan used to improve the texture of commercial food products. Its use increased markedly during the last half century, although carrageenan is known to induce inflammation in rheumatological models and in intestinal models of colitis. We performed studies to determine its direct effects on human intestinal cells, including normal human intestinal epithelial cells from colonic surgeries, the normal intestinal epithelial cell line NCM460, and normal rat ileal epithelial cells. Cells were treated with high molecular weight lambda-carrageenan at a concentration of 1 mug/ml for 1-96 h. IL-8, IL-8 promoter activity, total and nuclear NF-kappaB, IkappaBalpha, phospho-IkappaBalpha, and Bcl10 were assessed by immunohistochemistry, Western blot, ELISA, and cDNA microarray. Increased Bcl10, nuclear and cytoplasmic NF-kappaB, IL-8 promoter activation, and IL-8 secretion were detected following carrageenan exposure. Knockdown of Bcl10 by siRNA markedly reduced the increase in IL-8 that followed carrageenan exposure in the NCM460 cells. These results show, for the first time, that exposure of human intestinal epithelial cells to carrageenan triggers a distinct inflammatory pathway via activation of Bcl10 with NF-kappaB activation and upregulation of IL-8 secretion. Since Bcl10 contains a caspase-recruitment domain, similar to that found in NOD2/CARD15 and associated with genetic predisposition to Crohn's disease, the study findings may represent a link between genetic and environmental etiologies of inflammatory bowel disease. Because of the high use of carrageenan as a food additive in the diet, the findings may have clinical significance.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-3501
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/17095757

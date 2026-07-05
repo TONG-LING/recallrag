@@ -1,0 +1,42 @@
+[
+  {
+    "id": "langchain_text_splitters",
+    "title": "LangChain Text Splitters",
+    "url": "https://python.langchain.com/docs/concepts/text_splitters/",
+    "local_html": "case/sources/html/langchain_text_splitters.html",
+    "local_text": "case/sources/text/langchain_text_splitters.txt",
+    "used_for": "RAG chunking concepts, chunk size/overlap motivation"
+  },
+  {
+    "id": "llamaindex_node_parsers",
+    "title": "LlamaIndex Node Parser Usage Pattern",
+    "url": "https://docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/",
+    "local_html": "case/sources/html/llamaindex_node_parsers.html",
+    "local_text": "case/sources/text/llamaindex_node_parsers.txt",
+    "used_for": "Document-to-node/chunk pipeline and metadata inheritance"
+  },
+  {
+    "id": "qdrant_hybrid_queries",
+    "title": "Qdrant Hybrid Queries",
+    "url": "https://qdrant.tech/documentation/concepts/hybrid-queries/",
+    "local_html": "case/sources/html/qdrant_hybrid_queries.html",
+    "local_text": "case/sources/text/qdrant_hybrid_queries.txt",
+    "used_for": "Dense+sparse hybrid retrieval and multi-stage retrieval motivation"
+  },
+  {
+    "id": "haystack_rankers",
+    "title": "Haystack Rankers",
+    "url": "https://docs.haystack.deepset.ai/docs/rankers",
+    "local_html": "case/sources/html/haystack_rankers.html",
+    "local_text": "case/sources/text/haystack_rankers.txt",
+    "used_for": "Reranker role after initial retrieval"
+  },
+  {
+    "id": "stable_baselines_dqn",
+    "title": "Stable-Baselines3 DQN",
+    "url": "https://stable-baselines3.readthedocs.io/en/master/modules/dqn.html",
+    "local_html": "case/sources/html/stable_baselines_dqn.html",
+    "local_text": "case/sources/text/stable_baselines_dqn.txt",
+    "used_for": "DQN terminology for traffic-signal-control example"
+  }
+]

@@ -1,0 +1,9 @@
+# Poppy seed foods and opiate drug testing--where are we today?
+
+Seeds of the opium poppy plant are legally sold and widely consumed as food. Due to contamination during harvesting, the seeds can contain morphine and other opiate alkaloids. The objective of this study is to review the toxicology of poppy seed foods regarding influence on opiate drug tests. Computer-assisted literature review resulted in 95 identified references. Normal poppy seed consumption is generally regarded as safe. During food processing, the morphine content is considerably reduced (up to 90%). The possibility of false-positive opiate drug tests after poppy food ingestion exists. There are no unambiguous markers available to differentiate poppy food ingestion from heroin or pharmaceutical morphine use. This is also a problem in heroin-assisted maintenance programs. A basic requirement in such substitution programs is the patients' abstinence from any other drugs, including additional illicit heroin. Also a lack of forensic ingestion trials was detected that consider all factors influencing the morphine content in biologic matrices after consumption. Most studies did not control for the losses during food processing, so that the initial morphine dosage was overestimated. The large reduction of the morphine content during past years raises questions about the validity of the "poppy seed defence." However, a threshold of food use that would not lead to positive drug tests with certainty is currently unavailable. Research is needed to prove if the morphine contents in today's foods still pose the possibility of influencing drug tests. Future trials should consider processing-related morphine losses.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-3146
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/19901868

@@ -1,0 +1,9 @@
+# Mortality from malignant diseases-update of the Baltimore union poultry cohort.
+
+We previously studied mortality up to 1989 in 2,639 members of a local union who had ever worked in poultry slaughtering and processing plants, because they were exposed to oncogenic viruses present in poultry. In this report, cancer mortality was updated to the year 2003 for 2,580 of the 2,639 subjects who worked exclusively in poultry plants. Mortality in poultry workers was compared with that in the US general population through the estimation of proportional mortality and standardized mortality ratios separately for each race/sex group and for the whole cohort. Compared to the US general population, an excess of cancers of the buccal and nasal cavities and pharynx (base of the tongue, palate and other unspecified mouth, tonsil and oropharynx, nasal cavity/middle ear/accessory sinus), esophagus, recto-sigmoid/rectum/anus, liver and intrabiliary system, myelofibrosis, lymphoid leukemia and multiple myeloma was observed in particular subgroups or in the entire poultry cohort. We hypothesize that oncogenic viruses present in poultry, and exposure to fumes, are candidates for an etiologic role to explain the excess occurrence of at least some of these cancers in the poultry workers. Larger studies which can control for confounding factors are urgently needed to determine the significance of these findings.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-4819
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/19847658

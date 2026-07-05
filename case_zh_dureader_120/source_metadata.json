@@ -1,0 +1,2411 @@
+{
+  "source_url": "https://huggingface.co/datasets/zyznull/dureader-retrieval-ranking/resolve/main/dev.jsonl.gz",
+  "sample_size": 120,
+  "negatives_per_doc": 4,
+  "min_positive_len": 380,
+  "max_positive_len": 1400,
+  "min_negative_len": 140,
+  "seed": 42,
+  "rows": [
+    {
+      "qid": "zh001",
+      "doc_name": "zh_doc_001.md",
+      "source_query_id": "491",
+      "query": "高速公路超速20以上不足50扣几分",
+      "positive_docid": "4f1769047e34bd094da8718b33b5ed89",
+      "positive_len": 1310,
+      "negative_docids": [
+        "f8edf10f82ae75ab2ec88fe9696d5439",
+        "27e181c8e508306859d8c1cac4d29c3e",
+        "1ba353f292cc0d5c3e31b94f83d773c6",
+        "3c0befe552e19f73e5cf736b36b62d45"
+      ],
+      "negative_lens": [
+        1276,
+        1230,
+        4415,
+        234
+      ]
+    },
+    {
+      "qid": "zh002",
+      "doc_name": "zh_doc_002.md",
+      "source_query_id": "780",
+      "query": "空气净化器哪种净化方式好",
+      "positive_docid": "133459346dbcc339dbe4a88a733c77e1",
+      "positive_len": 1293,
+      "negative_docids": [
+        "5fd4cfaa0bc90fc587641a0ef4d67076",
+        "264ad62e52e46c927ab4d20ff5b9e6bc",
+        "0f4abbb4839e02dd3d6333b450ed38f5",
+        "79e423ab87a3564098fded4cd531ca4d"
+      ],
+      "negative_lens": [
+        286,
+        876,
+        312,
+        299
+      ]
+    },
+    {
+      "qid": "zh003",
+      "doc_name": "zh_doc_003.md",
+      "source_query_id": "415",
+      "query": "黄山风景古诗赞",
+      "positive_docid": "0525741370de499d27c39e737a3630d3",
+      "positive_len": 1239,
+      "negative_docids": [
+        "4bc974d279d96c50388c18ab37c0271b",
+        "40fbaf40244d432b20845e75f04f4c53",
+        "dab450d34a6e7459224ee1d165e054a3",
+        "56bbbc314ffd7c9a0818e85611eb441c"
+      ],
+      "negative_lens": [
+        419,
+        253,
+        237,
+        228
+      ]
+    },
+    {
+      "qid": "zh004",
+      "doc_name": "zh_doc_004.md",
+      "source_query_id": "1219",
+      "query": "一天放很多屁",
+      "positive_docid": "4978f72cdc5a83e0fe49e7dfb2de2632",
+      "positive_len": 1233,
+      "negative_docids": [
+        "7b34d3037728d474d44c804d801e4545",
+        "840e6a56a3a48b123691f06f12ad462c",
+        "e423ad2c3c9d152a6e588ebbb0aff0b0",
+        "f38bb346094fde71c10d3bdfb449dd4b"
+      ],
+      "negative_lens": [
+        3234,
+        1220,
+        313,
+        279
+      ]
+    },
+    {
+      "qid": "zh005",
+      "doc_name": "zh_doc_005.md",
+      "source_query_id": "1110",
+      "query": "叉车有几种",
+      "positive_docid": "f367dda9ff3513762ac1537cacd3d65b",
+      "positive_len": 1227,
+      "negative_docids": [
+        "963122bc49e0a1b0c57dea614b7a7c8e",
+        "d732e6fb45e1e65208dda467ab2ecec7",
+        "1a748e98ca8be1ba6d316adc69c8a81b",
+        "9e5fcec24996137b471e88e034a5497b"
+      ],
+      "negative_lens": [
+        2956,
+        271,
+        250,
+        1483
+      ]
+    },
+    {
+      "qid": "zh006",
+      "doc_name": "zh_doc_006.md",
+      "source_query_id": "316",
+      "query": "春光成语",
+      "positive_docid": "992769e6463f52c0d43bf0c09f4aebb0",
+      "positive_len": 1191,
+      "negative_docids": [
+        "fead6f9adc8c4eacbed12f8a398964f0",
+        "51f500d6daebfa4b22e1c324e5d0ce38",
+        "f36386902d51c321f11218670236725b",
+        "13dfc9d656d4a87041bfc49f2a9e6259"
+      ],
+      "negative_lens": [
+        276,
+        300,
+        298,
+        294
+      ]
+    },
+    {
+      "qid": "zh007",
+      "doc_name": "zh_doc_007.md",
+      "source_query_id": "1191",
+      "query": "经常用肥皂洗脸好吗",
+      "positive_docid": "86fedc8b3a0c848239fec4e46157ac5d",
+      "positive_len": 1119,
+      "negative_docids": [
+        "6690e2def07675b24fcca73dcb564898",
+        "303febd0d7b79ebd4fce86a4543be2f0",
+        "8905a43a62f6c179925cfd580f38849f",
+        "d29750ae5e644e21cef34c6b35be91ba"
+      ],
+      "negative_lens": [
+        541,
+        283,
+        283,
+        271
+      ]
+    },
+    {
+      "qid": "zh008",
+      "doc_name": "zh_doc_008.md",
+      "source_query_id": "1816",
+      "query": "冬天怎样养鹦鹉",
+      "positive_docid": "aa5462d524a2c1a10ba1d786ff49b219",
+      "positive_len": 1116,
+      "negative_docids": [
+        "a68026b21baf1c0c9633cd82d3462dba",
+        "2528c8cbe5d06fbcd4e0f959741daaf5",
+        "3fb25f8f3a03f4c3ef56e5425147259b",
+        "9a0d278456269851a336c71686dca629"
+      ],
+      "negative_lens": [
+        641,
+        280,
+        263,
+        236
+      ]
+    },
+    {
+      "qid": "zh009",
+      "doc_name": "zh_doc_009.md",
+      "source_query_id": "169",
+      "query": "附睾肿胀",
+      "positive_docid": "6324901c174e9db92beb6c755cf84b35",
+      "positive_len": 1096,
+      "negative_docids": [
+        "f16e0f7b40a77bcc9cd0e0a5cf087231",
+        "41442cb9a0adfae9f421d70bade878b5",
+        "586a2bac75c547fb653ec2ae151e2e37",
+        "24b54ab37112cfd9ff43a21acad99b24"
+      ],
+      "negative_lens": [
+        671,
+        584,
+        362,
+        275
+      ]
+    },
+    {
+      "qid": "zh010",
+      "doc_name": "zh_doc_010.md",
+      "source_query_id": "516",
+      "query": "硫磺皂能长期用吗",
+      "positive_docid": "6d141b55ee2f9d70fe4b549720fb02ab",
+      "positive_len": 1066,
+      "negative_docids": [
+        "c405ca2243328542e80efe553ee41ac3",
+        "3c32dd1d8ad018397bfcbb4d11d89f2b",
+        "f0f9e440e5a573213ba937c24ff8bc17",
+        "271a45d44ed803019486a125922ca5f3"
+      ],
+      "negative_lens": [
+        260,
+        332,
+        302,
+        299
+      ]
+    },
+    {
+      "qid": "zh011",
+      "doc_name": "zh_doc_011.md",
+      "source_query_id": "880",
+      "query": "比较好看的电视剧",
+      "positive_docid": "d3725ee41a6146632939c6f6002b3a8d",
+      "positive_len": 1041,
+      "negative_docids": [
+        "f2e492e50a47a30bfdaaa5a35ca0889b",
+        "2e7890525cf20502eb4caf1f480d22da",
+        "ebcff36e391409d86043f086d61343c8",
+        "dfe8bc73fd9132513516cbe83b3ba690"
+      ],
+      "negative_lens": [
+        297,
+        287,
+        279,
+        237
+      ]
+    },
+    {
+      "qid": "zh012",
+      "doc_name": "zh_doc_012.md",
+      "source_query_id": "1782",
+      "query": "夏天喝什么饮品好",
+      "positive_docid": "58b56c89558d5bd9e68d4c32e87840f3",
+      "positive_len": 1003,
+      "negative_docids": [
+        "875a66bd81546f2ca88a08aace2a07d1",
+        "e75ec9fe0dbda24e43c7512d4016c0e2",
+        "e29f41a0374d4cd9972e4dfd500506a9",
+        "7f6a30be880a31b2d5c57705425f9f8c"
+      ],
+      "negative_lens": [
+        236,
+        239,
+        474,
+        340
+      ]
+    },
+    {
+      "qid": "zh013",
+      "doc_name": "zh_doc_013.md",
+      "source_query_id": "1114",
+      "query": "workgroup是什么",
+      "positive_docid": "39355126e1c28b6195cbc29fc72358f6",
+      "positive_len": 908,
+      "negative_docids": [
+        "dfc7ea78cbf50fea37863bec239b99e9",
+        "385ff057a7c162a4764792af66b25c54",
+        "f0f011ac092649b31480d08fe497df64",
+        "c939518ff011eaaf45be14cdc198de97"
+      ],
+      "negative_lens": [
+        300,
+        239,
+        2331,
+        329
+      ]
+    },
+    {
+      "qid": "zh014",
+      "doc_name": "zh_doc_014.md",
+      "source_query_id": "1261",
+      "query": "怎样锻炼肺活量",
+      "positive_docid": "6bcf3899109f211b0a62da424cb843fb",
+      "positive_len": 893,
+      "negative_docids": [
+        "199c9d2e69b4394081b62c4ae40ec624",
+        "4e44513a9d24fcd06cab29eb42e809e8",
+        "dde4c6928d340270a5cf5b90ce440c03",
+        "28ccd1aa69076c9a3a8e847277f622cc"
+      ],
+      "negative_lens": [
+        643,
+        509,
+        312,
+        256
+      ]
+    },
+    {
+      "qid": "zh015",
+      "doc_name": "zh_doc_015.md",
+      "source_query_id": "1653",
+      "query": "做胃镜注意",
+      "positive_docid": "4ed0e74cf3875bc25c55e9896b7f16da",
+      "positive_len": 887,
+      "negative_docids": [
+        "4b723a970ca859e163968e727d28ff78",
+        "520173db7a31125bbc97dee233547dc1",
+        "9fb76c908ef31c3b1c387ec89e81ccae",
+        "b85b5e738307f353807a51dde594a258"
+      ],
+      "negative_lens": [
+        711,
+        387,
+        374,
+        338
+      ]
+    },
+    {
+      "qid": "zh016",
+      "doc_name": "zh_doc_016.md",
+      "source_query_id": "1274",
+      "query": "油电混合动力汽车购置税优惠吗",
+      "positive_docid": "b311afc8ca84b0a1f1a6b225fa10d2a7",
+      "positive_len": 880,
+      "negative_docids": [
+        "25592d5b15b45fe9e29c403d8d171436",
+        "3b3c9b384734aa3a21de6c72a098fbac",
+        "bd06758286dc0c93808ec0d9369425c6",
+        "13a091c86678891043bb3672a61eeec5"
+      ],
+      "negative_lens": [
+        938,
+        444,
+        263,
+        242
+      ]
+    },
+    {
+      "qid": "zh017",
+      "doc_name": "zh_doc_017.md",
+      "source_query_id": "1826",
+      "query": "阴部变白",
+      "positive_docid": "ee3f0af6a525ccad4e481d5dbe9ce77a",
+      "positive_len": 859,
+      "negative_docids": [
+        "0fa66bb4fc936e6d3ddbade890c843e3",
+        "2449637acefd86149636aeb71d342f0e",
+        "88153d5c3789b1d4dac15d3799709e7d",
+        "59fb62d03830e4471cb6849ff224e78d"
+      ],
+      "negative_lens": [
+        430,
+        331,
+        325,
+        323
+      ]
+    },
+    {
+      "qid": "zh018",
+      "doc_name": "zh_doc_018.md",
+      "source_query_id": "559",
+      "query": "如何买卖etf基金",
+      "positive_docid": "7ad47b80ac96147e297b61bff9e460e2",
+      "positive_len": 856,
+      "negative_docids": [
+        "d9d9c44eb91657a4f502ee728c6ad2ed",
+        "b672f92afef6f03dc9e039289cdf3164",
+        "3cf8e7a8a4624b4bfa77e3ed3fc070cb",
+        "227fbef9187d25e3ea6594dcf2555e11"
+      ],
+      "negative_lens": [
+        436,
+        282,
+        280,
+        267
+      ]
+    },
+    {
+      "qid": "zh019",
+      "doc_name": "zh_doc_019.md",
+      "source_query_id": "362",
+      "query": "在实习期内的驾驶证扣分会怎样",
+      "positive_docid": "0dbe4a0f66a5b6b057d27d714348dd04",
+      "positive_len": 848,
+      "negative_docids": [
+        "6681f6b1ebb47c68fb61ba651ced4f12",
+        "59adf00a9dc6c09f3c98f0344d03aea5",
+        "6351fda8e1201b286fc3a33ac62a09a2",
+        "252e98e7d927779a74ce4d0ab02099ff"
+      ],
+      "negative_lens": [
+        502,
+        430,
+        329,
+        316
+      ]
+    },
+    {
+      "qid": "zh020",
+      "doc_name": "zh_doc_020.md",
+      "source_query_id": "25",
+      "query": "私立大学和公立大学的区别",
+      "positive_docid": "f89d7e48cc2f18861b922d01da3a5440",
+      "positive_len": 830,
+      "negative_docids": [
+        "de44180be27c2067b9821360c3e0f719",
+        "f3a29519739b572494242f898a389f9b",
+        "0ad2c7dd2828df3d578977174a39dbca",
+        "534673c8538f43538ce191d0c9977893"
+      ],
+      "negative_lens": [
+        297,
+        1441,
+        376,
+        269
+      ]
+    },
+    {
+      "qid": "zh021",
+      "doc_name": "zh_doc_021.md",
+      "source_query_id": "1021",
+      "query": "如何调水表数字",
+      "positive_docid": "05ea1ec3ce0c92f3c0a6f9c53645b13e",
+      "positive_len": 815,
+      "negative_docids": [
+        "7df5364e577f41d66bf741b7c6caca11",
+        "6896a29c7baf4bf91c4cc5bfb16fe16f",
+        "00284018060b148c2ffdd038b9765069",
+        "2e8a45d796ff44c2a2929c15de9342d2"
+      ],
+      "negative_lens": [
+        685,
+        546,
+        494,
+        473
+      ]
+    },
+    {
+      "qid": "zh022",
+      "doc_name": "zh_doc_022.md",
+      "source_query_id": "894",
+      "query": "怎样种香菜",
+      "positive_docid": "b300d6097dc9e555cfdb57f8bf440d8b",
+      "positive_len": 814,
+      "negative_docids": [
+        "7b37d2c1939051463acafaede5d7a155",
+        "047e8cf3605cc559c49908fc02c3fce2",
+        "b5b0033edac4b366d495bafff8370020",
+        "2b1a7b12bd5da85da147b98e5eaedd2d"
+      ],
+      "negative_lens": [
+        1566,
+        963,
+        331,
+        323
+      ]
+    },
+    {
+      "qid": "zh023",
+      "doc_name": "zh_doc_023.md",
+      "source_query_id": "558",
+      "query": "如何把电脑上的东西传到ipad上",
+      "positive_docid": "e580320359b9b6b186d1a32debd8086a",
+      "positive_len": 748,
+      "negative_docids": [
+        "533a11dff0a1df30ec50ddb07cf9b180",
+        "2f30b3e5a907d327e4cf8663e88a9742",
+        "22969b63da9d621d45cdc71f3a2a1dc0",
+        "6657e19228edbe4767590ba257b2bb20"
+      ],
+      "negative_lens": [
+        257,
+        631,
+        299,
+        297
+      ]
+    },
+    {
+      "qid": "zh024",
+      "doc_name": "zh_doc_024.md",
+      "source_query_id": "560",
+      "query": "c1扣12分怎么办",
+      "positive_docid": "a9882179878e2e74224c98a0e9a476ea",
+      "positive_len": 747,
+      "negative_docids": [
+        "bf27f53ad4261cb6ac488ee2f674e08b",
+        "d2103e2cb5b51259af19ffcb64893df1",
+        "a273a3212120b350cfb9978cf0d4a168",
+        "9d776aa792e70cde42a76528618bbdd8"
+      ],
+      "negative_lens": [
+        285,
+        826,
+        752,
+        414
+      ]
+    },
+    {
+      "qid": "zh025",
+      "doc_name": "zh_doc_025.md",
+      "source_query_id": "760",
+      "query": "tf与sd卡的区别",
+      "positive_docid": "c08abfc29cda71fb17c2afb4c0d867f5",
+      "positive_len": 723,
+      "negative_docids": [
+        "4e79b02495dcd2714acfd7ac34b7fcdb",
+        "6e96ca7cd0e3d9bbadcb783ec2aea29d",
+        "bef6954be8e6b66ed637457611f03cec",
+        "8f7c5626d647b8b63aad26368fbecf59"
+      ],
+      "negative_lens": [
+        1293,
+        888,
+        778,
+        1019
+      ]
+    },
+    {
+      "qid": "zh026",
+      "doc_name": "zh_doc_026.md",
+      "source_query_id": "1804",
+      "query": "左肾部位疼痛",
+      "positive_docid": "2deb475e705e54a7f20b3eb9c8880c6e",
+      "positive_len": 696,
+      "negative_docids": [
+        "c6196f6dd46a8c766005e4aacde3969b",
+        "acf27c8267ad2218f35a137bdad07b84",
+        "ee15bc1a025514d7f045ffb30372ae0b",
+        "72664e79e261614adcca54a6830453f4"
+      ],
+      "negative_lens": [
+        425,
+        286,
+        259,
+        200
+      ]
+    },
+    {
+      "qid": "zh027",
+      "doc_name": "zh_doc_027.md",
+      "source_query_id": "762",
+      "query": "小米平板钢化膜怎么贴",
+      "positive_docid": "59efa0b396db2187b566ce262aaec91e",
+      "positive_len": 688,
+      "negative_docids": [
+        "fa8599d3a3e47f171988093c71463f17",
+        "139966a02a8d4d66fcb60c7d28d8f2f3",
+        "5ca4a8651ff0cc586f7383d1ebcb5573",
+        "ac3328ef9c811678c711245ba13bff89"
+      ],
+      "negative_lens": [
+        721,
+        454,
+        287,
+        283
+      ]
+    },
+    {
+      "qid": "zh028",
+      "doc_name": "zh_doc_028.md",
+      "source_query_id": "941",
+      "query": "怎么控制路由器把蹭wifi的人给踢了",
+      "positive_docid": "b0687e9bce368dfe04f2d96b6dbb8fc5",
+      "positive_len": 679,
+      "negative_docids": [
+        "ee71db9c69016c3bfd397cf5a2677c75",
+        "39c12aef03253b6e868dbc08b0c3c42a",
+        "9768befd918979a303bbd8233dfc7f9e",
+        "b751690964ead6110cff88bd5454209a"
+      ],
+      "negative_lens": [
+        280,
+        274,
+        250,
+        650
+      ]
+    },
+    {
+      "qid": "zh029",
+      "doc_name": "zh_doc_029.md",
+      "source_query_id": "881",
+      "query": "怎么做卫浴销售",
+      "positive_docid": "cd3e68a0025edbc20831f6b09f1f45de",
+      "positive_len": 678,
+      "negative_docids": [
+        "f15f17477db3446f9eb6f2471c53e1d4",
+        "9d5872035ce3dc0041b8d84e47dcc194",
+        "6b798adbd9971a04a4615455a82c7937",
+        "b76e16dc547b11a6d348ec83d43e93dc"
+      ],
+      "negative_lens": [
+        455,
+        332,
+        1234,
+        337
+      ]
+    },
+    {
+      "qid": "zh030",
+      "doc_name": "zh_doc_030.md",
+      "source_query_id": "539",
+      "query": "外伤缝针不能吃什么",
+      "positive_docid": "75550309094c5d5522da088697930dac",
+      "positive_len": 676,
+      "negative_docids": [
+        "e44bf8cd7ac2092d2716bda0031657e8",
+        "897535510633c1d909ce3463d83058c1",
+        "b987f1eadcb697174f95fde55c7b3a50",
+        "cddf1576a5c42a118b975fdfab51aec6"
+      ],
+      "negative_lens": [
+        299,
+        1315,
+        294,
+        263
+      ]
+    },
+    {
+      "qid": "zh031",
+      "doc_name": "zh_doc_031.md",
+      "source_query_id": "621",
+      "query": "超级会员是什么",
+      "positive_docid": "7186934b710bbe42fc1f975598e24e2d",
+      "positive_len": 675,
+      "negative_docids": [
+        "9719ab99a1bad841a9d32454ee898e5d",
+        "1e93c644ce31fb061835f86281680756",
+        "a257da4cc95f49ce5afab573c1db3fdc",
+        "d323769029e3ce19e7b90cf81c0a468c"
+      ],
+      "negative_lens": [
+        291,
+        288,
+        273,
+        265
+      ]
+    },
+    {
+      "qid": "zh032",
+      "doc_name": "zh_doc_032.md",
+      "source_query_id": "295",
+      "query": "杭州劳动仲裁电话",
+      "positive_docid": "772837cbe2cb04e6b581e20265562df3",
+      "positive_len": 674,
+      "negative_docids": [
+        "c7e7bf8da6215fea620347b4b566019e",
+        "1f054e32ad7a1264cae979dfcfa4e20c",
+        "c71e80303ae794a8a73935b72021426e",
+        "50b01743b74273c94e334d093ec8cb40"
+      ],
+      "negative_lens": [
+        291,
+        252,
+        2145,
+        906
+      ]
+    },
+    {
+      "qid": "zh033",
+      "doc_name": "zh_doc_033.md",
+      "source_query_id": "39",
+      "query": "电暖桌哪个牌子好",
+      "positive_docid": "358924b157ddd025a85da15c1e39213b",
+      "positive_len": 662,
+      "negative_docids": [
+        "4041503e0986cb20bba6766bfaf53152",
+        "86e230a7116a33378800542786a4a9fa",
+        "4e3815da4c9265047e567e089c97a81b",
+        "4d1e57235205aa0e154515ae70056bbd"
+      ],
+      "negative_lens": [
+        530,
+        299,
+        515,
+        817
+      ]
+    },
+    {
+      "qid": "zh034",
+      "doc_name": "zh_doc_034.md",
+      "source_query_id": "1976",
+      "query": "板栗可以蒸着吃吗",
+      "positive_docid": "a11888c73c0e7bb88a9ea661d430634d",
+      "positive_len": 662,
+      "negative_docids": [
+        "c0520f3de557050eb320c1d2bc4ed8e9",
+        "7faab038a3900c23c554c135a5f2e458",
+        "5b951e1d2504338fd19be822b4599209",
+        "4609a13234be73b7f2a211f0e8e82efc"
+      ],
+      "negative_lens": [
+        553,
+        467,
+        414,
+        355
+      ]
+    },
+    {
+      "qid": "zh035",
+      "doc_name": "zh_doc_035.md",
+      "source_query_id": "296",
+      "query": "没越狱的iphone怎么清理垃圾",
+      "positive_docid": "5afb3bb3971cf862498ec8e625856c84",
+      "positive_len": 649,
+      "negative_docids": [
+        "593b425468c8ac71fcd4e6f8c2f4f499",
+        "1d256806dc389553b356de925a134742",
+        "9275fb903db4895d4884520ce039ab12",
+        "bed0eda3589bc886e1f303ce7011ed01"
+      ],
+      "negative_lens": [
+        350,
+        262,
+        351,
+        559
+      ]
+    },
+    {
+      "qid": "zh036",
+      "doc_name": "zh_doc_036.md",
+      "source_query_id": "1828",
+      "query": "苹果系统怎么查看隐藏文件",
+      "positive_docid": "7bd221006a2a9a2ab423f6c6c58fc31b",
+      "positive_len": 648,
+      "negative_docids": [
+        "64a820985f6ce292f84d3b4a0c95ab54",
+        "983b38f79769c90a887c6b0248229441",
+        "4d08aa54dfe8ee3fccac3e5d4e91bf18",
+        "1c46d830ab0acf45c84df08701024973"
+      ],
+      "negative_lens": [
+        263,
+        286,
+        280,
+        278
+      ]
+    },
+    {
+      "qid": "zh037",
+      "doc_name": "zh_doc_037.md",
+      "source_query_id": "86",
+      "query": "海淀医院孕前检查",
+      "positive_docid": "c8a15983d7a1c73cbbfb0d9ccb6a13cf",
+      "positive_len": 647,
+      "negative_docids": [
+        "1ec1c520726e9c3902e51013881b8335",
+        "0aa90d10af8ae32d619220f8cd857ab1",
+        "d87bc241834843be05ee1b8afc21765b",
+        "930389605ada68aec1955ae2f1eec8c7"
+      ],
+      "negative_lens": [
+        300,
+        439,
+        353,
+        274
+      ]
+    },
+    {
+      "qid": "zh038",
+      "doc_name": "zh_doc_038.md",
+      "source_query_id": "864",
+      "query": "玩梦幻西游怎么赚钱",
+      "positive_docid": "18e78e49e05fc7c4ab5291cd0dbf199c",
+      "positive_len": 646,
+      "negative_docids": [
+        "9f04e1b807bd32345524c94c4944cdfc",
+        "a48e465522557e617590eae8fa81f45d",
+        "70a39c62bfd27b3fdc4c277d6474750f",
+        "dedb323e7dbc0e67e8b14f083b5395e9"
+      ],
+      "negative_lens": [
+        606,
+        278,
+        327,
+        208
+      ]
+    },
+    {
+      "qid": "zh039",
+      "doc_name": "zh_doc_039.md",
+      "source_query_id": "1133",
+      "query": "跟庐山有关的诗句",
+      "positive_docid": "ec5b3c899b948541a6c7d5956010be40",
+      "positive_len": 643,
+      "negative_docids": [
+        "07bb1c4021d54ca7e24c9e59b8a623db",
+        "5e5894d82caf1f8b3de7e12cd6482a71",
+        "da2da81702c30e92baf2d060dc87e624",
+        "3d43868b309b762f69f7c830614afad0"
+      ],
+      "negative_lens": [
+        263,
+        289,
+        283,
+        624
+      ]
+    },
+    {
+      "qid": "zh040",
+      "doc_name": "zh_doc_040.md",
+      "source_query_id": "765",
+      "query": "现在去哪里下载音乐",
+      "positive_docid": "a68b198a4a2e9739135aa5202ca95b02",
+      "positive_len": 621,
+      "negative_docids": [
+        "b7b7d7e294d6ebf0ac37c1b6fcc69d7d",
+        "1561bdec5b5be14f22a74c9c0d33b377",
+        "15544c78f4aeb02235062056bb4da136",
+        "9bf3c9bda17887906f2c015ae07791f9"
+      ],
+      "negative_lens": [
+        286,
+        259,
+        373,
+        311
+      ]
+    },
+    {
+      "qid": "zh041",
+      "doc_name": "zh_doc_041.md",
+      "source_query_id": "1667",
+      "query": "治疗颈椎病药物",
+      "positive_docid": "7484259beed7d00d1e53a457475dc339",
+      "positive_len": 614,
+      "negative_docids": [
+        "3a764d2c130341c08d731270b91f50d6",
+        "611c73402d4234b044e71eacf357c549",
+        "302a286af7e5346cbf0ca2767d92a359",
+        "8ad731f3a6a72e83add2f074b4679db7"
+      ],
+      "negative_lens": [
+        1037,
+        503,
+        447,
+        277
+      ]
+    },
+    {
+      "qid": "zh042",
+      "doc_name": "zh_doc_042.md",
+      "source_query_id": "1676",
+      "query": "户外手电筒什么牌子好",
+      "positive_docid": "06b8c0b5922f5820d4f02f13a0eceea8",
+      "positive_len": 608,
+      "negative_docids": [
+        "8d0937040f9e17829967dc42fd63f283",
+        "7661f519318a143e3d1850c82c979201",
+        "98a92c43cc19b71c2b8b122c95ff3224",
+        "c8fe20b2cb1a3e592e365eac9a532b8a"
+      ],
+      "negative_lens": [
+        277,
+        269,
+        265,
+        182
+      ]
+    },
+    {
+      "qid": "zh043",
+      "doc_name": "zh_doc_043.md",
+      "source_query_id": "1708",
+      "query": "cfs和cy有什么不同",
+      "positive_docid": "5e9d0b6825d976240a81a68b3812b48c",
+      "positive_len": 598,
+      "negative_docids": [
+        "0d27dc9e03f6b42380ae3b29684b5500",
+        "6f52c6bdfc5b47ab8fe04680bee81d25",
+        "7dd2d15d4bd40cb65e44f1fabce81c48",
+        "857e86dd62f8a0d8822501ee2f49422a"
+      ],
+      "negative_lens": [
+        193,
+        188,
+        1553,
+        719
+      ]
+    },
+    {
+      "qid": "zh044",
+      "doc_name": "zh_doc_044.md",
+      "source_query_id": "768",
+      "query": "换外汇哪个银行好",
+      "positive_docid": "747656c0fb743bdd550b845c043cae2a",
+      "positive_len": 592,
+      "negative_docids": [
+        "22390072a3c96cd05753265b5503ed5f",
+        "f81215c1d1f44922ad8e5ba3da79dcbb",
+        "0edcafc88f7277330a14b7ffa48677d3",
+        "57ae78193fa470038bf2fc2fe24176e4"
+      ],
+      "negative_lens": [
+        272,
+        298,
+        287,
+        285
+      ]
+    },
+    {
+      "qid": "zh045",
+      "doc_name": "zh_doc_045.md",
+      "source_query_id": "1548",
+      "query": "轻型羽绒服什么牌子好",
+      "positive_docid": "d9e4aa8f8fe9c0476351722cda13ae98",
+      "positive_len": 587,
+      "negative_docids": [
+        "41bbc509323543093dd253e2e4b48f67",
+        "4a79b3d3737f90864316b70a97d50808",
+        "5bd60c637c96faea36caf4217c035acb",
+        "c48fdc74affafd4268ef895b72cf1975"
+      ],
+      "negative_lens": [
+        237,
+        182,
+        1653,
+        282
+      ]
+    },
+    {
+      "qid": "zh046",
+      "doc_name": "zh_doc_046.md",
+      "source_query_id": "1351",
+      "query": "手机外放进水",
+      "positive_docid": "7c47e670faa839cb237d65b337089abe",
+      "positive_len": 579,
+      "negative_docids": [
+        "c8a9436f8520e10b86d46d6fa609925b",
+        "187936a447e26955cb815766a6833dfe",
+        "1f51397026a4d96c4913e0c3328fceab",
+        "8e0ff864f0614aeb9f6173c3b9638b64"
+      ],
+      "negative_lens": [
+        464,
+        351,
+        315,
+        259
+      ]
+    },
+    {
+      "qid": "zh047",
+      "doc_name": "zh_doc_047.md",
+      "source_query_id": "1224",
+      "query": "什么样的借条不具法律效力",
+      "positive_docid": "f0979c66e9d0c1f9a3a5682ccaaf385e",
+      "positive_len": 573,
+      "negative_docids": [
+        "f8d984fa07fb3fbc20e31ec0daa88f05",
+        "063f826bc389902fabfd469323163173",
+        "a3b141d8d4e61fcc8802b8870bcfe33a",
+        "0d17ea8394d430034e3dee5576b0c2dc"
+      ],
+      "negative_lens": [
+        905,
+        1064,
+        296,
+        241
+      ]
+    },
+    {
+      "qid": "zh048",
+      "doc_name": "zh_doc_048.md",
+      "source_query_id": "21",
+      "query": "m8a1用什么炮",
+      "positive_docid": "e4766689e06222726e553b730995aa2b",
+      "positive_len": 569,
+      "negative_docids": [
+        "9305d5619227269b0635c4cc9dd60da1",
+        "7042aae8240725105fff6f1cadaa8451",
+        "1fc02843df8fcdb783826b306460531c",
+        "5ddbbb05ede8168359fe282b81eb261a"
+      ],
+      "negative_lens": [
+        422,
+        366,
+        364,
+        317
+      ]
+    },
+    {
+      "qid": "zh049",
+      "doc_name": "zh_doc_049.md",
+      "source_query_id": "1345",
+      "query": "西安人流手术费用要多少",
+      "positive_docid": "a60878ec58365bff78ef6661c55ac6ac",
+      "positive_len": 568,
+      "negative_docids": [
+        "140545562cb0fcfc049c20dad2fe7578",
+        "9219c4228fc25767cc6eff0c282fcae6",
+        "dc07745db1bd8c13249138940d59c69a",
+        "f67e19ee6ee27657f27b43d1eb55ba2a"
+      ],
+      "negative_lens": [
+        285,
+        325,
+        146,
+        429
+      ]
+    },
+    {
+      "qid": "zh050",
+      "doc_name": "zh_doc_050.md",
+      "source_query_id": "764",
+      "query": "xm外汇平台怎么样",
+      "positive_docid": "19db06bdc4ebd12c6e833b90067af2ef",
+      "positive_len": 567,
+      "negative_docids": [
+        "2c8801adcbd9bfb728b65f56cfdd647f",
+        "4ba58f89a140fcffeb985a365da0b85e",
+        "53f5fb3463e647cc77e209f7eaeb2b2e",
+        "776dc46101e59f0c3e13ba710f5ba5da"
+      ],
+      "negative_lens": [
+        281,
+        279,
+        261,
+        235
+      ]
+    },
+    {
+      "qid": "zh051",
+      "doc_name": "zh_doc_051.md",
+      "source_query_id": "354",
+      "query": "双人床最小宽度",
+      "positive_docid": "271143af474a1366237c1ebfdf700a7e",
+      "positive_len": 565,
+      "negative_docids": [
+        "23f10bc7fc9046fe154068db202f915c",
+        "8fece017fecf873d0fb9164ed6778721",
+        "2d57a572632e3b9b8cf34eb4962adf58",
+        "9502db657213af23896c4b142abc0df9"
+      ],
+      "negative_lens": [
+        851,
+        837,
+        697,
+        697
+      ]
+    },
+    {
+      "qid": "zh052",
+      "doc_name": "zh_doc_052.md",
+      "source_query_id": "1960",
+      "query": "生气时喂奶",
+      "positive_docid": "ca5663090190bdbcb203f96af96ea811",
+      "positive_len": 561,
+      "negative_docids": [
+        "c8676c88a9d3cc0561ada7292b68b631",
+        "8f34bdb1f51ac3c1b4a076fffbdc0fff",
+        "30d420581f3637996bd4f425afb143ba",
+        "436843887484d9da6d5a3844dbc0c962"
+      ],
+      "negative_lens": [
+        264,
+        216,
+        287,
+        279
+      ]
+    },
+    {
+      "qid": "zh053",
+      "doc_name": "zh_doc_053.md",
+      "source_query_id": "1117",
+      "query": "龟头敏感度低怎么办",
+      "positive_docid": "4b4ab6ac20663aa1f7cbb1e4978d8041",
+      "positive_len": 561,
+      "negative_docids": [
+        "b5e22dde4a5f257d6154c34e22bc1380",
+        "4e833b668b7431ce22e1f24757374977",
+        "7dd2d1abb53cf901af1a1281a1b96094",
+        "b8d87c17ca716614a622840daccebed0"
+      ],
+      "negative_lens": [
+        235,
+        2042,
+        864,
+        424
+      ]
+    },
+    {
+      "qid": "zh054",
+      "doc_name": "zh_doc_054.md",
+      "source_query_id": "1497",
+      "query": "沪陕高速限速多少",
+      "positive_docid": "6fc108f644c992593c6978a0630b77a4",
+      "positive_len": 558,
+      "negative_docids": [
+        "02d40664c56077560a7d7309fefd9f68",
+        "63dfd1628975fc62c03b26db133f9bc9",
+        "65c32397918935147777d605dd6b0fb1",
+        "f3076ba9586e1ec76080bd9bafcd03c3"
+      ],
+      "negative_lens": [
+        295,
+        280,
+        257,
+        310
+      ]
+    },
+    {
+      "qid": "zh055",
+      "doc_name": "zh_doc_055.md",
+      "source_query_id": "946",
+      "query": "ios9 如何关闭搜索最近联系人",
+      "positive_docid": "ae29713b2591f2ace166b9c702e31b8e",
+      "positive_len": 554,
+      "negative_docids": [
+        "79fba69a255f2b0c42f76cbffc30ba90",
+        "27ec6b60c33f9dfb87297270e152f848",
+        "ab1178f012b160c0f81eedb71a79965c",
+        "3d88df0a65cdf29bdcce7cf24a001893"
+      ],
+      "negative_lens": [
+        275,
+        272,
+        266,
+        256
+      ]
+    },
+    {
+      "qid": "zh056",
+      "doc_name": "zh_doc_056.md",
+      "source_query_id": "1567",
+      "query": "尸兄主角能力",
+      "positive_docid": "408da7380589753dd3d2a9aba9d349ff",
+      "positive_len": 548,
+      "negative_docids": [
+        "ff43c5be465ae00dcb813d06d865d22d",
+        "7d4ce07e2db81afe80c8229fbd75a355",
+        "05540ef8e3fb01638af30024c58549f1",
+        "f07387b69a3cb6a06aabca5ace762fb9"
+      ],
+      "negative_lens": [
+        597,
+        417,
+        340,
+        325
+      ]
+    },
+    {
+      "qid": "zh057",
+      "doc_name": "zh_doc_057.md",
+      "source_query_id": "1535",
+      "query": "word怎么不能修改",
+      "positive_docid": "7c4796918ff87bad05d6a63e8d1b59da",
+      "positive_len": 548,
+      "negative_docids": [
+        "ee1d3604f8876e07648bb1fd9d9dd940",
+        "3b09f21962df33e133e465c78acebca3",
+        "21fff521898084583254144860534be0",
+        "afcb10eb8ba5d9238eaefa97dcf27370"
+      ],
+      "negative_lens": [
+        2756,
+        696,
+        434,
+        292
+      ]
+    },
+    {
+      "qid": "zh058",
+      "doc_name": "zh_doc_058.md",
+      "source_query_id": "8",
+      "query": "我国古代第一个有伟大成就的爱国诗人是( )",
+      "positive_docid": "ea2a663871f8b13ed79e87ba392a65b2",
+      "positive_len": 539,
+      "negative_docids": [
+        "5479b3b5d1e1ebd38a898b61822a7f06",
+        "24b9f5315e5dce9745acd007687f715f",
+        "716951211751048b7c5caf22e5097484",
+        "ebb8dba25d020b771ff1d500e1ec99e8"
+      ],
+      "negative_lens": [
+        309,
+        512,
+        968,
+        283
+      ]
+    },
+    {
+      "qid": "zh059",
+      "doc_name": "zh_doc_059.md",
+      "source_query_id": "1406",
+      "query": "电热毯能烘干被子吗",
+      "positive_docid": "0dff27e1c4bc1ee16c0d28b55cc7380e",
+      "positive_len": 534,
+      "negative_docids": [
+        "fbd59af93b1dada076ed21604a77d72b",
+        "f91c9783de8449e16df93ccb6eb0b05f",
+        "6718321c6480dfe6f012d40a4a74118b",
+        "9454810b978a7aa7b0dff6da5af3a3c6"
+      ],
+      "negative_lens": [
+        451,
+        277,
+        275,
+        163
+      ]
+    },
+    {
+      "qid": "zh060",
+      "doc_name": "zh_doc_060.md",
+      "source_query_id": "1412",
+      "query": "氨端聚二甲基硅氧烷是硅油吗",
+      "positive_docid": "06c535917c346056a56abbbb3367e187",
+      "positive_len": 529,
+      "negative_docids": [
+        "62066fbaa548858a5e49e7e4ba9ffcdd",
+        "88f09e4d066b8c142246daf499a03ffe",
+        "1198b8d05b0053b7a1631d44b9b7a912",
+        "07cfd4d772fb30d2b9de438a0409a29c"
+      ],
+      "negative_lens": [
+        279,
+        1803,
+        996,
+        289
+      ]
+    },
+    {
+      "qid": "zh061",
+      "doc_name": "zh_doc_061.md",
+      "source_query_id": "265",
+      "query": "为什么中国必须守住18亿亩耕地红线",
+      "positive_docid": "ca0e60b9d24bc832d6e94681c86e8da7",
+      "positive_len": 521,
+      "negative_docids": [
+        "750a4a7a98a7aace7bbf53174c55212e",
+        "a3586c4511fae5c0b71df492515ade53",
+        "286af45a64d717042a5490ec971dc920",
+        "edf5d1a08d7e2b9eca63c1062e10273e"
+      ],
+      "negative_lens": [
+        1109,
+        285,
+        300,
+        299
+      ]
+    },
+    {
+      "qid": "zh062",
+      "doc_name": "zh_doc_062.md",
+      "source_query_id": "1053",
+      "query": "如何取消电脑的自动休眠",
+      "positive_docid": "9c259e005f3daa97dc1dfc37deaf3cdf",
+      "positive_len": 514,
+      "negative_docids": [
+        "e3e986f052fbbe582ace7714fee757a2",
+        "2e4fa304a800eb734c8a49fa80ba5d8d",
+        "5a63cd4cf6302def589144effd381354",
+        "024b7bb42eaae9ade38dee303fe12312"
+      ],
+      "negative_lens": [
+        1110,
+        257,
+        592,
+        499
+      ]
+    },
+    {
+      "qid": "zh063",
+      "doc_name": "zh_doc_063.md",
+      "source_query_id": "106",
+      "query": "象征孩子纯洁的花",
+      "positive_docid": "df2b85e6e552cd3a0be351b9bf03a062",
+      "positive_len": 513,
+      "negative_docids": [
+        "3a3f376d1bada570073614e7816b3e7b",
+        "0f11472d0f51ad51b3ecfeeb66439317",
+        "8dc90070e333fc9991c2651c0f81aea2",
+        "1a731ca7dd2e9a5265e922119e356e2c"
+      ],
+      "negative_lens": [
+        719,
+        295,
+        289,
+        285
+      ]
+    },
+    {
+      "qid": "zh064",
+      "doc_name": "zh_doc_064.md",
+      "source_query_id": "1519",
+      "query": "血清甘油三脂偏低",
+      "positive_docid": "77aaa5824a01c8a38d100e0664fcdb30",
+      "positive_len": 512,
+      "negative_docids": [
+        "2e6544b228177ed16bda84f3a1e83fbb",
+        "8c079738b271c80419b5a0ffd7a4ad00",
+        "1d0aa54cd74e9ff0f651826a3a9fee4f",
+        "972fb345f5ada5c96999e68f0c08aed4"
+      ],
+      "negative_lens": [
+        297,
+        259,
+        1140,
+        827
+      ]
+    },
+    {
+      "qid": "zh065",
+      "doc_name": "zh_doc_065.md",
+      "source_query_id": "1598",
+      "query": "哪种制氧机好",
+      "positive_docid": "869d699839900bb4076ce4490d5b07e0",
+      "positive_len": 504,
+      "negative_docids": [
+        "b010395a7ed2149865f73ecac36491ac",
+        "59be84cbe1bd2457290b14d31e8f1b77",
+        "227e80613fac36dd49e79e826e2e2fa5",
+        "e10f2e32de62d8be00a864ec95b28555"
+      ],
+      "negative_lens": [
+        271,
+        647,
+        575,
+        432
+      ]
+    },
+    {
+      "qid": "zh066",
+      "doc_name": "zh_doc_066.md",
+      "source_query_id": "1162",
+      "query": "电动牙刷刷的干净吗",
+      "positive_docid": "e2f5fff522d19e73eda7925a4da66589",
+      "positive_len": 502,
+      "negative_docids": [
+        "4ec5ee8b2f6bdde9f88521a36d6da4c7",
+        "80f82581a318a1c3001f059403c22b00",
+        "aee226a0069d321832707f25fda75334",
+        "4b4d0337050946a0e1c3cd51b9c962ef"
+      ],
+      "negative_lens": [
+        281,
+        277,
+        292,
+        1435
+      ]
+    },
+    {
+      "qid": "zh067",
+      "doc_name": "zh_doc_067.md",
+      "source_query_id": "750",
+      "query": "武松属什么",
+      "positive_docid": "39a07bb00c9461302161d894086d2438",
+      "positive_len": 495,
+      "negative_docids": [
+        "e826fd6c0d86ea5831fbe730faf2446f",
+        "bf70ba3cefb2e50bee6e324614f327c3",
+        "06fe7c25bde6258a4a1f5d8c84c1b260",
+        "2cd015b71f794e55e4a4dbe2aca67a35"
+      ],
+      "negative_lens": [
+        458,
+        380,
+        305,
+        297
+      ]
+    },
+    {
+      "qid": "zh068",
+      "doc_name": "zh_doc_068.md",
+      "source_query_id": "1767",
+      "query": "跳鬼步舞时手怎么动",
+      "positive_docid": "ad9a8f4714d90a1d1c6651a0b7e0bb1a",
+      "positive_len": 495,
+      "negative_docids": [
+        "a6908262a301f5040fc2529f0afe51f1",
+        "888fa4e94fcd1b0171d0223c241d7aa5",
+        "a35fa88ddcc914ffaa352ce57730332c",
+        "9d3eb54b32e5e10eaba8ad99d74882e3"
+      ],
+      "negative_lens": [
+        2584,
+        664,
+        660,
+        309
+      ]
+    },
+    {
+      "qid": "zh069",
+      "doc_name": "zh_doc_069.md",
+      "source_query_id": "1385",
+      "query": "would like的回答",
+      "positive_docid": "1b86861fea178f7c20eb5973e4002ae8",
+      "positive_len": 492,
+      "negative_docids": [
+        "dd9b3cae48d0361eabfa61d0fc8c5fbd",
+        "40f661b79b8b401e65f455c2d9c35fe1",
+        "ea5488805e857e0b4056e63ea3e2f2a8",
+        "04a2316651392ac100c305fba5b7c821"
+      ],
+      "negative_lens": [
+        1088,
+        964,
+        938,
+        295
+      ]
+    },
+    {
+      "qid": "zh070",
+      "doc_name": "zh_doc_070.md",
+      "source_query_id": "526",
+      "query": "qq经常掉线怎么回事",
+      "positive_docid": "0c980f4c0f15818d2dcaa000a5bd9e61",
+      "positive_len": 488,
+      "negative_docids": [
+        "690a1048b4548ce3eb00b9a2e7e61f92",
+        "a4b670004ac4d2a1f04bf26fdb671c28",
+        "04c4da7c8740a0b9625ea18a82524842",
+        "23ccd977ab922f94a88c9ba560f2d145"
+      ],
+      "negative_lens": [
+        213,
+        260,
+        1091,
+        273
+      ]
+    },
+    {
+      "qid": "zh071",
+      "doc_name": "zh_doc_071.md",
+      "source_query_id": "460",
+      "query": "还珠格格第一部背景音乐",
+      "positive_docid": "60ea2f141127355ddaece657229aaeee",
+      "positive_len": 488,
+      "negative_docids": [
+        "95b693276b6a52705068172d9c09af2e",
+        "906489a48d34535da49064495f2212e2",
+        "b298a528215209fbb04637ee5002a7ae",
+        "a6618966fb094123bc6e463daeaefb67"
+      ],
+      "negative_lens": [
+        412,
+        2715,
+        236,
+        1921
+      ]
+    },
+    {
+      "qid": "zh072",
+      "doc_name": "zh_doc_072.md",
+      "source_query_id": "189",
+      "query": "我的世界手机版0.12.1末地传送门怎么做",
+      "positive_docid": "aa2a721aee65a3b785ce6c7e9ca2c641",
+      "positive_len": 486,
+      "negative_docids": [
+        "acd304a84c85a38079b8f29d73b2dfea",
+        "e72384eb92290cd84d6afcc2e323149e",
+        "41c4599ded725d364548d19751fa1e10",
+        "40742f037c1c692acc9f41327f51b093"
+      ],
+      "negative_lens": [
+        374,
+        311,
+        280,
+        275
+      ]
+    },
+    {
+      "qid": "zh073",
+      "doc_name": "zh_doc_073.md",
+      "source_query_id": "120",
+      "query": "三壬行化妆学校好吗",
+      "positive_docid": "97b0def0bc9c86017f2bb8f50dde8cef",
+      "positive_len": 485,
+      "negative_docids": [
+        "26b94c377aabdbbd762102502fc481f1",
+        "5e7d0fb575fe3c2da01d4e67c6fc90be",
+        "5a1abb21ba173e6b6c981b4ad47c8126",
+        "efb3b14901c842d88c9761eb07bc3673"
+      ],
+      "negative_lens": [
+        261,
+        257,
+        162,
+        296
+      ]
+    },
+    {
+      "qid": "zh074",
+      "doc_name": "zh_doc_074.md",
+      "source_query_id": "280",
+      "query": "胃功能",
+      "positive_docid": "3688a398b8dc4a9d1adfedf478eb9307",
+      "positive_len": 480,
+      "negative_docids": [
+        "a2cced11f62d2b2a36b752b411cf00f1",
+        "cd3d309c61af7f55ae7d486a8eac9030",
+        "e488f6db9cc95fa2cac16f70143f1ad6",
+        "a1b71f0f08511272282090ada92a79ac"
+      ],
+      "negative_lens": [
+        307,
+        299,
+        293,
+        281
+      ]
+    },
+    {
+      "qid": "zh075",
+      "doc_name": "zh_doc_075.md",
+      "source_query_id": "906",
+      "query": "艾俐缇陶瓷怎么样",
+      "positive_docid": "c6d48836cae5cec9a0f357baefb294e6",
+      "positive_len": 479,
+      "negative_docids": [
+        "ddf17f0c8264d0baf90c845c303b5665",
+        "d22b578925faef469184bb5ddfa4299e",
+        "1cbe5bac7367dd1092b40a472ad2de79",
+        "b6fed632d589806f06861f6be2e7f434"
+      ],
+      "negative_lens": [
+        298,
+        282,
+        275,
+        264
+      ]
+    },
+    {
+      "qid": "zh076",
+      "doc_name": "zh_doc_076.md",
+      "source_query_id": "1183",
+      "query": "公共事业管理属于什么专业类别",
+      "positive_docid": "a419911e5e814e6814df24d9b35aebeb",
+      "positive_len": 472,
+      "negative_docids": [
+        "3c260535a614b6e912bde2ddd13b28a4",
+        "31c63dcd4ed857423aca8473a7b13ed6",
+        "fa629eb85205061ed213164f388af030",
+        "5882b39104e166be4866e9dec12f15c4"
+      ],
+      "negative_lens": [
+        238,
+        151,
+        1460,
+        574
+      ]
+    },
+    {
+      "qid": "zh077",
+      "doc_name": "zh_doc_077.md",
+      "source_query_id": "228",
+      "query": "天然无添加的护肤品存在吗",
+      "positive_docid": "05036e43c61dac03b660ad7deb3f445c",
+      "positive_len": 470,
+      "negative_docids": [
+        "27ffdb42b943d2f3bdd373c94d41f08a",
+        "ef54cfe18b70a25e2609e9a1c5e73e30",
+        "503158c1fbc545e5e4049f08c6c43829",
+        "3d1785c6e4d0de19a753ee257c51576d"
+      ],
+      "negative_lens": [
+        2928,
+        859,
+        298,
+        280
+      ]
+    },
+    {
+      "qid": "zh078",
+      "doc_name": "zh_doc_078.md",
+      "source_query_id": "1985",
+      "query": "旅行发票 可以报吗",
+      "positive_docid": "f5a6531bd861d2d59468306e23dc62ec",
+      "positive_len": 469,
+      "negative_docids": [
+        "0cfe21ddd1d135af83e18a8b69258f1a",
+        "9c8fbd1734d049d7083c30ebeb913a26",
+        "c78037734073b6655f8aa3f3e38a7a1b",
+        "05df173d7ff1be56280bfbf94f9ef071"
+      ],
+      "negative_lens": [
+        300,
+        280,
+        273,
+        273
+      ]
+    },
+    {
+      "qid": "zh079",
+      "doc_name": "zh_doc_079.md",
+      "source_query_id": "512",
+      "query": "种子可以用百度云下载吗",
+      "positive_docid": "2410d4d5a42c87c4863ad48710c347dd",
+      "positive_len": 465,
+      "negative_docids": [
+        "4e0c53dbe686d2aa5f9faffc43a94070",
+        "fcc67e05e529e94491c65992820f481e",
+        "607c16c633af33eecff30737c1defa6e",
+        "966b882b32772189a29906c58559adb6"
+      ],
+      "negative_lens": [
+        314,
+        295,
+        289,
+        272
+      ]
+    },
+    {
+      "qid": "zh080",
+      "doc_name": "zh_doc_080.md",
+      "source_query_id": "1195",
+      "query": "ipad能否连接打印机",
+      "positive_docid": "cfbe5bf68960660f75a4feb19ec84696",
+      "positive_len": 465,
+      "negative_docids": [
+        "df0cf8d5cb1b68a68021e9571b6fe9bd",
+        "a297ed412ec73f98d682ef66b0058264",
+        "97501e48b3acf898a5dc8feac55fa1fd",
+        "7653cf0dfd5e04672eb52f35b3cda58b"
+      ],
+      "negative_lens": [
+        930,
+        867,
+        829,
+        791
+      ]
+    },
+    {
+      "qid": "zh081",
+      "doc_name": "zh_doc_081.md",
+      "source_query_id": "1342",
+      "query": "手机钢化保护膜怎么贴",
+      "positive_docid": "1222e5efe346e445fb9e7e0b1b725d1e",
+      "positive_len": 463,
+      "negative_docids": [
+        "44f1f6d1527d1f0b981ed87d03e84cf6",
+        "879ced54165592f79839fdd34b023bd1",
+        "82d735cd4f8d01a6b588fdbb05b6da39",
+        "a91f9be66e2abd769f27afad0a4c8309"
+      ],
+      "negative_lens": [
+        1989,
+        773,
+        766,
+        760
+      ]
+    },
+    {
+      "qid": "zh082",
+      "doc_name": "zh_doc_082.md",
+      "source_query_id": "867",
+      "query": "中国古代最繁荣的朝代",
+      "positive_docid": "36fc82f36540574a6bb7b4b536c77b3e",
+      "positive_len": 454,
+      "negative_docids": [
+        "6f70a0ddf9db4fe96e111f2032bb28c1",
+        "6d50babba5c69f0d1049ac9ad78493ea",
+        "a43a5eb0d8479db568f65a68c49d0692",
+        "db1c94f58a33a00f369b11ecaa3d1e62"
+      ],
+      "negative_lens": [
+        275,
+        296,
+        1057,
+        439
+      ]
+    },
+    {
+      "qid": "zh083",
+      "doc_name": "zh_doc_083.md",
+      "source_query_id": "652",
+      "query": "怎么改民族",
+      "positive_docid": "74f578163357b35ed06b74ff597d17fa",
+      "positive_len": 452,
+      "negative_docids": [
+        "786def1d93a472ca55b2b8a36f5f151b",
+        "8fa335997b6f132f1555998e3ac0360a",
+        "0e0f631a0b6b22042b82086c907d8fd7",
+        "84959b5c66619ad069f6d059da4c7fc3"
+      ],
+      "negative_lens": [
+        279,
+        4909,
+        1129,
+        323
+      ]
+    },
+    {
+      "qid": "zh084",
+      "doc_name": "zh_doc_084.md",
+      "source_query_id": "522",
+      "query": "部队的级别",
+      "positive_docid": "713902aa9d88aab026efca972d8a187a",
+      "positive_len": 451,
+      "negative_docids": [
+        "ab195b17a47c40750fd35ea14815f9a6",
+        "25f36a357aa981a8130d2cb5c875c44e",
+        "c567972796665943546f875afbc7baa9",
+        "71af968b4e2eba62035729a06cb75008"
+      ],
+      "negative_lens": [
+        357,
+        264,
+        282,
+        273
+      ]
+    },
+    {
+      "qid": "zh085",
+      "doc_name": "zh_doc_085.md",
+      "source_query_id": "633",
+      "query": "白带有酸奶味",
+      "positive_docid": "038725b14ba74ac0102bda33e020a75e",
+      "positive_len": 450,
+      "negative_docids": [
+        "426412881b6a6579519bf6d80881c1f0",
+        "1d14431538af44315e2427be53d57582",
+        "b5907a5d36f8f263591dc02b6125d807",
+        "728e4abe797708a333d2bdf6de8e1f8b"
+      ],
+      "negative_lens": [
+        194,
+        2783,
+        1368,
+        283
+      ]
+    },
+    {
+      "qid": "zh086",
+      "doc_name": "zh_doc_086.md",
+      "source_query_id": "1736",
+      "query": "mathematica怎么求积分",
+      "positive_docid": "2ab3dfa8996b20e08b5568a3aa50ce76",
+      "positive_len": 450,
+      "negative_docids": [
+        "6f42901d0d88336e49d2f65aa27d86c6",
+        "0a243f82a0b5306f4cd29e03ed064bff",
+        "bef6ecd51c6b0eb4cca5b0e60c1c0416",
+        "d3b68c8d48171061eeebb23837a7b2fb"
+      ],
+      "negative_lens": [
+        248,
+        698,
+        591,
+        521
+      ]
+    },
+    {
+      "qid": "zh087",
+      "doc_name": "zh_doc_087.md",
+      "source_query_id": "124",
+      "query": "晾衣架材质",
+      "positive_docid": "e88ae5b086a8904104b6cc1e99f78df3",
+      "positive_len": 446,
+      "negative_docids": [
+        "011ec2c85462d2b581e3e787b8fc42eb",
+        "e53edc9113520edc5a80970b6a5a5090",
+        "86b7ab67c123ba424e07af6502ba7ec3",
+        "8f3d62f26119e27cec5886590c00eb06"
+      ],
+      "negative_lens": [
+        901,
+        370,
+        335,
+        219
+      ]
+    },
+    {
+      "qid": "zh088",
+      "doc_name": "zh_doc_088.md",
+      "source_query_id": "917",
+      "query": "如何遮盖唇色",
+      "positive_docid": "c8c2b5e1670358ece03504f63a05d9a3",
+      "positive_len": 445,
+      "negative_docids": [
+        "2c1952d35b76f52e0731e3dfffffc895",
+        "4702d8b7bdea839b6301737901338834",
+        "d2936f929377c56dba7fef4d6d172af1",
+        "134300fbfe7b7f10ad035a164fd71460"
+      ],
+      "negative_lens": [
+        259,
+        161,
+        418,
+        330
+      ]
+    },
+    {
+      "qid": "zh089",
+      "doc_name": "zh_doc_089.md",
+      "source_query_id": "672",
+      "query": "部落冲突怎么搜死鱼",
+      "positive_docid": "bccdede08029d8667c5137ce228d6756",
+      "positive_len": 445,
+      "negative_docids": [
+        "0f9c743a1f123a6df9a9e2d916134cbf",
+        "1aae8c2e400469e54960ad3d11bc8cc5",
+        "0559fe41a136c32c78507984ed78e789",
+        "46261d02613066365085583bf5536561"
+      ],
+      "negative_lens": [
+        257,
+        193,
+        261,
+        365
+      ]
+    },
+    {
+      "qid": "zh090",
+      "doc_name": "zh_doc_090.md",
+      "source_query_id": "854",
+      "query": "牛剖层移膜皮是什么",
+      "positive_docid": "bdc8595b0786597f9b155861c4fca2fe",
+      "positive_len": 440,
+      "negative_docids": [
+        "14a25b49c9bf635aec36e63f6ef623be",
+        "cca444c718b5b9757f4e83b7267a660a",
+        "4b4043759294da51fda8fe85be9e98c3",
+        "91b5d48dad8026def2a731e12735e06e"
+      ],
+      "negative_lens": [
+        1438,
+        2123,
+        1749,
+        287
+      ]
+    },
+    {
+      "qid": "zh091",
+      "doc_name": "zh_doc_091.md",
+      "source_query_id": "45",
+      "query": "iwatch连接蓝牙耳机",
+      "positive_docid": "6be9b3b6c41d2ea5ece2b964ca31676f",
+      "positive_len": 440,
+      "negative_docids": [
+        "61e7d91b6f74e8b951e3603d80be12ac",
+        "e8a462674e8ba532589665c09890ac04",
+        "d440c4773b35a0fc66bb2c42fa2578d4",
+        "e3d0524900dc6430c67545ce2583daab"
+      ],
+      "negative_lens": [
+        1002,
+        610,
+        474,
+        342
+      ]
+    },
+    {
+      "qid": "zh092",
+      "doc_name": "zh_doc_092.md",
+      "source_query_id": "172",
+      "query": "北京市公务员一年考几次",
+      "positive_docid": "784fc41518f85466331811e1776d5e50",
+      "positive_len": 440,
+      "negative_docids": [
+        "fbe6a8ab88bb698ac8a55993b55aa840",
+        "7a0d5932041bfa92ac53a9cfea1d9c85",
+        "fc44805f4dc85124c45a8f5670d4e58f",
+        "50606065ace5c8fe21eec8b891dfa36d"
+      ],
+      "negative_lens": [
+        910,
+        277,
+        376,
+        291
+      ]
+    },
+    {
+      "qid": "zh093",
+      "doc_name": "zh_doc_093.md",
+      "source_query_id": "1087",
+      "query": "成都审驾照需要什么",
+      "positive_docid": "3e07d2462b19848951a1fdd8478a4136",
+      "positive_len": 435,
+      "negative_docids": [
+        "1df7bc576590ab28f4689cf3b1c14b37",
+        "cfa945cee9a130fa8683a28221846104",
+        "2b358faff0dd68dcb46b6b0131cfccb0",
+        "43f8b4e3dc56c6467da00f242a0038ec"
+      ],
+      "negative_lens": [
+        1025,
+        1014,
+        1013,
+        1009
+      ]
+    },
+    {
+      "qid": "zh094",
+      "doc_name": "zh_doc_094.md",
+      "source_query_id": "200",
+      "query": "霜是怎么形成的",
+      "positive_docid": "b5fc03f380cc6b58a50c03039be63324",
+      "positive_len": 434,
+      "negative_docids": [
+        "86c9d4af475be0e2247161af86c84452",
+        "579b327999e1cc9ab19a98bd2df2b292",
+        "debd02c690450cd3aa79b21f69720255",
+        "92e9d33ee2af83991afe8acbe113dfad"
+      ],
+      "negative_lens": [
+        496,
+        297,
+        1104,
+        284
+      ]
+    },
+    {
+      "qid": "zh095",
+      "doc_name": "zh_doc_095.md",
+      "source_query_id": "1143",
+      "query": "卫生间铺什么地砖好",
+      "positive_docid": "329a446714ee60070a71d344845dc6f3",
+      "positive_len": 434,
+      "negative_docids": [
+        "7a223b0e303f533a028cce4dc1298490",
+        "94244cfdc92b81d6b6fcc3d2708017ec",
+        "1734c689287c07f691c52fef274e77db",
+        "af91f64cb43905638d4a1a78e693549b"
+      ],
+      "negative_lens": [
+        687,
+        595,
+        537,
+        357
+      ]
+    },
+    {
+      "qid": "zh096",
+      "doc_name": "zh_doc_096.md",
+      "source_query_id": "250",
+      "query": "肠结核的症状",
+      "positive_docid": "3787582df38200d8acfa670bd3fe034a",
+      "positive_len": 431,
+      "negative_docids": [
+        "46c3940398eca3bbcba40476c058cde8",
+        "6ac2bfe9e13c0214364472ce608efcf3",
+        "8cd407ae1385855fa1dadb472f3f118a",
+        "891c03007d38312848089e168049b3a4"
+      ],
+      "negative_lens": [
+        501,
+        369,
+        411,
+        374
+      ]
+    },
+    {
+      "qid": "zh097",
+      "doc_name": "zh_doc_097.md",
+      "source_query_id": "1574",
+      "query": "表带怎么打孔",
+      "positive_docid": "5647eb328ed82c2cb7d7b0f651c76abc",
+      "positive_len": 431,
+      "negative_docids": [
+        "5029036d5f37758fa3eab0b438049524",
+        "143d718e4b0da2fa60f38271cd97269e",
+        "39a7b3a7bebbda4c241a371aebc159ef",
+        "e200f7d8f19f50f926ec7ec056aa2742"
+      ],
+      "negative_lens": [
+        435,
+        347,
+        344,
+        299
+      ]
+    },
+    {
+      "qid": "zh098",
+      "doc_name": "zh_doc_098.md",
+      "source_query_id": "1879",
+      "query": "海参冷冻还是冷藏",
+      "positive_docid": "c42ccd9301352fed835cdbb83ea610b2",
+      "positive_len": 429,
+      "negative_docids": [
+        "844fbe61fe739b49430d08b731705fd5",
+        "4705f162e1df837849fbcad2c7117210",
+        "da5f3c72c8d2274f4e48de1fafa1a3fb",
+        "524c40633ef07525163d772ea6253ba9"
+      ],
+      "negative_lens": [
+        184,
+        284,
+        193,
+        685
+      ]
+    },
+    {
+      "qid": "zh099",
+      "doc_name": "zh_doc_099.md",
+      "source_query_id": "118",
+      "query": "水土流失是什么意思",
+      "positive_docid": "33603cb945f16c43cc43b201356e8f57",
+      "positive_len": 427,
+      "negative_docids": [
+        "197ca0fa63e729b18ad0bec91d34a898",
+        "4697ce9dbb58f699e98a1b7af784e711",
+        "1d1564ad8853302197dd9fa99f983347",
+        "4d64e93e2d3bfbe88c5296d67e3124e7"
+      ],
+      "negative_lens": [
+        143,
+        4728,
+        973,
+        288
+      ]
+    },
+    {
+      "qid": "zh100",
+      "doc_name": "zh_doc_100.md",
+      "source_query_id": "843",
+      "query": "红枣表面有层白色粉末",
+      "positive_docid": "6979f2cf42ee93091b3a005a0a42387d",
+      "positive_len": 425,
+      "negative_docids": [
+        "b35513d5f39b905bbcf4811e1a27fa90",
+        "c8e3e07811e1bf3d0439b4ca213eda81",
+        "d2bdca2c9157be23a646796052ba9f91",
+        "ace49d4ad28ae5c2088f4224cae10dcb"
+      ],
+      "negative_lens": [
+        264,
+        250,
+        334,
+        325
+      ]
+    },
+    {
+      "qid": "zh101",
+      "doc_name": "zh_doc_101.md",
+      "source_query_id": "988",
+      "query": "小米的平板好用吗",
+      "positive_docid": "ae1f23a548acfeeca426c9e67a0658ef",
+      "positive_len": 423,
+      "negative_docids": [
+        "6ac2da224b7854e6ccfcd3327081af13",
+        "f8b70155ad884a07f1ec7ed4ec725bc6",
+        "03cbff438617a83f14a9d06b398d08ff",
+        "a3cb9602daab7a8ffbcad86ca2231573"
+      ],
+      "negative_lens": [
+        1260,
+        916,
+        611,
+        352
+      ]
+    },
+    {
+      "qid": "zh102",
+      "doc_name": "zh_doc_102.md",
+      "source_query_id": "1084",
+      "query": "尺神经麻痹治疗",
+      "positive_docid": "2f91dc4e3121dce62b3b8f0492b91976",
+      "positive_len": 417,
+      "negative_docids": [
+        "55a4cc0c1fcaca646c95af2cb910c136",
+        "3e973b1061cabb68bd64931fc778df69",
+        "3db399d80e84a219a895d5f16a03f63b",
+        "e7b6f77ead626a5d3f00be94cb8a1711"
+      ],
+      "negative_lens": [
+        1066,
+        410,
+        367,
+        291
+      ]
+    },
+    {
+      "qid": "zh103",
+      "doc_name": "zh_doc_103.md",
+      "source_query_id": "974",
+      "query": "北京出国体检在哪里",
+      "positive_docid": "4b3543341034f2c1511be41f0510c835",
+      "positive_len": 416,
+      "negative_docids": [
+        "db3c00964f04a3a7e035c7c553b3f8bc",
+        "dacf6cbd644e41fdb98034bba9dd917b",
+        "476f050414355a5550ddf02401710407",
+        "bfc8a4da0817a8695fbb9f9f8060d65a"
+      ],
+      "negative_lens": [
+        294,
+        535,
+        192,
+        159
+      ]
+    },
+    {
+      "qid": "zh104",
+      "doc_name": "zh_doc_104.md",
+      "source_query_id": "1172",
+      "query": "i5处理器配什么主板好",
+      "positive_docid": "6df8b44de3b4a6030524e6d6b967b9b8",
+      "positive_len": 416,
+      "negative_docids": [
+        "e4991c74ea22f53833cf52d59e05c705",
+        "45be6c81c8be2d588c7d77e9b5d89abe",
+        "271dd041fc6438a98358831a2ce43d68",
+        "32e265c560a8cf999f771f4f8ab85527"
+      ],
+      "negative_lens": [
+        294,
+        165,
+        655,
+        297
+      ]
+    },
+    {
+      "qid": "zh105",
+      "doc_name": "zh_doc_105.md",
+      "source_query_id": "1776",
+      "query": "产权70年是什么意思",
+      "positive_docid": "fcdfffff5a21afcb059ad86a6f0d3e98",
+      "positive_len": 415,
+      "negative_docids": [
+        "a7439a00e912547f08a9142f64c4671b",
+        "2398546a16fbc6b1e6cef86bae13ffe9",
+        "15da6601ca21f6e6117539c1d1ba6ccc",
+        "bc9c02b516d0840a0de203eccb943d16"
+      ],
+      "negative_lens": [
+        3432,
+        578,
+        446,
+        432
+      ]
+    },
+    {
+      "qid": "zh106",
+      "doc_name": "zh_doc_106.md",
+      "source_query_id": "557",
+      "query": "原地跑步能减肚子吗",
+      "positive_docid": "2f215175236cd06378d2878e44b46b0f",
+      "positive_len": 414,
+      "negative_docids": [
+        "7b5d10518756800c9e85426f01e37267",
+        "e1d57361191c247a925e7d01f9e9b56f",
+        "9feaa1df62d9af63741b87ef0d8618c4",
+        "87abe9ec710c52d8b8b17e07e8f4fd30"
+      ],
+      "negative_lens": [
+        179,
+        159,
+        2588,
+        1025
+      ]
+    },
+    {
+      "qid": "zh107",
+      "doc_name": "zh_doc_107.md",
+      "source_query_id": "884",
+      "query": "金匮肾气丸要吃多长时间",
+      "positive_docid": "2b314021ed3500d774db31f7215033a8",
+      "positive_len": 412,
+      "negative_docids": [
+        "36b1a3db501fcd23f7220767fe4eb73b",
+        "eb56cc0d77566355abbc2a16f7a66b80",
+        "e83d82f159522065886f4457a6612727",
+        "105b818600a9e4166ad70d4de5635b01"
+      ],
+      "negative_lens": [
+        3223,
+        544,
+        391,
+        353
+      ]
+    },
+    {
+      "qid": "zh108",
+      "doc_name": "zh_doc_108.md",
+      "source_query_id": "1882",
+      "query": "肩颈僵硬",
+      "positive_docid": "2209c6f4ccacd0e99bc8412472c64ca9",
+      "positive_len": 412,
+      "negative_docids": [
+        "40283d619d8b0cc274f5ff003563f850",
+        "9e4b64efa76d0db90c384a6d95497fcd",
+        "461f3eed1bdf5a64d6805be9c40eb9ee",
+        "bd225cd336e591b1f4de3962baf793f8"
+      ],
+      "negative_lens": [
+        282,
+        269,
+        582,
+        509
+      ]
+    },
+    {
+      "qid": "zh109",
+      "doc_name": "zh_doc_109.md",
+      "source_query_id": "182",
+      "query": "借书的好处",
+      "positive_docid": "a757f4bb548aeeea2fce60b996bfe759",
+      "positive_len": 412,
+      "negative_docids": [
+        "dae4e19f0f27150484815e7353ea028e",
+        "a54daaf5d846dc302a193286e1104b45",
+        "2d3bb5ff6921ed6bc6c647fe262c093a",
+        "d466ed2ddb5dfd320623b33dcc6c2475"
+      ],
+      "negative_lens": [
+        3185,
+        1529,
+        915,
+        840
+      ]
+    },
+    {
+      "qid": "zh110",
+      "doc_name": "zh_doc_110.md",
+      "source_query_id": "211",
+      "query": "完美世界出过什么游戏",
+      "positive_docid": "77b72f949952d7ba5a150f723e883ab8",
+      "positive_len": 399,
+      "negative_docids": [
+        "a4bed61eb188163c3bb6f71d6880d8f1",
+        "2a41ef7bb51b7536b5c12bd4d890d29a",
+        "045e53bdddaed6be89a5737016dc1e9b",
+        "56d063ff6d18d96a5408b6adf6fd967d"
+      ],
+      "negative_lens": [
+        299,
+        307,
+        295,
+        291
+      ]
+    },
+    {
+      "qid": "zh111",
+      "doc_name": "zh_doc_111.md",
+      "source_query_id": "1394",
+      "query": "张家港大千装饰怎样",
+      "positive_docid": "e66f31fc6f571f37a61de2b08a5541fc",
+      "positive_len": 397,
+      "negative_docids": [
+        "a384f8d52fe7f9bb1d125d9cd060e000",
+        "4d062ee1fcab759176ea8f61219aa238",
+        "459738e1f43c3aea4638148ca7b33e87",
+        "903d6ed4c87454f245ae6d0cab3ec6df"
+      ],
+      "negative_lens": [
+        338,
+        216,
+        146,
+        292
+      ]
+    },
+    {
+      "qid": "zh112",
+      "doc_name": "zh_doc_112.md",
+      "source_query_id": "1617",
+      "query": "为什么qq打不开图片",
+      "positive_docid": "7e144b4a355339fa4ec0dd9b1f41d11a",
+      "positive_len": 396,
+      "negative_docids": [
+        "3d17cccedc9c59c0edd0f5e094bc20d5",
+        "5b2058becfd85bde2a3b2bcbd1fd155c",
+        "10fa9ebb4ec445bf70f67b10b269a40d",
+        "3dfa236606404adbd7904b4d63945697"
+      ],
+      "negative_lens": [
+        294,
+        255,
+        384,
+        266
+      ]
+    },
+    {
+      "qid": "zh113",
+      "doc_name": "zh_doc_113.md",
+      "source_query_id": "49",
+      "query": "辅酶q10的服用方法",
+      "positive_docid": "fa69ab051d6d547bca654942ed9e3602",
+      "positive_len": 395,
+      "negative_docids": [
+        "438506349ab8c946c62c420b42ca085d",
+        "54df914f307f41d67c76fd805e055ac5",
+        "86eda662fc0f2850f3a12597ddbd2833",
+        "42a0da386945f61b5f6b2a4c654f11a7"
+      ],
+      "negative_lens": [
+        655,
+        601,
+        282,
+        262
+      ]
+    },
+    {
+      "qid": "zh114",
+      "doc_name": "zh_doc_114.md",
+      "source_query_id": "459",
+      "query": "杀人剑没了?",
+      "positive_docid": "f4544bd1ae0d6b4e97ff6e2ac6c7117a",
+      "positive_len": 394,
+      "negative_docids": [
+        "8681cee7ef68d921727d89e2fbc9cbad",
+        "4065f106cb569ccd2cea6827533b9bf7",
+        "a34b5c50e867627dd38a6be0724869b6",
+        "ae6fa6487955116b6cf087e14c942d51"
+      ],
+      "negative_lens": [
+        223,
+        263,
+        261,
+        259
+      ]
+    },
+    {
+      "qid": "zh115",
+      "doc_name": "zh_doc_115.md",
+      "source_query_id": "1752",
+      "query": "excel怎么把数字全部显示出来",
+      "positive_docid": "8c5a08e4bef62fce499a992702ec677a",
+      "positive_len": 394,
+      "negative_docids": [
+        "34be764be5449398ef1efe14bec0f347",
+        "ba358f66328b496eb955b84d61587a89",
+        "fdd781991099e75062794c256691d03f",
+        "0de92614c99878abbb35db7ad62c91ed"
+      ],
+      "negative_lens": [
+        295,
+        271,
+        299,
+        286
+      ]
+    },
+    {
+      "qid": "zh116",
+      "doc_name": "zh_doc_116.md",
+      "source_query_id": "976",
+      "query": "开国大典简介50字",
+      "positive_docid": "6840b57dde654a2ad31f513043bed320",
+      "positive_len": 388,
+      "negative_docids": [
+        "40950d69dd8abfc9a5c883ae6ca870f5",
+        "632a06deb24066b6e9b1c5ab802e6359",
+        "f8000b51b022256a1e86b09364f34429",
+        "34974d1a598bfa348e4a2f330148266f"
+      ],
+      "negative_lens": [
+        360,
+        349,
+        296,
+        179
+      ]
+    },
+    {
+      "qid": "zh117",
+      "doc_name": "zh_doc_117.md",
+      "source_query_id": "1036",
+      "query": "德国红铁元和绿铁元有什么区别",
+      "positive_docid": "f10429075e89c05819d63e88388a1754",
+      "positive_len": 386,
+      "negative_docids": [
+        "471ceb2e347abe07fbb44f69ba17168b",
+        "d783e728a9a8006b3641c459f1d3a2ce",
+        "35d23d2305e85366d1577158fda5fdea",
+        "2b005867dc5a3cbdd1ce468f183bd637"
+      ],
+      "negative_lens": [
+        315,
+        302,
+        290,
+        236
+      ]
+    },
+    {
+      "qid": "zh118",
+      "doc_name": "zh_doc_118.md",
+      "source_query_id": "1002",
+      "query": "诛仙法宝技能怎么洗",
+      "positive_docid": "b78f3d09c193ddce95000dc18aafe7ce",
+      "positive_len": 384,
+      "negative_docids": [
+        "862a52d20b5c1c47921be4a68d0040bd",
+        "ed14d2e728faa2e3e76bc6daba64f847",
+        "c5f9949f45ad4d3635d89e9081e620a4",
+        "2c38f66e685b55cbe050e8628a704d9f"
+      ],
+      "negative_lens": [
+        264,
+        300,
+        268,
+        529
+      ]
+    },
+    {
+      "qid": "zh119",
+      "doc_name": "zh_doc_119.md",
+      "source_query_id": "51",
+      "query": "神秘博士clara是谁",
+      "positive_docid": "33bbba930daabd572f1f826f562e4781",
+      "positive_len": 383,
+      "negative_docids": [
+        "1b8b5bef3de16f0304a4bfb136c88957",
+        "0ced22a93ef19d5af7e034b937e10942",
+        "36aa37dc1c963fe68d3a065ce53db533",
+        "aff44d039e441719b84d54e2feea1708"
+      ],
+      "negative_lens": [
+        401,
+        289,
+        300,
+        290
+      ]
+    },
+    {
+      "qid": "zh120",
+      "doc_name": "zh_doc_120.md",
+      "source_query_id": "1309",
+      "query": "保妇康栓要用多久",
+      "positive_docid": "00add3e0d3ee889ef0f900071ce06784",
+      "positive_len": 382,
+      "negative_docids": [
+        "8d4f9bbabe9a05744fe0037b6fe832b8",
+        "80ca08008f565f4d252fa35dcd30dcba",
+        "0430b27859f889117eb62fe2a7808c7b",
+        "3f67c99784092e4052e423910a3843d5"
+      ],
+      "negative_lens": [
+        299,
+        274,
+        263,
+        258
+      ]
+    }
+  ]
+}

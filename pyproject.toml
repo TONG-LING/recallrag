@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recallrag"
+version = "0.1.0"
+description = "Failure-driven chunk patch benchmark for RAG retrieval"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["rag", "retrieval", "qdrant", "llm", "evaluation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "License :: Other/Proprietary License",
+  "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+serve = [
+  "fastapi>=0.115,<1.0",
+  "uvicorn>=0.30,<1.0",
+]
+
+[project.scripts]
+recallrag = "recallrag.cli:main"
+recallrag-api = "recallrag.api:run"
+
+[tool.setuptools]
+packages = ["recallrag"]

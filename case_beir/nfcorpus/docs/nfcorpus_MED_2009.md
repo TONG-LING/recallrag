@@ -1,0 +1,9 @@
+# Nutritional quality and health benefits of chickpea (Cicer arietinum L.): a review.
+
+Chickpea (Cicer arietinum L.) is an important pulse crop grown and consumed all over the world, especially in the Afro-Asian countries. It is a good source of carbohydrates and protein, and protein quality is considered to be better than other pulses. Chickpea has significant amounts of all the essential amino acids except sulphur-containing amino acids, which can be complemented by adding cereals to the daily diet. Starch is the major storage carbohydrate followed by dietary fibre, oligosaccharides and simple sugars such as glucose and sucrose. Although lipids are present in low amounts, chickpea is rich in nutritionally important unsaturated fatty acids such as linoleic and oleic acids. β-Sitosterol, campesterol and stigmasterol are important sterols present in chickpea oil. Ca, Mg, P and, especially, K are also present in chickpea seeds. Chickpea is a good source of important vitamins such as riboflavin, niacin, thiamin, folate and the vitamin A precursor β-carotene. As with other pulses, chickpea seeds also contain anti-nutritional factors which can be reduced or eliminated by different cooking techniques. Chickpea has several potential health benefits, and, in combination with other pulses and cereals, it could have beneficial effects on some of the important human diseases such as CVD, type 2 diabetes, digestive diseases and some cancers. Overall, chickpea is an important pulse crop with a diverse array of potential nutritional and health benefits.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2009
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/22916806

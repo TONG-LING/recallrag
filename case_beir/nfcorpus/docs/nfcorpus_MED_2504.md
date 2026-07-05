@@ -1,0 +1,9 @@
+# Nutrient control of TORC1, a cell-cycle regulator.
+
+It is well established that the target of rapamycin (TOR) protein kinase has pivotal roles in controlling cell functions (including protein synthesis, cell growth and cell proliferation) and is implicated in numerous human diseases. Mammalian TOR complex 1 (mTORC1) signalling is activated by hormones and growth factors, and is also stimulated by intracellular amino acids. Recent research has provided important new insight into the poorly understood mechanism by which amino acids activate mTORC1 signalling, showing that the protein kinase MAP4K3 and Rag GTPases have important roles in this. mTORC1 is known to control the G1/S transition of the cell cycle: new data show that (m)TORC1 also controls G2/M progression in yeast and mammals, albeit in contrasting ways.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2504
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/19419870

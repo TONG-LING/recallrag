@@ -1,0 +1,9 @@
+# Efficacy and safety of Meriva®, a curcumin-phosphatidylcholine complex, during extended administration in osteoarthritis patients.
+
+In a previous three-month study of Meriva, a proprietary curcumin-phosphatidylcholine phytosome complex, decreased joint pain and improvement in joint function were observed in 50 osteoarthritis (OA) patients. Since OA is a chronic condition requiring prolonged treatment, the long-term efficacy and safety of Meriva were investigated in a longer (eight months) study involving 100 OA patients. The clinical end points (Western Ontario and McMaster Universities [WOMAC] score, Karnofsky Performance Scale Index, and treadmill walking performance) were complemented by the evaluation of a series of inflammatory markers (interleukin [IL]-1beta, IL-6, soluble CD40 ligand [sCD40L], soluble vascular cell adhesion molecule (sVCAM)-1, and erythrocyte sedimentation rate [ESR]). This represents the most ambitious attempt, to date, to evaluate the clinical efficacy and safety of curcumin as an anti-inflammatory agent. Significant improvements of both the clinical and biochemical end points were observed for Meriva compared to the control group. This, coupled with an excellent tolerability, suggests that Meriva is worth considering for the long-term complementary management of osteoarthritis.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2807
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/21194249

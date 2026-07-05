@@ -1,0 +1,9 @@
+# Curcumin induces apoptosis in human melanoma cells through a Fas receptor/caspase-8 pathway independent of p53.
+
+In this study, we investigated the molecular pathways targeted by curcumin during apoptosis of human melanoma cell lines. We found that curcumin caused cell death in eight melanoma cell lines, four with wild-type and four with mutant p53. We demonstrate that curcumin-induced apoptosis is both dose- and time-dependent. We found that curcumin did not induce p53, suggesting that curcumin activates other apoptosis pathways. Our data show that curcumin activates caspases-3 and -8 but not caspase-9, supporting the rationale that apoptosis occurs via a membrane-mediated mechanism. Both a caspase-8 and broad-based caspase inhibitor, but not a caspase-9 specific inhibitor, suppressed curcumin-induced cell death. To further support our hypothesis that curcumin induces activation of a death receptor pathway, we show that curcumin induces Fas receptor aggregation in a FasL-independent manner and that low-temperature incubation, previously shown to inhibit receptor aggregation, prevented curcumin-induced cell death. Moreover, we demonstrate that expression of dominant negative FADD significantly inhibited curcumin-induced cell death. In addition, our results indicate that curcumin also blocks the NF-kappaB cell survival pathway and suppresses the apoptotic inhibitor, XIAP. Since melanoma cells with mutant p53 are strongly resistant to conventional chemotherapy, curcumin may overcome the chemoresistance of these cells and provide potential new avenues for treatment.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2602
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/11716543

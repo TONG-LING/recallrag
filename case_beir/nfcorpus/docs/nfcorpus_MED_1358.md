@@ -1,0 +1,9 @@
+# The acute effects of exercise on mood state.
+
+This paper documents the recent (1976-1995) literature on the acute mood effects associated with participation in single sessions of exercise. Issues regarding experimental design, "ecological validity' and the operational definition of mood are addressed. Results from these studies suggest that both clinical and nonclinical subjects may benefit acutely from even a single bout of exercise. Finally, possible mechanisms and recommendations for future research are discussed.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-1358
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/8778396

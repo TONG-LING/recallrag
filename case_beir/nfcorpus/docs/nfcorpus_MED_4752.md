@@ -1,0 +1,9 @@
+# Acne, dairy and cancer
+
+A potent link to dairy seems to exist for three hormone-responsive glands. Acne, breast cancer and prostate cancer have all been linked epidemiologically to dairy intake. Although mechanisms postulated here remain to be accurately defined, the likely link involves Insulin-like Growth Factor-1 as a general stimulant, synergized by the steroid hormones present in milk. The IGF-1 may be either absorbed from milk, or stimulated by its ingestion, or both. The 5alpha-reduced compound 5alpha-pregnanedione (5α-P) present in milk is a direct precursor of dihydrotestosterone and may act through that pathway in prostate cancer, but 5α-P has also recently been shown to be capable of inducing estrogen receptors in breast cancer cells, upregulating cancer cells' sensitivity to estrogen. The introduction of exogenous hormones and growth factors into tissues that have not evolved defensive feedback inhibition of their corresponding endogenous sources is postulated as a direct stimulatory threat to these organ systems, whether for hyperplasia or neoplasia.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-4752
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/20046583

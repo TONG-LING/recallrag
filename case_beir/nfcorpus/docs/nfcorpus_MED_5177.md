@@ -1,0 +1,9 @@
+# Pilot evaluation of flaxseed for the management of hot flashes.
+
+The objective of this study was to evaluate, in a phase 2 pilot study, tolerability and the effect of 6 weeks of flaxseed therapy on hot flash scores in women not wishing to receive estrogen therapy. Eligibility included 14 hot flashes per week for at least 1 month. In the baseline week, participants took no study medication and documented the characteristics of their hot flashes. Thereafter, crushed flaxseed was administered at 40 g daily. Participants provided weekly toxicity reports and health-related quality of life information. The primary end point was a change in hot flash score prospectively reported in a daily hot flash diary. Thirty women were enrolled between June 17 and November 8, 2005. The mean decrease in hot flash scores after flaxseed therapy was 57% (median decrease 62%). The mean reduction in daily hot flash frequency was 50% (median reduction 50%), from 7.3 hot flashes to 3.6. Fourteen of the 28 participants (50%) experienced mild or moderate abdominal distention. Eight participants (29%) experienced mild diarrhea, one experienced flatulence, and six (21%) withdrew because of toxicities. This study suggests that dietary therapy decreases hot flash activity in women not taking estrogen therapy. This reduction is greater than what would be expected with placebo.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-5177
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/17761129

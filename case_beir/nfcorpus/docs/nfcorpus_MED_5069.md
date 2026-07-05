@@ -1,0 +1,9 @@
+# From beans to berries and beyond: teamwork between plant chemicals for protection of optimal human health.
+
+It is now well known to consumers around the world that certain fruits and vegetables can help prevent or treat chronic human diseases. But, what many people don't fully appreciate is that it is not a single component in these plant-derived foods, but rather complex mixtures of interacting natural chemicals, that produce such powerful health-protective effects. These natural components accumulate simultaneously together in a plant, and provide a multifaceted defensive strategy for both the plant, and the human consumer. In order to investigate the strength of natural chemical cooperation in highly-pigmented, flavonoid-rich functional foods, our lab has relied on analysis of both whole fruits, and continuous, reliable plant cell culture production systems which accumulate anthocyanins and proanthocyanidins in high concentrations. Successive rounds of relatively gentle, rapid, and large-volume fractionations are linked to bioassay of complex to simple mixtures and semi-purified compounds. By means of this strategy, additive interactions or synergies between related compounds in health maintenance can be sorted out. Interestingly, phytochemical interactions between the same classes of compounds intensify the efficacy of flavonoid-rich fruits against multiple, not necessarily discrete, human disease conditions including CVD, cancer, metabolic syndrome, and others.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-5069
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/17986598

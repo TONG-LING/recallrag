@@ -1,0 +1,9 @@
+# Detection and characterization of infectious Hepatitis E virus from commercial pig livers sold in local grocery stores in the USA.
+
+Hepatitis E virus (HEV) is a zoonotic pathogen of which pigs are reservoirs. To determine the presence of HEV RNA in commercial pig livers sold in local grocery stores in the USA, 127 packages of commercial pig liver were purchased and tested by a universal RT-PCR assay capable of detecting all four known HEV genotypes. Among the 127 livers tested, 14 were positive for HEV RNA. Sequence and phylogenetic analyses revealed that the 14 isolates all belonged to genotype 3. An animal study was subsequently conducted in pigs to determine whether the PCR-positive pig livers still contained infectious virus. The results showed that pigs inoculated with two of the three PCR-positive pig-liver homogenates became infected, as evidenced by the detection of faecal virus shedding, viraemia and seroconversion. The data demonstrated that commercial pig livers sold in grocery stores are contaminated by HEV and that the contaminating virus remains infectious, thus raising a public-health concern for food-borne HEV infection.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-4813
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/17325364

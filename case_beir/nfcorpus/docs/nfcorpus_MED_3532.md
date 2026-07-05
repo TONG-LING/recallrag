@@ -1,0 +1,9 @@
+# Application of LC and LC-MS to the analysis of melatonin and serotonin in edible plants.
+
+Melatonin is a neurohormone produced by the pineal gland of animals. Serotonin is a monoamine neurotransmitter and one of the precursors of melatonin biosynthesis. These two indoleamines have recently been reported to have widespread occurrence in many edible plants. Consuming foodstuffs containing melatonin and serotonin could raise their physiologic concentrations in blood and enhance human health. Literature concerning analytical methods suitable for determination of melatonin and serotonin in edible plants is limited, although several liquid chromatographic (LC) techniques have been used for their quantification. Liquid chromatography-mass spectrometry (LC-MS) methods combine selectivity, sensitivity, and high precision, and enable the simultaneous determination of melatonin and serotonin. This work reviews LC and LC-MS techniques used to determine melatonin and serotonin, and the available data on melatonin and serotonin levels in edible plants. © 2011 Crown Copyright
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-3532
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/21432696

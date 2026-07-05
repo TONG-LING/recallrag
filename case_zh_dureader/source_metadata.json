@@ -1,0 +1,371 @@
+{
+  "source_url": "https://huggingface.co/datasets/zyznull/dureader-retrieval-ranking/resolve/main/dev.jsonl.gz",
+  "sample_size": 18,
+  "negatives_per_doc": 4,
+  "min_positive_len": 380,
+  "max_positive_len": 1400,
+  "min_negative_len": 140,
+  "seed": 42,
+  "rows": [
+    {
+      "qid": "zh001",
+      "doc_name": "zh_doc_001.md",
+      "source_query_id": "1191",
+      "query": "经常用肥皂洗脸好吗",
+      "positive_docid": "86fedc8b3a0c848239fec4e46157ac5d",
+      "positive_len": 1119,
+      "negative_docids": [
+        "6690e2def07675b24fcca73dcb564898",
+        "303febd0d7b79ebd4fce86a4543be2f0",
+        "8905a43a62f6c179925cfd580f38849f",
+        "d29750ae5e644e21cef34c6b35be91ba"
+      ],
+      "negative_lens": [
+        541,
+        283,
+        283,
+        271
+      ]
+    },
+    {
+      "qid": "zh002",
+      "doc_name": "zh_doc_002.md",
+      "source_query_id": "1804",
+      "query": "左肾部位疼痛",
+      "positive_docid": "2deb475e705e54a7f20b3eb9c8880c6e",
+      "positive_len": 696,
+      "negative_docids": [
+        "c6196f6dd46a8c766005e4aacde3969b",
+        "acf27c8267ad2218f35a137bdad07b84",
+        "ee15bc1a025514d7f045ffb30372ae0b",
+        "72664e79e261614adcca54a6830453f4"
+      ],
+      "negative_lens": [
+        425,
+        286,
+        259,
+        200
+      ]
+    },
+    {
+      "qid": "zh003",
+      "doc_name": "zh_doc_003.md",
+      "source_query_id": "1976",
+      "query": "板栗可以蒸着吃吗",
+      "positive_docid": "a11888c73c0e7bb88a9ea661d430634d",
+      "positive_len": 662,
+      "negative_docids": [
+        "c0520f3de557050eb320c1d2bc4ed8e9",
+        "7faab038a3900c23c554c135a5f2e458",
+        "5b951e1d2504338fd19be822b4599209",
+        "4609a13234be73b7f2a211f0e8e82efc"
+      ],
+      "negative_lens": [
+        553,
+        467,
+        414,
+        355
+      ]
+    },
+    {
+      "qid": "zh004",
+      "doc_name": "zh_doc_004.md",
+      "source_query_id": "1133",
+      "query": "跟庐山有关的诗句",
+      "positive_docid": "ec5b3c899b948541a6c7d5956010be40",
+      "positive_len": 643,
+      "negative_docids": [
+        "07bb1c4021d54ca7e24c9e59b8a623db",
+        "5e5894d82caf1f8b3de7e12cd6482a71",
+        "da2da81702c30e92baf2d060dc87e624",
+        "3d43868b309b762f69f7c830614afad0"
+      ],
+      "negative_lens": [
+        263,
+        289,
+        283,
+        624
+      ]
+    },
+    {
+      "qid": "zh005",
+      "doc_name": "zh_doc_005.md",
+      "source_query_id": "1224",
+      "query": "什么样的借条不具法律效力",
+      "positive_docid": "f0979c66e9d0c1f9a3a5682ccaaf385e",
+      "positive_len": 573,
+      "negative_docids": [
+        "f8d984fa07fb3fbc20e31ec0daa88f05",
+        "063f826bc389902fabfd469323163173",
+        "a3b141d8d4e61fcc8802b8870bcfe33a",
+        "0d17ea8394d430034e3dee5576b0c2dc"
+      ],
+      "negative_lens": [
+        905,
+        1064,
+        296,
+        241
+      ]
+    },
+    {
+      "qid": "zh006",
+      "doc_name": "zh_doc_006.md",
+      "source_query_id": "21",
+      "query": "m8a1用什么炮",
+      "positive_docid": "e4766689e06222726e553b730995aa2b",
+      "positive_len": 569,
+      "negative_docids": [
+        "9305d5619227269b0635c4cc9dd60da1",
+        "7042aae8240725105fff6f1cadaa8451",
+        "1fc02843df8fcdb783826b306460531c",
+        "5ddbbb05ede8168359fe282b81eb261a"
+      ],
+      "negative_lens": [
+        422,
+        366,
+        364,
+        317
+      ]
+    },
+    {
+      "qid": "zh007",
+      "doc_name": "zh_doc_007.md",
+      "source_query_id": "354",
+      "query": "双人床最小宽度",
+      "positive_docid": "271143af474a1366237c1ebfdf700a7e",
+      "positive_len": 565,
+      "negative_docids": [
+        "23f10bc7fc9046fe154068db202f915c",
+        "8fece017fecf873d0fb9164ed6778721",
+        "2d57a572632e3b9b8cf34eb4962adf58",
+        "9502db657213af23896c4b142abc0df9"
+      ],
+      "negative_lens": [
+        851,
+        837,
+        697,
+        697
+      ]
+    },
+    {
+      "qid": "zh008",
+      "doc_name": "zh_doc_008.md",
+      "source_query_id": "1960",
+      "query": "生气时喂奶",
+      "positive_docid": "ca5663090190bdbcb203f96af96ea811",
+      "positive_len": 561,
+      "negative_docids": [
+        "c8676c88a9d3cc0561ada7292b68b631",
+        "8f34bdb1f51ac3c1b4a076fffbdc0fff",
+        "30d420581f3637996bd4f425afb143ba",
+        "436843887484d9da6d5a3844dbc0c962"
+      ],
+      "negative_lens": [
+        264,
+        216,
+        287,
+        279
+      ]
+    },
+    {
+      "qid": "zh009",
+      "doc_name": "zh_doc_009.md",
+      "source_query_id": "946",
+      "query": "ios9 如何关闭搜索最近联系人",
+      "positive_docid": "ae29713b2591f2ace166b9c702e31b8e",
+      "positive_len": 554,
+      "negative_docids": [
+        "79fba69a255f2b0c42f76cbffc30ba90",
+        "27ec6b60c33f9dfb87297270e152f848",
+        "ab1178f012b160c0f81eedb71a79965c",
+        "3d88df0a65cdf29bdcce7cf24a001893"
+      ],
+      "negative_lens": [
+        275,
+        272,
+        266,
+        256
+      ]
+    },
+    {
+      "qid": "zh010",
+      "doc_name": "zh_doc_010.md",
+      "source_query_id": "1567",
+      "query": "尸兄主角能力",
+      "positive_docid": "408da7380589753dd3d2a9aba9d349ff",
+      "positive_len": 548,
+      "negative_docids": [
+        "ff43c5be465ae00dcb813d06d865d22d",
+        "7d4ce07e2db81afe80c8229fbd75a355",
+        "05540ef8e3fb01638af30024c58549f1",
+        "f07387b69a3cb6a06aabca5ace762fb9"
+      ],
+      "negative_lens": [
+        597,
+        417,
+        340,
+        325
+      ]
+    },
+    {
+      "qid": "zh011",
+      "doc_name": "zh_doc_011.md",
+      "source_query_id": "1406",
+      "query": "电热毯能烘干被子吗",
+      "positive_docid": "0dff27e1c4bc1ee16c0d28b55cc7380e",
+      "positive_len": 534,
+      "negative_docids": [
+        "fbd59af93b1dada076ed21604a77d72b",
+        "f91c9783de8449e16df93ccb6eb0b05f",
+        "6718321c6480dfe6f012d40a4a74118b",
+        "9454810b978a7aa7b0dff6da5af3a3c6"
+      ],
+      "negative_lens": [
+        451,
+        277,
+        275,
+        163
+      ]
+    },
+    {
+      "qid": "zh012",
+      "doc_name": "zh_doc_012.md",
+      "source_query_id": "1598",
+      "query": "哪种制氧机好",
+      "positive_docid": "869d699839900bb4076ce4490d5b07e0",
+      "positive_len": 504,
+      "negative_docids": [
+        "b010395a7ed2149865f73ecac36491ac",
+        "59be84cbe1bd2457290b14d31e8f1b77",
+        "227e80613fac36dd49e79e826e2e2fa5",
+        "e10f2e32de62d8be00a864ec95b28555"
+      ],
+      "negative_lens": [
+        271,
+        647,
+        575,
+        432
+      ]
+    },
+    {
+      "qid": "zh013",
+      "doc_name": "zh_doc_013.md",
+      "source_query_id": "1385",
+      "query": "would like的回答",
+      "positive_docid": "1b86861fea178f7c20eb5973e4002ae8",
+      "positive_len": 492,
+      "negative_docids": [
+        "dd9b3cae48d0361eabfa61d0fc8c5fbd",
+        "40f661b79b8b401e65f455c2d9c35fe1",
+        "ea5488805e857e0b4056e63ea3e2f2a8",
+        "04a2316651392ac100c305fba5b7c821"
+      ],
+      "negative_lens": [
+        1088,
+        964,
+        938,
+        295
+      ]
+    },
+    {
+      "qid": "zh014",
+      "doc_name": "zh_doc_014.md",
+      "source_query_id": "526",
+      "query": "qq经常掉线怎么回事",
+      "positive_docid": "0c980f4c0f15818d2dcaa000a5bd9e61",
+      "positive_len": 488,
+      "negative_docids": [
+        "690a1048b4548ce3eb00b9a2e7e61f92",
+        "a4b670004ac4d2a1f04bf26fdb671c28",
+        "04c4da7c8740a0b9625ea18a82524842",
+        "23ccd977ab922f94a88c9ba560f2d145"
+      ],
+      "negative_lens": [
+        213,
+        260,
+        1091,
+        273
+      ]
+    },
+    {
+      "qid": "zh015",
+      "doc_name": "zh_doc_015.md",
+      "source_query_id": "906",
+      "query": "艾俐缇陶瓷怎么样",
+      "positive_docid": "c6d48836cae5cec9a0f357baefb294e6",
+      "positive_len": 479,
+      "negative_docids": [
+        "ddf17f0c8264d0baf90c845c303b5665",
+        "d22b578925faef469184bb5ddfa4299e",
+        "1cbe5bac7367dd1092b40a472ad2de79",
+        "b6fed632d589806f06861f6be2e7f434"
+      ],
+      "negative_lens": [
+        298,
+        282,
+        275,
+        264
+      ]
+    },
+    {
+      "qid": "zh016",
+      "doc_name": "zh_doc_016.md",
+      "source_query_id": "1084",
+      "query": "尺神经麻痹治疗",
+      "positive_docid": "2f91dc4e3121dce62b3b8f0492b91976",
+      "positive_len": 417,
+      "negative_docids": [
+        "55a4cc0c1fcaca646c95af2cb910c136",
+        "3e973b1061cabb68bd64931fc778df69",
+        "3db399d80e84a219a895d5f16a03f63b",
+        "e7b6f77ead626a5d3f00be94cb8a1711"
+      ],
+      "negative_lens": [
+        1066,
+        410,
+        367,
+        291
+      ]
+    },
+    {
+      "qid": "zh017",
+      "doc_name": "zh_doc_017.md",
+      "source_query_id": "557",
+      "query": "原地跑步能减肚子吗",
+      "positive_docid": "2f215175236cd06378d2878e44b46b0f",
+      "positive_len": 414,
+      "negative_docids": [
+        "7b5d10518756800c9e85426f01e37267",
+        "e1d57361191c247a925e7d01f9e9b56f",
+        "9feaa1df62d9af63741b87ef0d8618c4",
+        "87abe9ec710c52d8b8b17e07e8f4fd30"
+      ],
+      "negative_lens": [
+        179,
+        159,
+        2588,
+        1025
+      ]
+    },
+    {
+      "qid": "zh018",
+      "doc_name": "zh_doc_018.md",
+      "source_query_id": "182",
+      "query": "借书的好处",
+      "positive_docid": "a757f4bb548aeeea2fce60b996bfe759",
+      "positive_len": 412,
+      "negative_docids": [
+        "dae4e19f0f27150484815e7353ea028e",
+        "a54daaf5d846dc302a193286e1104b45",
+        "2d3bb5ff6921ed6bc6c647fe262c093a",
+        "d466ed2ddb5dfd320623b33dcc6c2475"
+      ],
+      "negative_lens": [
+        3185,
+        1529,
+        915,
+        840
+      ]
+    }
+  ]
+}

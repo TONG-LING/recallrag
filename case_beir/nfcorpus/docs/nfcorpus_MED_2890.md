@@ -1,0 +1,9 @@
+# Nearwork-induced transient myopia (NITM) and permanent myopia--is there a link?
+
+Myopia is a worldwide public health problem. However, its understanding is incomplete, and many of its preventative and therapeutic aspects remain controversial. Nearwork is a primary, environmentally based factor in the aetiology of permanent myopia (PM), with nearwork-induced transient myopia (NITM) being a possible contributory component. A relationship between PM and NITM has been suggested, but that connection has remained somewhat indirect and elusive. However, based on recent converging evidence from clinical, laboratory and modelling studies, a five-fold argument will be advanced for a possible link between PM and NITM.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2890
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/18339041

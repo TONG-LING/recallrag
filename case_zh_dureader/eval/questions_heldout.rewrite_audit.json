@@ -1,0 +1,172 @@
+{
+  "source_questions": "/mnt/d/projects/RecallRAG/case_zh_dureader/eval/questions.jsonl",
+  "output_questions": "/mnt/d/projects/RecallRAG/case_zh_dureader/eval/questions_heldout.jsonl",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://api.openmodel.ai/v1/messages",
+  "temperature": 0.4,
+  "max_tokens": 120,
+  "rows": [
+    {
+      "source_qid": "zh001",
+      "heldout_qid": "zh001_holdout",
+      "original_question": "经常用肥皂洗脸好吗",
+      "rewritten_question": "长期使用肥皂清洁面部是否合适",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1053
+    },
+    {
+      "source_qid": "zh002",
+      "heldout_qid": "zh002_holdout",
+      "original_question": "左肾部位疼痛",
+      "rewritten_question": "左肾那个位置疼",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1
+    },
+    {
+      "source_qid": "zh003",
+      "heldout_qid": "zh003_holdout",
+      "original_question": "板栗可以蒸着吃吗",
+      "rewritten_question": "板栗能不能用蒸的方式食用？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0588
+    },
+    {
+      "source_qid": "zh004",
+      "heldout_qid": "zh004_holdout",
+      "original_question": "跟庐山有关的诗句",
+      "rewritten_question": "有哪些描写庐山的古诗？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0667
+    },
+    {
+      "source_qid": "zh005",
+      "heldout_qid": "zh005_holdout",
+      "original_question": "什么样的借条不具法律效力",
+      "rewritten_question": "哪些借条在法律上是无效的",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1
+    },
+    {
+      "source_qid": "zh006",
+      "heldout_qid": "zh006_holdout",
+      "original_question": "m8a1用什么炮",
+      "rewritten_question": "M8A1使用的是哪种火炮？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0909
+    },
+    {
+      "source_qid": "zh007",
+      "heldout_qid": "zh007_holdout",
+      "original_question": "双人床最小宽度",
+      "rewritten_question": "双人床的最小宽度是多少",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4545
+    },
+    {
+      "source_qid": "zh008",
+      "heldout_qid": "zh008_holdout",
+      "original_question": "生气时喂奶",
+      "rewritten_question": "生气的时候可以给宝宝喂奶吗？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1429
+    },
+    {
+      "source_qid": "zh009",
+      "heldout_qid": "zh009_holdout",
+      "original_question": "ios9 如何关闭搜索最近联系人",
+      "rewritten_question": "ios9 怎样关闭搜索最近联系人功能",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.6
+    },
+    {
+      "source_qid": "zh010",
+      "heldout_qid": "zh010_holdout",
+      "original_question": "尸兄主角能力",
+      "rewritten_question": "尸兄这部作品里主角拥有什么能力？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1875
+    },
+    {
+      "source_qid": "zh011",
+      "heldout_qid": "zh011_holdout",
+      "original_question": "电热毯能烘干被子吗",
+      "rewritten_question": "电热毯可以用来把被子弄干吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1765
+    },
+    {
+      "source_qid": "zh012",
+      "heldout_qid": "zh012_holdout",
+      "original_question": "哪种制氧机好",
+      "rewritten_question": "什么品牌的制氧机质量比较好",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1333
+    },
+    {
+      "source_qid": "zh013",
+      "heldout_qid": "zh013_holdout",
+      "original_question": "would like的回答",
+      "rewritten_question": "请告诉我would like的答语。",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.125
+    },
+    {
+      "source_qid": "zh014",
+      "heldout_qid": "zh014_holdout",
+      "original_question": "qq经常掉线怎么回事",
+      "rewritten_question": "QQ频繁断线是什么原因？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0625
+    },
+    {
+      "source_qid": "zh015",
+      "heldout_qid": "zh015_holdout",
+      "original_question": "艾俐缇陶瓷怎么样",
+      "rewritten_question": "艾俐缇陶瓷的质量如何？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh016",
+      "heldout_qid": "zh016_holdout",
+      "original_question": "尺神经麻痹治疗",
+      "rewritten_question": "尺神经麻痹的治疗方法是什么？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3846
+    },
+    {
+      "source_qid": "zh017",
+      "heldout_qid": "zh017_holdout",
+      "original_question": "原地跑步能减肚子吗",
+      "rewritten_question": "原地跑步可以瘦肚子吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4167
+    },
+    {
+      "source_qid": "zh018",
+      "heldout_qid": "zh018_holdout",
+      "original_question": "借书的好处",
+      "rewritten_question": "借书有哪些好处",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    }
+  ]
+}

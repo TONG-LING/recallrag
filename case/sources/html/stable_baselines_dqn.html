@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DQN &mdash; Stable Baselines3 2.9.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/baselines_theme.css?v=23ee7d75" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=182a64a0"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HER" href="her.html" />
+    <link rel="prev" title="DDPG" href="ddpg.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="stable-baselines3" /><meta name="readthedocs-version-slug" content="master" /><meta name="readthedocs-resolver-filename" content="/modules/dqn.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Stable Baselines3
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guide/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/quickstart.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/rl_tips.html">Reinforcement Learning Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/rl.html">Reinforcement Learning Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/algos.html">RL Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/vec_envs.html">Vectorized Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/custom_policy.html">Policy Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/custom_env.html">Using Custom Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/tensorboard.html">Tensorboard Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/integrations.html">Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/rl_zoo.html">RL Baselines3 Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/sb3_contrib.html">SB3 Contrib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/sbx.html">Stable Baselines Jax (SBX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/plotting.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/imitation.html">Imitation Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/migration.html">Migrating from Stable-Baselines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/checking_nan.html">Dealing with NaNs and infs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/developer.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/save_format.html">On saving and loading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/export.html">Exporting models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">RL Algorithms</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base RL Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="a2c.html">A2C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddpg.html">DDPG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DQN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-use">Can I use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#results">Results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#atari-games">Atari Games</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-replicate-the-results">How to replicate the results?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stable_baselines3.dqn.DQN"><code class="docutils literal notranslate"><span class="pre">DQN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.collect_rollouts"><code class="docutils literal notranslate"><span class="pre">DQN.collect_rollouts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.dump_logs"><code class="docutils literal notranslate"><span class="pre">DQN.dump_logs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.get_env"><code class="docutils literal notranslate"><span class="pre">DQN.get_env()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.get_parameters"><code class="docutils literal notranslate"><span class="pre">DQN.get_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.get_vec_normalize_env"><code class="docutils literal notranslate"><span class="pre">DQN.get_vec_normalize_env()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.learn"><code class="docutils literal notranslate"><span class="pre">DQN.learn()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.load"><code class="docutils literal notranslate"><span class="pre">DQN.load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.load_replay_buffer"><code class="docutils literal notranslate"><span class="pre">DQN.load_replay_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.logger"><code class="docutils literal notranslate"><span class="pre">DQN.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.predict"><code class="docutils literal notranslate"><span class="pre">DQN.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.save"><code class="docutils literal notranslate"><span class="pre">DQN.save()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.save_replay_buffer"><code class="docutils literal notranslate"><span class="pre">DQN.save_replay_buffer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.set_env"><code class="docutils literal notranslate"><span class="pre">DQN.set_env()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.set_logger"><code class="docutils literal notranslate"><span class="pre">DQN.set_logger()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.set_parameters"><code class="docutils literal notranslate"><span class="pre">DQN.set_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.set_random_seed"><code class="docutils literal notranslate"><span class="pre">DQN.set_random_seed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable_baselines3.dqn.DQN.train"><code class="docutils literal notranslate"><span class="pre">DQN.train()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dqn-policies">DQN Policies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stable_baselines3.dqn.MlpPolicy"><code class="docutils literal notranslate"><span class="pre">MlpPolicy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stable_baselines3.dqn.CnnPolicy"><code class="docutils literal notranslate"><span class="pre">CnnPolicy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stable_baselines3.dqn.MultiInputPolicy"><code class="docutils literal notranslate"><span class="pre">MultiInputPolicy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="her.html">HER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ppo.html">PPO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sac.html">SAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="td3.html">TD3</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../common/atari_wrappers.html">Atari Wrappers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/env_util.html">Environments Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/envs.html">Custom Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/distributions.html">Probability Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/evaluation.html">Evaluation Helper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/env_checker.html">Gym Environment Checker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/monitor.html">Monitor Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/logger.html">Logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/noise.html">Action Noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../common/utils.html">Utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Misc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/projects.html">Projects</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Stable Baselines3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">DQN</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/dqn.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="module-stable_baselines3.dqn">
+<span id="dqn"></span><span id="id1"></span><h1>DQN<a class="headerlink" href="#module-stable_baselines3.dqn" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://arxiv.org/abs/1312.5602">Deep Q Network (DQN)</a> builds on <a class="reference external" href="https://www.jmlr.org/papers/volume6/ernst05a/ernst05a.pdf">Fitted Q-Iteration (FQI)</a>
+and make use of different tricks to stabilize the learning with neural networks: it uses a replay buffer, a target network and gradient clipping.</p>
+<p class="rubric">Available Policies</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stable_baselines3.dqn.MlpPolicy" title="stable_baselines3.dqn.MlpPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MlpPolicy</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#stable_baselines3.dqn.CnnPolicy" title="stable_baselines3.dqn.CnnPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CnnPolicy</span></code></a></p></td>
+<td><p>Policy class for DQN when using images as input.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#stable_baselines3.dqn.MultiInputPolicy" title="stable_baselines3.dqn.MultiInputPolicy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiInputPolicy</span></code></a></p></td>
+<td><p>Policy class for DQN when using dict observations as input.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Original paper: <a class="reference external" href="https://arxiv.org/abs/1312.5602">https://arxiv.org/abs/1312.5602</a></p></li>
+<li><p>Further reference: <a class="reference external" href="https://www.nature.com/articles/nature14236">https://www.nature.com/articles/nature14236</a></p></li>
+<li><p>Tutorial “From Tabular Q-Learning to DQN”: <a class="reference external" href="https://github.com/araffin/rlss23-dqn-tutorial">https://github.com/araffin/rlss23-dqn-tutorial</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This implementation provides only vanilla Deep Q-Learning and has no extensions such as Double-DQN, Dueling-DQN and Prioritized Experience Replay.</p>
+</div>
+</section>
+<section id="can-i-use">
+<h2>Can I use?<a class="headerlink" href="#can-i-use" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Recurrent policies: ❌</p></li>
+<li><p>Multi processing: ✔️</p></li>
+<li><p>Gym spaces:</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Space</p></th>
+<th class="head"><p>Action</p></th>
+<th class="head"><p>Observation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Discrete</p></td>
+<td><p>✔️</p></td>
+<td><p>✔️</p></td>
+</tr>
+<tr class="row-odd"><td><p>Box</p></td>
+<td><p>❌</p></td>
+<td><p>✔️</p></td>
+</tr>
+<tr class="row-even"><td><p>MultiDiscrete</p></td>
+<td><p>❌</p></td>
+<td><p>✔️</p></td>
+</tr>
+<tr class="row-odd"><td><p>MultiBinary</p></td>
+<td><p>❌</p></td>
+<td><p>✔️</p></td>
+</tr>
+<tr class="row-even"><td><p>Dict</p></td>
+<td><p>❌</p></td>
+<td><p>✔️️</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>This example is only to demonstrate the use of the library and its functions, and the trained agents may not solve the environments. Optimized hyperparameters can be found in RL Zoo <a class="reference external" href="https://github.com/DLR-RM/rl-baselines3-zoo">repository</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3</span><span class="w"> </span><span class="kn">import</span> <span class="n">DQN</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">DQN</span><span class="p">(</span><span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">log_interval</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;dqn_cartpole&quot;</span><span class="p">)</span>
+
+<span class="k">del</span> <span class="n">model</span> <span class="c1"># remove to demonstrate saving and loading</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">DQN</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;dqn_cartpole&quot;</span><span class="p">)</span>
+
+<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">action</span><span class="p">,</span> <span class="n">_states</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+        <span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h2>
+<section id="atari-games">
+<h3>Atari Games<a class="headerlink" href="#atari-games" title="Link to this heading"></a></h3>
+<p>The complete learning curves are available in the <a class="reference external" href="https://github.com/DLR-RM/stable-baselines3/pull/110">associated PR #110</a>.</p>
+</section>
+<section id="how-to-replicate-the-results">
+<h3>How to replicate the results?<a class="headerlink" href="#how-to-replicate-the-results" title="Link to this heading"></a></h3>
+<p>Clone the <a class="reference external" href="https://github.com/DLR-RM/rl-baselines3-zoo">rl-zoo repo</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/DLR-RM/rl-baselines3-zoo
+<span class="nb">cd</span><span class="w"> </span>rl-baselines3-zoo/
+</pre></div>
+</div>
+<p>Run the benchmark (replace <code class="docutils literal notranslate"><span class="pre">$ENV_ID</span></code> by the env id, for instance <code class="docutils literal notranslate"><span class="pre">BreakoutNoFrameskip-v4</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>train.py<span class="w"> </span>--algo<span class="w"> </span>dqn<span class="w"> </span>--env<span class="w"> </span><span class="nv">$ENV_ID</span><span class="w"> </span>--eval-episodes<span class="w"> </span><span class="m">10</span><span class="w"> </span>--eval-freq<span class="w"> </span><span class="m">10000</span>
+</pre></div>
+</div>
+<p>Plot the results:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>scripts/all_plots.py<span class="w"> </span>-a<span class="w"> </span>dqn<span class="w"> </span>-e<span class="w"> </span>Pong<span class="w"> </span>Breakout<span class="w"> </span>-f<span class="w"> </span>logs/<span class="w"> </span>-o<span class="w"> </span>logs/dqn_results
+python<span class="w"> </span>scripts/plot_from_file.py<span class="w"> </span>-i<span class="w"> </span>logs/dqn_results.pkl<span class="w"> </span>-latex<span class="w"> </span>-l<span class="w"> </span>DQN
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stable_baselines3.dqn.</span></span><span class="sig-name descname"><span class="pre">DQN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">policy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replay_buffer_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replay_buffer_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimize_memory_usage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_update_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exploration_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exploration_initial_eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exploration_final_eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_grad_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats_window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorboard_log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_init_setup_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/dqn.html#DQN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stable_baselines3.dqn.DQN" title="Link to this definition"></a></dt>
+<dd><p>Deep Q-Network (DQN)</p>
+<p>Paper: <a class="reference external" href="https://arxiv.org/abs/1312.5602">https://arxiv.org/abs/1312.5602</a>, <a class="reference external" href="https://www.nature.com/articles/nature14236">https://www.nature.com/articles/nature14236</a>
+Default hyperparameters are taken from the Nature paper,
+except for the optimizer and learning rate that were taken from Stable Baselines defaults.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>policy</strong> (<em>DQNPolicy</em>) – The policy model to use (MlpPolicy, CnnPolicy, …)</p></li>
+<li><p><strong>env</strong> (<em>Env</em><em> | </em><a class="reference internal" href="../guide/vec_envs.html#stable_baselines3.common.vec_env.VecEnv" title="stable_baselines3.common.vec_env.VecEnv"><em>VecEnv</em></a><em> | </em><em>str</em>) – The environment to learn from (if registered in Gym, can be str)</p></li>
+<li><p><strong>learning_rate</strong> (<em>float</em><em> | </em><em>Callable</em><em>[</em><em>[</em><em>float</em><em>]</em><em>, </em><em>float</em><em>]</em>) – The learning rate, it can be a function
+of the current progress remaining (from 1 to 0)</p></li>
+<li><p><strong>buffer_size</strong> (<em>int</em>) – size of the replay buffer</p></li>
+<li><p><strong>learning_starts</strong> (<em>int</em>) – how many steps of the model to collect transitions for before learning starts</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – Minibatch size for each gradient update</p></li>
+<li><p><strong>tau</strong> (<em>float</em>) – the soft update coefficient (“Polyak update”, between 0 and 1) default 1 for hard update</p></li>
+<li><p><strong>gamma</strong> (<em>float</em>) – the discount factor</p></li>
+<li><p><strong>train_freq</strong> (<em>int</em><em> | </em><em>tuple</em><em>[</em><em>int</em><em>, </em><em>str</em><em>]</em>) – Update the model every <code class="docutils literal notranslate"><span class="pre">train_freq</span></code> steps. Alternatively pass a tuple of frequency and unit
+like <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">&quot;step&quot;)</span></code> or <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">&quot;episode&quot;)</span></code>.</p></li>
+<li><p><strong>gradient_steps</strong> (<em>int</em>) – How many gradient steps to do after each rollout (see <code class="docutils literal notranslate"><span class="pre">train_freq</span></code>)
+Set to <code class="docutils literal notranslate"><span class="pre">-1</span></code> means to do as many gradient steps as steps done in the environment
+during the rollout.</p></li>
+<li><p><strong>replay_buffer_class</strong> (<em>type</em><em>[</em><em>ReplayBuffer</em><em>] </em><em>| </em><em>None</em>) – Replay buffer class to use (for instance <code class="docutils literal notranslate"><span class="pre">HerReplayBuffer</span></code>).
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, it will be automatically selected.</p></li>
+<li><p><strong>replay_buffer_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Keyword arguments to pass to the replay buffer on creation.</p></li>
+<li><p><strong>optimize_memory_usage</strong> (<em>bool</em>) – Enable a memory efficient variant of the replay buffer
+at a cost of more complexity.
+See <a class="reference external" href="https://github.com/DLR-RM/stable-baselines3/issues/37#issuecomment-637501195">https://github.com/DLR-RM/stable-baselines3/issues/37#issuecomment-637501195</a></p></li>
+<li><p><strong>n_steps</strong> (<em>int</em>) – When n_step &gt; 1, uses n-step return (with the NStepReplayBuffer) when updating the Q-value network.</p></li>
+<li><p><strong>target_update_interval</strong> (<em>int</em>) – update the target network every <code class="docutils literal notranslate"><span class="pre">target_update_interval</span></code>
+environment steps.</p></li>
+<li><p><strong>exploration_fraction</strong> (<em>float</em>) – fraction of entire training period over which the exploration rate is reduced</p></li>
+<li><p><strong>exploration_initial_eps</strong> (<em>float</em>) – initial value of random action probability</p></li>
+<li><p><strong>exploration_final_eps</strong> (<em>float</em>) – final value of random action probability</p></li>
+<li><p><strong>max_grad_norm</strong> (<em>float</em>) – The maximum value for the gradient clipping</p></li>
+<li><p><strong>stats_window_size</strong> (<em>int</em>) – Window size for the rollout logging, specifying the number of episodes to average
+the reported success rate, mean episode length, and mean reward over</p></li>
+<li><p><strong>tensorboard_log</strong> (<em>str</em><em> | </em><em>None</em>) – the log location for tensorboard (if None, no logging)</p></li>
+<li><p><strong>policy_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – additional arguments to be passed to the policy on creation. See <a class="reference internal" href="#dqn-policies"><span class="std std-ref">DQN Policies</span></a></p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – Verbosity level: 0 for no output, 1 for info messages (such as device or wrappers used), 2 for
+debug messages</p></li>
+<li><p><strong>seed</strong> (<em>int</em><em> | </em><em>None</em>) – Seed for the pseudo random generators</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – Device (cpu, cuda, …) on which the code should be run.
+Setting it to auto, the code will be run on the GPU if possible.</p></li>
+<li><p><strong>_init_setup_model</strong> (<em>bool</em>) – Whether or not to build the network at the creation of the instance</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.collect_rollouts">
+<span class="sig-name descname"><span class="pre">collect_rollouts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replay_buffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_noise</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_starts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.collect_rollouts" title="Link to this definition"></a></dt>
+<dd><p>Collect experiences and store them into a <code class="docutils literal notranslate"><span class="pre">ReplayBuffer</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<a class="reference internal" href="../guide/vec_envs.html#stable_baselines3.common.vec_env.VecEnv" title="stable_baselines3.common.vec_env.base_vec_env.VecEnv"><em>VecEnv</em></a>) – The training environment</p></li>
+<li><p><strong>callback</strong> (<a class="reference internal" href="../guide/callbacks.html#stable_baselines3.common.callbacks.BaseCallback" title="stable_baselines3.common.callbacks.BaseCallback"><em>BaseCallback</em></a>) – Callback that will be called at each step
+(and at the beginning and end of the rollout)</p></li>
+<li><p><strong>train_freq</strong> (<em>TrainFreq</em>) – How much experience to collect
+by doing rollouts of current policy.
+Either <code class="docutils literal notranslate"><span class="pre">TrainFreq(&lt;n&gt;,</span> <span class="pre">TrainFrequencyUnit.STEP)</span></code>
+or <code class="docutils literal notranslate"><span class="pre">TrainFreq(&lt;n&gt;,</span> <span class="pre">TrainFrequencyUnit.EPISODE)</span></code>
+with <code class="docutils literal notranslate"><span class="pre">&lt;n&gt;</span></code> being an integer greater than 0.</p></li>
+<li><p><strong>action_noise</strong> (<a class="reference internal" href="../common/noise.html#stable_baselines3.common.noise.ActionNoise" title="stable_baselines3.common.noise.ActionNoise"><em>ActionNoise</em></a><em> | </em><em>None</em>) – Action noise that will be used for exploration
+Required for deterministic policy (e.g. TD3). This can also be used
+in addition to the stochastic policy for SAC.</p></li>
+<li><p><strong>learning_starts</strong> (<em>int</em>) – Number of steps before learning for the warm-up phase.</p></li>
+<li><p><strong>replay_buffer</strong> (<em>ReplayBuffer</em>)</p></li>
+<li><p><strong>log_interval</strong> (<em>int</em><em> | </em><em>None</em>) – Log data every <code class="docutils literal notranslate"><span class="pre">log_interval</span></code> episodes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>RolloutReturn</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.dump_logs">
+<span class="sig-name descname"><span class="pre">dump_logs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.dump_logs" title="Link to this definition"></a></dt>
+<dd><p>Write log data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.get_env">
+<span class="sig-name descname"><span class="pre">get_env</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.get_env" title="Link to this definition"></a></dt>
+<dd><p>Returns the current environment (can be None if not defined).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current environment</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../guide/vec_envs.html#stable_baselines3.common.vec_env.VecEnv" title="stable_baselines3.common.vec_env.base_vec_env.VecEnv"><em>VecEnv</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.get_parameters">
+<span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.get_parameters" title="Link to this definition"></a></dt>
+<dd><p>Return the parameters of the agent. This includes parameters from different networks, e.g.
+critics (value functions) and policies (pi functions).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Mapping of from names of the objects to PyTorch state-dicts.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.get_vec_normalize_env">
+<span class="sig-name descname"><span class="pre">get_vec_normalize_env</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.get_vec_normalize_env" title="Link to this definition"></a></dt>
+<dd><p>Return the <code class="docutils literal notranslate"><span class="pre">VecNormalize</span></code> wrapper of the training env
+if it exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The <code class="docutils literal notranslate"><span class="pre">VecNormalize</span></code> env.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../guide/vec_envs.html#stable_baselines3.common.vec_env.VecNormalize" title="stable_baselines3.common.vec_env.vec_normalize.VecNormalize"><em>VecNormalize</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.learn">
+<span class="sig-name descname"><span class="pre">learn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">total_timesteps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tb_log_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DQN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reset_num_timesteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/dqn.html#DQN.learn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stable_baselines3.dqn.DQN.learn" title="Link to this definition"></a></dt>
+<dd><p>Return a trained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>total_timesteps</strong> (<em>int</em>) – The total number of samples (env steps) to train on
+Note: it is a lower bound, see <a class="reference external" href="https://github.com/DLR-RM/stable-baselines3/issues/1150">issue #1150</a></p></li>
+<li><p><strong>callback</strong> (<em>None</em><em> | </em><em>Callable</em><em> | </em><em>list</em><em>[</em><a class="reference internal" href="../guide/callbacks.html#stable_baselines3.common.callbacks.BaseCallback" title="stable_baselines3.common.callbacks.BaseCallback"><em>BaseCallback</em></a><em>] </em><em>| </em><a class="reference internal" href="../guide/callbacks.html#stable_baselines3.common.callbacks.BaseCallback" title="stable_baselines3.common.callbacks.BaseCallback"><em>BaseCallback</em></a>) – callback(s) called at every step with state of the algorithm.</p></li>
+<li><p><strong>log_interval</strong> (<em>int</em>) – for on-policy algos (e.g., PPO, A2C, …) this is the number of
+training iterations (i.e., log_interval * n_steps * n_envs timesteps) before logging;
+for off-policy algos (e.g., TD3, SAC, …) this is the number of episodes before
+logging.</p></li>
+<li><p><strong>tb_log_name</strong> (<em>str</em>) – the name of the run for TensorBoard logging</p></li>
+<li><p><strong>reset_num_timesteps</strong> (<em>bool</em>) – whether or not to reset the current timestep number (used in logging)</p></li>
+<li><p><strong>progress_bar</strong> (<em>bool</em>) – Display a progress bar using tqdm and rich.</p></li>
+<li><p><strong>self</strong> (<em>SelfDQN</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the trained model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>SelfDQN</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.load">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_system_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.load" title="Link to this definition"></a></dt>
+<dd><p>Load the model from a zip-file.
+Warning: <code class="docutils literal notranslate"><span class="pre">load</span></code> re-creates the model from scratch, it does not update it in-place!
+For an in-place load use <code class="docutils literal notranslate"><span class="pre">set_parameters</span></code> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>BufferedIOBase</em>) – path to the file (or a file-like) where to
+load the agent from</p></li>
+<li><p><strong>env</strong> (<em>Env</em><em> | </em><a class="reference internal" href="../guide/vec_envs.html#stable_baselines3.common.vec_env.VecEnv" title="stable_baselines3.common.vec_env.base_vec_env.VecEnv"><em>VecEnv</em></a><em> | </em><em>None</em>) – the new environment to run the loaded model on
+(can be None if you only need prediction from a trained model) has priority over any saved environment</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – Device on which the code should run.</p></li>
+<li><p><strong>custom_objects</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Dictionary of objects to replace
+upon loading. If a variable is present in this dictionary as a
+key, it will not be deserialized and the corresponding item
+will be used instead. Similar to custom_objects in
+<code class="docutils literal notranslate"><span class="pre">keras.models.load_model</span></code>. Useful when you have an object in
+file that can not be deserialized.</p></li>
+<li><p><strong>print_system_info</strong> (<em>bool</em>) – Whether to print system info from the saved model
+and the current system info (useful to debug loading issues)</p></li>
+<li><p><strong>force_reset</strong> (<em>bool</em>) – Force call to <code class="docutils literal notranslate"><span class="pre">reset()</span></code> before training
+to avoid unexpected behavior.
+See <a class="reference external" href="https://github.com/DLR-RM/stable-baselines3/issues/597">https://github.com/DLR-RM/stable-baselines3/issues/597</a></p></li>
+<li><p><strong>kwargs</strong> – extra arguments to change the model when loading</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>new model instance with loaded parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>SelfBaseAlgorithm</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.load_replay_buffer">
+<span class="sig-name descname"><span class="pre">load_replay_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">truncate_last_traj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.load_replay_buffer" title="Link to this definition"></a></dt>
+<dd><p>Load a replay buffer from a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>BufferedIOBase</em>) – Path to the pickled replay buffer.</p></li>
+<li><p><strong>truncate_last_traj</strong> (<em>bool</em>) – When using <code class="docutils literal notranslate"><span class="pre">HerReplayBuffer</span></code> with online sampling:
+If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, we assume that the last trajectory in the replay buffer was finished
+(and truncate it).
+If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, we assume that we continue the same trajectory (same episode).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.logger">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">logger</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../common/logger.html#stable_baselines3.common.logger.Logger" title="stable_baselines3.common.logger.Logger"><span class="pre">Logger</span></a></span><a class="headerlink" href="#stable_baselines3.dqn.DQN.logger" title="Link to this definition"></a></dt>
+<dd><p>Getter for the logger object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">episode_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deterministic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/dqn.html#DQN.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stable_baselines3.dqn.DQN.predict" title="Link to this definition"></a></dt>
+<dd><p>Overrides the base_class predict function to include epsilon-greedy exploration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation</strong> (<em>ndarray</em><em> | </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>ndarray</em><em>]</em>) – the input observation</p></li>
+<li><p><strong>state</strong> (<em>tuple</em><em>[</em><em>ndarray</em><em>, </em><em>...</em><em>] </em><em>| </em><em>None</em>) – The last states (can be None, used in recurrent policies)</p></li>
+<li><p><strong>episode_start</strong> (<em>ndarray</em><em> | </em><em>None</em>) – The last masks (can be None, used in recurrent policies)</p></li>
+<li><p><strong>deterministic</strong> (<em>bool</em>) – Whether or not to return deterministic actions.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the model’s action and the next state
+(used in recurrent policies)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[<em>ndarray</em>, tuple[<em>ndarray</em>, …] | None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.save" title="Link to this definition"></a></dt>
+<dd><p>Save all the attributes of the object and the model parameters in a zip-file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>BufferedIOBase</em>) – path to the file where the rl agent should be saved</p></li>
+<li><p><strong>exclude</strong> (<em>Iterable</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>) – name of parameters that should be excluded in addition to the default ones</p></li>
+<li><p><strong>include</strong> (<em>Iterable</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>) – name of parameters that might be excluded but should be included anyway</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.save_replay_buffer">
+<span class="sig-name descname"><span class="pre">save_replay_buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.save_replay_buffer" title="Link to this definition"></a></dt>
+<dd><p>Save the replay buffer as a pickle file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>BufferedIOBase</em>) – Path to the file where the replay buffer should be saved.
+if path is a str or pathlib.Path, the path is automatically created if necessary.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.set_env">
+<span class="sig-name descname"><span class="pre">set_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_reset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.set_env" title="Link to this definition"></a></dt>
+<dd><p>Checks the validity of the environment, and if it is coherent, set it as the current environment.
+Furthermore wrap any non vectorized env into a vectorized
+checked parameters:
+- observation_space
+- action_space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<em>Env</em><em> | </em><a class="reference internal" href="../guide/vec_envs.html#stable_baselines3.common.vec_env.VecEnv" title="stable_baselines3.common.vec_env.base_vec_env.VecEnv"><em>VecEnv</em></a>) – The environment for learning a policy</p></li>
+<li><p><strong>force_reset</strong> (<em>bool</em>) – Force call to <code class="docutils literal notranslate"><span class="pre">reset()</span></code> before training
+to avoid unexpected behavior.
+See issue <a class="reference external" href="https://github.com/DLR-RM/stable-baselines3/issues/597">https://github.com/DLR-RM/stable-baselines3/issues/597</a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.set_logger">
+<span class="sig-name descname"><span class="pre">set_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.set_logger" title="Link to this definition"></a></dt>
+<dd><p>Setter for for logger object.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When passing a custom logger object,
+this will overwrite <code class="docutils literal notranslate"><span class="pre">tensorboard_log</span></code> and <code class="docutils literal notranslate"><span class="pre">verbose</span></code> settings
+passed to the constructor.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>logger</strong> (<a class="reference internal" href="../common/logger.html#stable_baselines3.common.logger.Logger" title="stable_baselines3.common.logger.Logger"><em>Logger</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.set_parameters">
+<span class="sig-name descname"><span class="pre">set_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">load_path_or_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exact_match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.set_parameters" title="Link to this definition"></a></dt>
+<dd><p>Load parameters from a given zip-file or a nested dictionary containing parameters for
+different modules (see <code class="docutils literal notranslate"><span class="pre">get_parameters</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>load_path_or_iter</strong> – Location of the saved data (path or file-like, see <code class="docutils literal notranslate"><span class="pre">save</span></code>), or a nested
+dictionary containing nn.Module parameters used by the policy. The dictionary maps
+object names to a state-dictionary returned by <code class="docutils literal notranslate"><span class="pre">torch.nn.Module.state_dict()</span></code>.</p></li>
+<li><p><strong>exact_match</strong> (<em>bool</em>) – If True, the given parameters should include parameters for each
+module and each of their parameters, otherwise raises an Exception. If set to False, this
+can be used to update only specific parameters.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – Device on which the code should run.</p></li>
+<li><p><strong>load_path_or_dict</strong> (<em>str</em><em> | </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>Tensor</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.set_random_seed">
+<span class="sig-name descname"><span class="pre">set_random_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stable_baselines3.dqn.DQN.set_random_seed" title="Link to this definition"></a></dt>
+<dd><p>Set the seed of the pseudo-random generators
+(python, numpy, pytorch, gym, action_space)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seed</strong> (<em>int</em><em> | </em><em>None</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.DQN.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradient_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/dqn.html#DQN.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stable_baselines3.dqn.DQN.train" title="Link to this definition"></a></dt>
+<dd><p>Sample the replay buffer and do the updates
+(gradient descent and update target networks)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gradient_steps</strong> (<em>int</em>)</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="dqn-policies">
+<span id="id2"></span><h2>DQN Policies<a class="headerlink" href="#dqn-policies" title="Link to this heading"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.MlpPolicy">
+<span class="sig-prename descclassname"><span class="pre">stable_baselines3.dqn.</span></span><span class="sig-name descname"><span class="pre">MlpPolicy</span></span><a class="headerlink" href="#stable_baselines3.dqn.MlpPolicy" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">DQNPolicy</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stable_baselines3.dqn.policies.</span></span><span class="sig-name descname"><span class="pre">DQNPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observation_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_arch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'torch.nn.modules.activation.ReLU'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_extractor_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'stable_baselines3.common.torch_layers.FlattenExtractor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_extractor_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'torch.optim.adam.Adam'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/policies.html#DQNPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Policy class with Q-Value Net and target net for DQN</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation_space</strong> (<em>Space</em>) – Observation space</p></li>
+<li><p><strong>action_space</strong> (<em>Discrete</em>) – Action space</p></li>
+<li><p><strong>lr_schedule</strong> (<em>Callable</em><em>[</em><em>[</em><em>float</em><em>]</em><em>, </em><em>float</em><em>]</em>) – Learning rate schedule (could be constant)</p></li>
+<li><p><strong>net_arch</strong> (<em>list</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – The specification of the policy and value networks.</p></li>
+<li><p><strong>activation_fn</strong> (<em>type</em><em>[</em><em>Module</em><em>]</em>) – Activation function</p></li>
+<li><p><strong>features_extractor_class</strong> (<em>type</em><em>[</em><em>BaseFeaturesExtractor</em><em>]</em>) – Features extractor to use.</p></li>
+<li><p><strong>features_extractor_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Keyword arguments
+to pass to the features extractor.</p></li>
+<li><p><strong>normalize_images</strong> (<em>bool</em>) – Whether to normalize images or not,
+dividing by 255.0 (True by default)</p></li>
+<li><p><strong>optimizer_class</strong> (<em>type</em><em>[</em><em>Optimizer</em><em>]</em>) – The optimizer to use,
+<code class="docutils literal notranslate"><span class="pre">th.optim.Adam</span></code> by default</p></li>
+<li><p><strong>optimizer_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Additional keyword arguments,
+excluding the learning rate, to pass to the optimizer</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deterministic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/policies.html#DQNPolicy.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obs</strong> (<em>Tensor</em><em> | </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>Tensor</em><em>]</em>)</p></li>
+<li><p><strong>deterministic</strong> (<em>bool</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">set_training_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/policies.html#DQNPolicy.set_training_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Put the policy in either training or evaluation mode.</p>
+<p>This affects certain modules, such as batch normalisation and dropout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>bool</em>) – if true, set to training mode, else set to evaluation mode</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.CnnPolicy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stable_baselines3.dqn.</span></span><span class="sig-name descname"><span class="pre">CnnPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observation_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_arch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'torch.nn.modules.activation.ReLU'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_extractor_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'stable_baselines3.common.torch_layers.NatureCNN'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_extractor_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'torch.optim.adam.Adam'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/policies.html#CnnPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stable_baselines3.dqn.CnnPolicy" title="Link to this definition"></a></dt>
+<dd><p>Policy class for DQN when using images as input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation_space</strong> (<em>Space</em>) – Observation space</p></li>
+<li><p><strong>action_space</strong> (<em>Discrete</em>) – Action space</p></li>
+<li><p><strong>lr_schedule</strong> (<em>Callable</em><em>[</em><em>[</em><em>float</em><em>]</em><em>, </em><em>float</em><em>]</em>) – Learning rate schedule (could be constant)</p></li>
+<li><p><strong>net_arch</strong> (<em>list</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – The specification of the policy and value networks.</p></li>
+<li><p><strong>activation_fn</strong> (<em>type</em><em>[</em><em>Module</em><em>]</em>) – Activation function</p></li>
+<li><p><strong>features_extractor_class</strong> (<em>type</em><em>[</em><em>BaseFeaturesExtractor</em><em>]</em>) – Features extractor to use.</p></li>
+<li><p><strong>normalize_images</strong> (<em>bool</em>) – Whether to normalize images or not,
+dividing by 255.0 (True by default)</p></li>
+<li><p><strong>optimizer_class</strong> (<em>type</em><em>[</em><em>Optimizer</em><em>]</em>) – The optimizer to use,
+<code class="docutils literal notranslate"><span class="pre">th.optim.Adam</span></code> by default</p></li>
+<li><p><strong>optimizer_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Additional keyword arguments,
+excluding the learning rate, to pass to the optimizer</p></li>
+<li><p><strong>features_extractor_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="stable_baselines3.dqn.MultiInputPolicy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">stable_baselines3.dqn.</span></span><span class="sig-name descname"><span class="pre">MultiInputPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observation_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_arch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'torch.nn.modules.activation.ReLU'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_extractor_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'stable_baselines3.common.torch_layers.CombinedExtractor'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_extractor_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_class</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;class</span> <span class="pre">'torch.optim.adam.Adam'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/stable_baselines3/dqn/policies.html#MultiInputPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#stable_baselines3.dqn.MultiInputPolicy" title="Link to this definition"></a></dt>
+<dd><p>Policy class for DQN when using dict observations as input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>observation_space</strong> (<em>Dict</em>) – Observation space</p></li>
+<li><p><strong>action_space</strong> (<em>Discrete</em>) – Action space</p></li>
+<li><p><strong>lr_schedule</strong> (<em>Callable</em><em>[</em><em>[</em><em>float</em><em>]</em><em>, </em><em>float</em><em>]</em>) – Learning rate schedule (could be constant)</p></li>
+<li><p><strong>net_arch</strong> (<em>list</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em>) – The specification of the policy and value networks.</p></li>
+<li><p><strong>activation_fn</strong> (<em>type</em><em>[</em><em>Module</em><em>]</em>) – Activation function</p></li>
+<li><p><strong>features_extractor_class</strong> (<em>type</em><em>[</em><em>BaseFeaturesExtractor</em><em>]</em>) – Features extractor to use.</p></li>
+<li><p><strong>normalize_images</strong> (<em>bool</em>) – Whether to normalize images or not,
+dividing by 255.0 (True by default)</p></li>
+<li><p><strong>optimizer_class</strong> (<em>type</em><em>[</em><em>Optimizer</em><em>]</em>) – The optimizer to use,
+<code class="docutils literal notranslate"><span class="pre">th.optim.Adam</span></code> by default</p></li>
+<li><p><strong>optimizer_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Additional keyword arguments,
+excluding the learning rate, to pass to the optimizer</p></li>
+<li><p><strong>features_extractor_kwargs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ddpg.html" class="btn btn-neutral float-left" title="DDPG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="her.html" class="btn btn-neutral float-right" title="HER" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2026, Stable Baselines3.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Oxidative DNA damage in human peripheral leukocytes induced by massive aerobic exercise.
+
+Reactive oxygen species produced during vigorous exercise may permeate into cell nuclei and induce oxidative DNA damage, but the supporting evidence is still lacking. By using a 42 km marathon race as a model of massive aerobic exercise, we demonstrated a significant degree of unrepaired DNA base oxidation in peripheral immunocompetent cells, despite a concurrent increase in the urinary excretion of 8-hydroxy-2'-deoxyguanosine. Single cell gel electrophoresis with the incorporation of lesion-specific endonucleases further revealed that oxidized pyrimidines (endonuclease III-sensitive sites) contributed to most of the postexercise nucleotide oxidation. The oxidative DNA damage correlated significantly with plasma levels of creatinine kinase and lipid peroxidation metabolites, and lasted for more than 1 week following the race. This phenomenon may be one of the mechanisms behind the immune dysfunctions after exhaustive exercise.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-3457
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/11728819

@@ -1,0 +1,9 @@
+# Chocolate/cocoa and human health: a review.
+
+Chocolate/cocoa has been known for its good taste and proposed health effects for centuries. Earlier, chocolate used to be criticised for its fat content and its consumption was a sin rather than a remedy, associated with acne, caries, obesity, high blood pressure, coronary artery disease and diabetes. Therefore, many physicians tended to warn patients about the potential health hazards of consuming large amounts of chocolate. However, the recent discovery of biologically active phenolic compounds in cocoa has changed this perception and stimulated research on its effects in ageing, oxidative stress, blood pressure regulation, and atherosclerosis. Today, chocolate is lauded for its tremendous antioxidant potential. However, in many studies, contradictory results and concerns about methodological issues have made it hard for health professionals and the public to understand the available evidence on chocolate's effects on health. The purpose of this review is to interpret research done in the last decade on the benefits and risks of chocolate consumption.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-5283
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/23462053

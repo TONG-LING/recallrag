@@ -1,0 +1,47 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+
+# Coverage and test reports
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments and packaging
+.venv/
+venv/
+env/
+dist/
+build/
+pip-wheel-metadata/
+*.egg-info/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor and OS files
+.claude/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local experiment outputs and heavyweight data
+runs/
+datasets/
+tools/qdrant/storage/
+tools/qdrant/qdrant
+tools/qdrant/.qdrant-initialized
+
+# Personal docs and interview prep
+project_docs/

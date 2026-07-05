@@ -1,0 +1,164 @@
+Rankers | Haystack Documentation
+
+Skip to main content
+
+Haystack Documentation
+2.30
+2.31-unstable
+2.30
+2.29
+2.28
+2.27
+2.26
+
+1.x archived documentation
+2.x archived documentation Docs API Reference
+Contribute GitHub
+
+🔍 Search documentation...
+
+Introduction
+
+Overview
+
+Haystack Concepts
+
+Document Stores
+
+Pipeline Components
+
+Agents
+
+Audio
+
+Builders
+
+Caching
+
+Classifiers
+
+Connectors
+
+Converters
+
+Downloaders
+
+Embedders
+
+Evaluators
+
+Extractors
+
+Fetchers
+
+Generators
+
+Joiners
+
+Preprocessors
+
+Query
+
+Rankers
+Choosing the Right Ranker
+AmazonBedrockRanker
+CohereRanker
+FastembedRanker
+FastembedLateInteractionRanker
+HuggingFaceTEIRanker
+JinaRanker
+LLMRanker
+LostInTheMiddleRanker
+MetaFieldGroupingRanker
+MetaFieldRanker
+NvidiaRanker
+PyversityRanker
+SentenceTransformersDiversityRanker
+SentenceTransformersSimilarityRanker
+TransformersSimilarityRanker
+VLLMRanker
+External Integrations
+
+Readers
+
+Retrievers
+
+Routers
+
+Samplers
+
+Tools
+
+Translators
+
+Validators
+
+Websearch
+
+Writers
+
+Tools
+
+Memory Stores
+
+Optimization
+
+Development
+
+Pipeline Components
+Rankers Version: 2.30
+
+Copy
+
+Rankers
+
+Rankers are a group of components that order documents by given criteria. Their goal is to improve your document retrieval results.
+
+Ranker Description
+AmazonBedrockRanker Ranks documents based on their similarity to the query using Amazon Bedrock models.
+CohereRanker Ranks documents based on their similarity to the query using Cohere rerank models.
+FastembedRanker Ranks documents based on their similarity to the query using cross-encoder models supported by FastEmbed.
+FastembedLateInteractionRanker Ranks documents based on their similarity to the query using late interaction models supported by FastEmbed.
+HuggingFaceTEIRanker Ranks documents based on their similarity to the query using a Text Embeddings Inference (TEI) API endpoint.
+JinaRanker Ranks documents based on their similarity to the query using Jina AI models.
+LLMRanker Ranks documents for a query using a Large Language Model, which returns ranked document indices as JSON.
+LostInTheMiddleRanker Positions the most relevant documents at the beginning and at the end of the resulting list while placing the least relevant documents in the middle, based on a research paper .
+MetaFieldRanker A lightweight Ranker that orders documents based on a specific metadata field value.
+MetaFieldGroupingRanker Reorders the documents by grouping them based on metadata keys.
+NvidiaRanker Ranks documents using large-language models from NVIDIA NIMs .
+PyversityRanker Reranks documents by balancing relevance and diversity using pyversity's diversification algorithms.
+TransformersSimilarityRanker A legacy version of SentenceTransformersSimilarityRanker .
+SentenceTransformersDiversityRanker A Diversity Ranker based on Sentence Transformers.
+SentenceTransformersSimilarityRanker A model-based Ranker that orders documents based on their relevance to the query. It uses a cross-encoder model to produce query and document embeddings. It then compares the similarity of the query embedding to the document embeddings to produce a ranking with the most similar documents appearing first.
+
+It's a powerful Ranker that takes word order and syntax into account. You can use it to improve the initial ranking done by a weaker Retriever, but it's also more expensive computationally than the Rankers that don't use models.
+VLLMRanker Ranks documents based on their similarity to the query using reranker models served with vLLM.
+
+Edit this page
+
+Previous
+QueryExpander
+Next
+Choosing the Right Ranker
+
+Community
+
+Learn
+Tutorials
+Cookbooks
+
+More
+Integrations
+Platform - Try Free
+Enterprise Support
+
+Company
+About
+Careers
+Blog
+
+Legal
+Privacy Policy
+Imprint
+
+© 2026 deepset GmbH. All rights reserved.

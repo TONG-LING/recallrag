@@ -1,0 +1,9 @@
+# Antidiabetic drugs used in Europe prior to the discovery of insulin.
+
+Many therapeutic agents had been used for the treatment of diabetes mellitus before insulin was discovered and several hundred plants have shown some extent of antidiabetic activity. This study tries to explore which agents were most widely used in Europe in the pre-insulin era. According to the scientific literature and the proprietary drug industry around 1900, more than 100 agents were considered to have hypoglycemic activity. Most of them seem to have been used only occasionally while some others were recommended and marketed to a large extent. Among the medicinal plants, Syzygium cumini (syn. S. jambolanum, Eugenia jambolana), Vaccinum myrtillus and Phaseolus sp. were most common, and other frequently used agents were opium, opium alkaloids, other alkaloids like quinine or Belladonna alkaloids, salicylates, alkaline substances like sodium (bi)carbonate and even strong poisons like arsenic or uranium salts. Syzygium jambolanum seed powder seems to be one of the most intensively studied antidiabetic agents of plant origin.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2143
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/17944329

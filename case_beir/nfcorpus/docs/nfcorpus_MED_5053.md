@@ -1,0 +1,9 @@
+# Artificial sweetener consumption and urinary tract tumors in Cordoba, Argentina.
+
+OBJECTIVE: To determine the role of the habitual use of the most common artificial sweeteners (AS) in the development of urinary tract tumors (UTT) in Argentina. METHODS: Case-control study of 197 patients with histologically confirmed UTT of transitional varieties, and 397 controls with acute, non-neoplastic, and non-urinary tract diseases, admitted to the same hospitals in Córdoba (Argentina) between 1999 and 2006. All subjects were interviewed about their use of AS and their exposure to other known or suspected risk factors for UTT. RESULTS: Fifty-one UTT patients (26%) and 87 controls (22%) used AS. The risk of UTT was significantly increased in long-term (> or =10 years) AS users compared with none-AS users. The OR (95% CI) for long-term consumers was 2.18 (1.22-3.89) and for short-term users was 1.10 (0.61-2.00) after adjustment for age, gender, BMI, social status. and years of tobacco use. CONCLUSION: Regular use of AS for 10 years or more was positively associated with UTT.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-5053
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/18495230

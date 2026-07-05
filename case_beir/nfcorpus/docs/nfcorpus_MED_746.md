@@ -1,0 +1,9 @@
+# Evaluation of Crocus sativus L. (saffron) on male erectile dysfunction: a pilot study.
+
+In this study, the effect of Crocus sativus (saffron) was studied on male erectile dysfunction (ED). Twenty male patients with ED were followed for ten days in which each morning they took a tablet containing 200mg of saffron. Patients underwent the nocturnal penile tumescence (NPT) test and the international index of erectile function questionnaire (IIEF-15) at the start of the treatment and at the end of the ten days. After the ten days of taking saffron there was a statistically significant improvement in tip rigidity and tip tumescence as well as base rigidity and base tumescence. ILEF-15 total scores were significantly higher in patients after saffron treatment (before treatment 22.15+/-1.44; after treatment 39.20+/-1.90, p<0.001). Saffron showed a positive effect on sexual function with increased number and duration of erectile events seen in patients with ED even only after taking it for ten days.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-746
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/19427775

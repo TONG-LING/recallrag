@@ -1,0 +1,1090 @@
+{
+  "source_questions": "/mnt/d/projects/RecallRAG/case_zh_dureader_120/eval/questions.jsonl",
+  "output_questions": "/mnt/d/projects/RecallRAG/case_zh_dureader_120/eval/questions_heldout.jsonl",
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://api.openmodel.ai/v1/messages",
+  "temperature": 0.4,
+  "max_tokens": 120,
+  "rows": [
+    {
+      "source_qid": "zh001",
+      "heldout_qid": "zh001_holdout",
+      "original_question": "高速公路超速20以上不足50扣几分",
+      "rewritten_question": "在高速公路上超速20%以上但不到50%会被扣多少分？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3043
+    },
+    {
+      "source_qid": "zh002",
+      "heldout_qid": "zh002_holdout",
+      "original_question": "空气净化器哪种净化方式好",
+      "rewritten_question": "空气净化器采用哪种净化方式效果更佳",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4706
+    },
+    {
+      "source_qid": "zh003",
+      "heldout_qid": "zh003_holdout",
+      "original_question": "黄山风景古诗赞",
+      "rewritten_question": "有哪些古诗赞美了黄山的风景？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2857
+    },
+    {
+      "source_qid": "zh004",
+      "heldout_qid": "zh004_holdout",
+      "original_question": "一天放很多屁",
+      "rewritten_question": "一天内频繁放屁是什么原因？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0667
+    },
+    {
+      "source_qid": "zh005",
+      "heldout_qid": "zh005_holdout",
+      "original_question": "叉车有几种",
+      "rewritten_question": "叉车有多少种类型",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2222
+    },
+    {
+      "source_qid": "zh006",
+      "heldout_qid": "zh006_holdout",
+      "original_question": "春光成语",
+      "rewritten_question": "有哪些关于春光的成语？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh007",
+      "heldout_qid": "zh007_holdout",
+      "original_question": "经常用肥皂洗脸好吗",
+      "rewritten_question": "频繁使用肥皂来清洁面部是否合适",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1
+    },
+    {
+      "source_qid": "zh008",
+      "heldout_qid": "zh008_holdout",
+      "original_question": "冬天怎样养鹦鹉",
+      "rewritten_question": "冬天如何饲养鹦鹉",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3
+    },
+    {
+      "source_qid": "zh009",
+      "heldout_qid": "zh009_holdout",
+      "original_question": "附睾肿胀",
+      "rewritten_question": "附睾部位出现肿胀是怎么回事？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1538
+    },
+    {
+      "source_qid": "zh010",
+      "heldout_qid": "zh010_holdout",
+      "original_question": "硫磺皂能长期用吗",
+      "rewritten_question": "硫磺皂可以一直使用吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2308
+    },
+    {
+      "source_qid": "zh011",
+      "heldout_qid": "zh011_holdout",
+      "original_question": "比较好看的电视剧",
+      "rewritten_question": "有哪些比较好看的电视剧？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.7
+    },
+    {
+      "source_qid": "zh012",
+      "heldout_qid": "zh012_holdout",
+      "original_question": "夏天喝什么饮品好",
+      "rewritten_question": "夏天适合喝哪些饮料",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0714
+    },
+    {
+      "source_qid": "zh013",
+      "heldout_qid": "zh013_holdout",
+      "original_question": "workgroup是什么",
+      "rewritten_question": "workgroup是什么意思",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.6
+    },
+    {
+      "source_qid": "zh014",
+      "heldout_qid": "zh014_holdout",
+      "original_question": "怎样锻炼肺活量",
+      "rewritten_question": "如何提升肺活量",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh015",
+      "heldout_qid": "zh015_holdout",
+      "original_question": "做胃镜注意",
+      "rewritten_question": "做胃镜需要注意什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh016",
+      "heldout_qid": "zh016_holdout",
+      "original_question": "油电混合动力汽车购置税优惠吗",
+      "rewritten_question": "油电混合动力汽车能不能享受购置税减免政策",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3913
+    },
+    {
+      "source_qid": "zh017",
+      "heldout_qid": "zh017_holdout",
+      "original_question": "阴部变白",
+      "rewritten_question": "阴部颜色变白是怎么回事？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1818
+    },
+    {
+      "source_qid": "zh018",
+      "heldout_qid": "zh018_holdout",
+      "original_question": "如何买卖etf基金",
+      "rewritten_question": "怎么进行ETF基金的买入和卖出操作",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.125
+    },
+    {
+      "source_qid": "zh019",
+      "heldout_qid": "zh019_holdout",
+      "original_question": "在实习期内的驾驶证扣分会怎样",
+      "rewritten_question": "实习期间的驾照扣分有什么后果？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1818
+    },
+    {
+      "source_qid": "zh020",
+      "heldout_qid": "zh020_holdout",
+      "original_question": "私立大学和公立大学的区别",
+      "rewritten_question": "私立大学与公立大学有什么不同",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh021",
+      "heldout_qid": "zh021_holdout",
+      "original_question": "如何调水表数字",
+      "rewritten_question": "水表上的数字怎样调整",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1538
+    },
+    {
+      "source_qid": "zh022",
+      "heldout_qid": "zh022_holdout",
+      "original_question": "怎样种香菜",
+      "rewritten_question": "如何种植香菜",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.125
+    },
+    {
+      "source_qid": "zh023",
+      "heldout_qid": "zh023_holdout",
+      "original_question": "如何把电脑上的东西传到ipad上",
+      "rewritten_question": "怎样将电脑中的文件传输到iPad上？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1364
+    },
+    {
+      "source_qid": "zh024",
+      "heldout_qid": "zh024_holdout",
+      "original_question": "c1扣12分怎么办",
+      "rewritten_question": "c1驾驶证被扣满12分该如何处理",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.125
+    },
+    {
+      "source_qid": "zh025",
+      "heldout_qid": "zh025_holdout",
+      "original_question": "tf与sd卡的区别",
+      "rewritten_question": "tf卡和sd卡有什么不同",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1667
+    },
+    {
+      "source_qid": "zh026",
+      "heldout_qid": "zh026_holdout",
+      "original_question": "左肾部位疼痛",
+      "rewritten_question": "左肾的区域有疼痛感",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1818
+    },
+    {
+      "source_qid": "zh027",
+      "heldout_qid": "zh027_holdout",
+      "original_question": "小米平板钢化膜怎么贴",
+      "rewritten_question": "小米平板的钢化膜该如何粘贴",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3125
+    },
+    {
+      "source_qid": "zh028",
+      "heldout_qid": "zh028_holdout",
+      "original_question": "怎么控制路由器把蹭wifi的人给踢了",
+      "rewritten_question": "如何阻止陌生人连接我的路由器并强制他们断开WiFi？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0968
+    },
+    {
+      "source_qid": "zh029",
+      "heldout_qid": "zh029_holdout",
+      "original_question": "怎么做卫浴销售",
+      "rewritten_question": "如何从事卫浴产品的销售工作？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.125
+    },
+    {
+      "source_qid": "zh030",
+      "heldout_qid": "zh030_holdout",
+      "original_question": "外伤缝针不能吃什么",
+      "rewritten_question": "外伤缝针后有哪些食物需要避免",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1667
+    },
+    {
+      "source_qid": "zh031",
+      "heldout_qid": "zh031_holdout",
+      "original_question": "超级会员是什么",
+      "rewritten_question": "超级会员指的是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.5556
+    },
+    {
+      "source_qid": "zh032",
+      "heldout_qid": "zh032_holdout",
+      "original_question": "杭州劳动仲裁电话",
+      "rewritten_question": "杭州劳动仲裁的咨询电话是多少？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4286
+    },
+    {
+      "source_qid": "zh033",
+      "heldout_qid": "zh033_holdout",
+      "original_question": "电暖桌哪个牌子好",
+      "rewritten_question": "电暖桌什么品牌值得推荐",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1333
+    },
+    {
+      "source_qid": "zh034",
+      "heldout_qid": "zh034_holdout",
+      "original_question": "板栗可以蒸着吃吗",
+      "rewritten_question": "板栗能不能用蒸的方式食用？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0588
+    },
+    {
+      "source_qid": "zh035",
+      "heldout_qid": "zh035_holdout",
+      "original_question": "没越狱的iphone怎么清理垃圾",
+      "rewritten_question": "未越狱的iPhone如何清除垃圾文件",
+      "attempts": 2,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh036",
+      "heldout_qid": "zh036_holdout",
+      "original_question": "苹果系统怎么查看隐藏文件",
+      "rewritten_question": "如何在苹果系统里显示隐藏文件",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh037",
+      "heldout_qid": "zh037_holdout",
+      "original_question": "海淀医院孕前检查",
+      "rewritten_question": "海淀医院做孕前检查怎么预约",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4615
+    },
+    {
+      "source_qid": "zh038",
+      "heldout_qid": "zh038_holdout",
+      "original_question": "玩梦幻西游怎么赚钱",
+      "rewritten_question": "梦幻西游里有哪些赚钱的方法",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh039",
+      "heldout_qid": "zh039_holdout",
+      "original_question": "跟庐山有关的诗句",
+      "rewritten_question": "有哪些诗句是与庐山相关的？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh040",
+      "heldout_qid": "zh040_holdout",
+      "original_question": "现在去哪里下载音乐",
+      "rewritten_question": "现在在哪儿能下载到音乐",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh041",
+      "heldout_qid": "zh041_holdout",
+      "original_question": "治疗颈椎病药物",
+      "rewritten_question": "治疗颈椎病用什么药",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4
+    },
+    {
+      "source_qid": "zh042",
+      "heldout_qid": "zh042_holdout",
+      "original_question": "户外手电筒什么牌子好",
+      "rewritten_question": "推荐哪个品牌的户外手电筒",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh043",
+      "heldout_qid": "zh043_holdout",
+      "original_question": "cfs和cy有什么不同",
+      "rewritten_question": "cfs和cy的区别是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3636
+    },
+    {
+      "source_qid": "zh044",
+      "heldout_qid": "zh044_holdout",
+      "original_question": "换外汇哪个银行好",
+      "rewritten_question": "哪个银行换外汇比较划算",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4167
+    },
+    {
+      "source_qid": "zh045",
+      "heldout_qid": "zh045_holdout",
+      "original_question": "轻型羽绒服什么牌子好",
+      "rewritten_question": "推荐哪个品牌的轻型羽绒服",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh046",
+      "heldout_qid": "zh046_holdout",
+      "original_question": "手机外放进水",
+      "rewritten_question": "手机的外放喇叭进水了怎么办",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2143
+    },
+    {
+      "source_qid": "zh047",
+      "heldout_qid": "zh047_holdout",
+      "original_question": "什么样的借条不具法律效力",
+      "rewritten_question": "哪些借条在法律上是无效的",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1
+    },
+    {
+      "source_qid": "zh048",
+      "heldout_qid": "zh048_holdout",
+      "original_question": "m8a1用什么炮",
+      "rewritten_question": "M8A1装备的是哪种火炮？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0909
+    },
+    {
+      "source_qid": "zh049",
+      "heldout_qid": "zh049_holdout",
+      "original_question": "西安人流手术费用要多少",
+      "rewritten_question": "在西安做人流手术大概需要多少钱",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh050",
+      "heldout_qid": "zh050_holdout",
+      "original_question": "xm外汇平台怎么样",
+      "rewritten_question": "xm外汇平台口碑如何",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3636
+    },
+    {
+      "source_qid": "zh051",
+      "heldout_qid": "zh051_holdout",
+      "original_question": "双人床最小宽度",
+      "rewritten_question": "双人床的最小宽度是多少",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4545
+    },
+    {
+      "source_qid": "zh052",
+      "heldout_qid": "zh052_holdout",
+      "original_question": "生气时喂奶",
+      "rewritten_question": "生气的时候可以喂奶吗？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1818
+    },
+    {
+      "source_qid": "zh053",
+      "heldout_qid": "zh053_holdout",
+      "original_question": "龟头敏感度低怎么办",
+      "rewritten_question": "龟头敏感度偏低该如何处理",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2667
+    },
+    {
+      "source_qid": "zh054",
+      "heldout_qid": "zh054_holdout",
+      "original_question": "沪陕高速限速多少",
+      "rewritten_question": "沪陕高速的最高时速限制是多少",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh055",
+      "heldout_qid": "zh055_holdout",
+      "original_question": "ios9 如何关闭搜索最近联系人",
+      "rewritten_question": "ios9 怎样关闭搜索最近联系人的功能",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.5625
+    },
+    {
+      "source_qid": "zh056",
+      "heldout_qid": "zh056_holdout",
+      "original_question": "尸兄主角能力",
+      "rewritten_question": "尸兄这部作品里主角拥有什么能力",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1875
+    },
+    {
+      "source_qid": "zh057",
+      "heldout_qid": "zh057_holdout",
+      "original_question": "word怎么不能修改",
+      "rewritten_question": "Word为什么无法编辑",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0833
+    },
+    {
+      "source_qid": "zh058",
+      "heldout_qid": "zh058_holdout",
+      "original_question": "我国古代第一个有伟大成就的爱国诗人是( )",
+      "rewritten_question": "我国历史上第一位取得辉煌成就的爱国诗人是谁",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3214
+    },
+    {
+      "source_qid": "zh059",
+      "heldout_qid": "zh059_holdout",
+      "original_question": "电热毯能烘干被子吗",
+      "rewritten_question": "电热毯可以用来把被子烘干吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh060",
+      "heldout_qid": "zh060_holdout",
+      "original_question": "氨端聚二甲基硅氧烷是硅油吗",
+      "rewritten_question": "氨端聚二甲基硅氧烷是否属于硅油",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.625
+    },
+    {
+      "source_qid": "zh061",
+      "heldout_qid": "zh061_holdout",
+      "original_question": "为什么中国必须守住18亿亩耕地红线",
+      "rewritten_question": "中国为何一定要坚守18亿亩耕地红线",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh062",
+      "heldout_qid": "zh062_holdout",
+      "original_question": "如何取消电脑的自动休眠",
+      "rewritten_question": "电脑的自动休眠功能要怎么关闭",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3529
+    },
+    {
+      "source_qid": "zh063",
+      "heldout_qid": "zh063_holdout",
+      "original_question": "象征孩子纯洁的花",
+      "rewritten_question": "哪种花代表着孩子的纯洁",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1333
+    },
+    {
+      "source_qid": "zh064",
+      "heldout_qid": "zh064_holdout",
+      "original_question": "血清甘油三脂偏低",
+      "rewritten_question": "血清中的甘油三酯水平较低",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh065",
+      "heldout_qid": "zh065_holdout",
+      "original_question": "哪种制氧机好",
+      "rewritten_question": "什么品牌的制氧机质量比较好",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1333
+    },
+    {
+      "source_qid": "zh066",
+      "heldout_qid": "zh066_holdout",
+      "original_question": "电动牙刷刷的干净吗",
+      "rewritten_question": "电动牙刷的清洁效果好吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2857
+    },
+    {
+      "source_qid": "zh067",
+      "heldout_qid": "zh067_holdout",
+      "original_question": "武松属什么",
+      "rewritten_question": "武松的生肖是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2222
+    },
+    {
+      "source_qid": "zh068",
+      "heldout_qid": "zh068_holdout",
+      "original_question": "跳鬼步舞时手怎么动",
+      "rewritten_question": "跳鬼步舞的时候，手的动作应该怎么做？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2222
+    },
+    {
+      "source_qid": "zh069",
+      "heldout_qid": "zh069_holdout",
+      "original_question": "would like的回答",
+      "rewritten_question": "would like的回复方式",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh070",
+      "heldout_qid": "zh070_holdout",
+      "original_question": "qq经常掉线怎么回事",
+      "rewritten_question": "QQ频繁断线是什么原因",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0625
+    },
+    {
+      "source_qid": "zh071",
+      "heldout_qid": "zh071_holdout",
+      "original_question": "还珠格格第一部背景音乐",
+      "rewritten_question": "还珠格格第一部的配乐有哪些",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.375
+    },
+    {
+      "source_qid": "zh072",
+      "heldout_qid": "zh072_holdout",
+      "original_question": "我的世界手机版0.12.1末地传送门怎么做",
+      "rewritten_question": "我的世界手机版0.12.1如何制作末地传送门",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.6111
+    },
+    {
+      "source_qid": "zh073",
+      "heldout_qid": "zh073_holdout",
+      "original_question": "三壬行化妆学校好吗",
+      "rewritten_question": "三壬行化妆学校的口碑怎么样",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4286
+    },
+    {
+      "source_qid": "zh074",
+      "heldout_qid": "zh074_holdout",
+      "original_question": "胃功能",
+      "rewritten_question": "胃部功能",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh075",
+      "heldout_qid": "zh075_holdout",
+      "original_question": "艾俐缇陶瓷怎么样",
+      "rewritten_question": "艾俐缇陶瓷的质量如何？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh076",
+      "heldout_qid": "zh076_holdout",
+      "original_question": "公共事业管理属于什么专业类别",
+      "rewritten_question": "公共事业管理归属于哪个专业门类",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.35
+    },
+    {
+      "source_qid": "zh077",
+      "heldout_qid": "zh077_holdout",
+      "original_question": "天然无添加的护肤品存在吗",
+      "rewritten_question": "市面上有没有真正不含人工添加成分的护肤品？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1538
+    },
+    {
+      "source_qid": "zh078",
+      "heldout_qid": "zh078_holdout",
+      "original_question": "旅行发票 可以报吗",
+      "rewritten_question": "旅行发票能报销吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3
+    },
+    {
+      "source_qid": "zh079",
+      "heldout_qid": "zh079_holdout",
+      "original_question": "种子可以用百度云下载吗",
+      "rewritten_question": "百度云能用来下载种子吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh080",
+      "heldout_qid": "zh080_holdout",
+      "original_question": "ipad能否连接打印机",
+      "rewritten_question": "ipad可以连接打印机吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.5
+    },
+    {
+      "source_qid": "zh081",
+      "heldout_qid": "zh081_holdout",
+      "original_question": "手机钢化保护膜怎么贴",
+      "rewritten_question": "如何正确粘贴手机钢化保护膜",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4
+    },
+    {
+      "source_qid": "zh082",
+      "heldout_qid": "zh082_holdout",
+      "original_question": "中国古代最繁荣的朝代",
+      "rewritten_question": "中国历史上哪个朝代最为兴盛",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1667
+    },
+    {
+      "source_qid": "zh083",
+      "heldout_qid": "zh083_holdout",
+      "original_question": "怎么改民族",
+      "rewritten_question": "如何更改民族信息？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2222
+    },
+    {
+      "source_qid": "zh084",
+      "heldout_qid": "zh084_holdout",
+      "original_question": "部队的级别",
+      "rewritten_question": "部队的等级是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2222
+    },
+    {
+      "source_qid": "zh085",
+      "heldout_qid": "zh085_holdout",
+      "original_question": "白带有酸奶味",
+      "rewritten_question": "白带闻起来像酸奶一样的气味正常吗？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1111
+    },
+    {
+      "source_qid": "zh086",
+      "heldout_qid": "zh086_holdout",
+      "original_question": "mathematica怎么求积分",
+      "rewritten_question": "在mathematica中如何计算积分",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1818
+    },
+    {
+      "source_qid": "zh087",
+      "heldout_qid": "zh087_holdout",
+      "original_question": "晾衣架材质",
+      "rewritten_question": "晾衣架是用什么材料做的",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1667
+    },
+    {
+      "source_qid": "zh088",
+      "heldout_qid": "zh088_holdout",
+      "original_question": "如何遮盖唇色",
+      "rewritten_question": "怎样把嘴唇的颜色遮住",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.0
+    },
+    {
+      "source_qid": "zh089",
+      "heldout_qid": "zh089_holdout",
+      "original_question": "部落冲突怎么搜死鱼",
+      "rewritten_question": "部落冲突如何搜索死鱼",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3077
+    },
+    {
+      "source_qid": "zh090",
+      "heldout_qid": "zh090_holdout",
+      "original_question": "牛剖层移膜皮是什么",
+      "rewritten_question": "牛剖层移膜皮革指的是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.5833
+    },
+    {
+      "source_qid": "zh091",
+      "heldout_qid": "zh091_holdout",
+      "original_question": "iwatch连接蓝牙耳机",
+      "rewritten_question": "iwatch如何与蓝牙耳机配对",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3636
+    },
+    {
+      "source_qid": "zh092",
+      "heldout_qid": "zh092_holdout",
+      "original_question": "北京市公务员一年考几次",
+      "rewritten_question": "北京市公务员每年举行几次考试",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3529
+    },
+    {
+      "source_qid": "zh093",
+      "heldout_qid": "zh093_holdout",
+      "original_question": "成都审驾照需要什么",
+      "rewritten_question": "在成都审验驾驶证需要哪些材料？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1667
+    },
+    {
+      "source_qid": "zh094",
+      "heldout_qid": "zh094_holdout",
+      "original_question": "霜是怎么形成的",
+      "rewritten_question": "霜是如何形成的",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh095",
+      "heldout_qid": "zh095_holdout",
+      "original_question": "卫生间铺什么地砖好",
+      "rewritten_question": "卫生间适合用哪种地砖",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2143
+    },
+    {
+      "source_qid": "zh096",
+      "heldout_qid": "zh096_holdout",
+      "original_question": "肠结核的症状",
+      "rewritten_question": "肠结核有哪些临床表现",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1667
+    },
+    {
+      "source_qid": "zh097",
+      "heldout_qid": "zh097_holdout",
+      "original_question": "表带怎么打孔",
+      "rewritten_question": "如何给表带钻孔",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1
+    },
+    {
+      "source_qid": "zh098",
+      "heldout_qid": "zh098_holdout",
+      "original_question": "海参冷冻还是冷藏",
+      "rewritten_question": "海参应该放在冷冻室还是冷藏室保存？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2941
+    },
+    {
+      "source_qid": "zh099",
+      "heldout_qid": "zh099_holdout",
+      "original_question": "水土流失是什么意思",
+      "rewritten_question": "水土流失指的是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4545
+    },
+    {
+      "source_qid": "zh100",
+      "heldout_qid": "zh100_holdout",
+      "original_question": "红枣表面有层白色粉末",
+      "rewritten_question": "红枣表面出现了一层白色粉末",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.5
+    },
+    {
+      "source_qid": "zh101",
+      "heldout_qid": "zh101_holdout",
+      "original_question": "小米的平板好用吗",
+      "rewritten_question": "小米的平板电脑使用体验怎么样",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh102",
+      "heldout_qid": "zh102_holdout",
+      "original_question": "尺神经麻痹治疗",
+      "rewritten_question": "尺神经麻痹的治疗方法是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3846
+    },
+    {
+      "source_qid": "zh103",
+      "heldout_qid": "zh103_holdout",
+      "original_question": "北京出国体检在哪里",
+      "rewritten_question": "北京办理出国体检的地点在哪里？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4
+    },
+    {
+      "source_qid": "zh104",
+      "heldout_qid": "zh104_holdout",
+      "original_question": "i5处理器配什么主板好",
+      "rewritten_question": "i5处理器应该搭配哪种主板比较合适",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh105",
+      "heldout_qid": "zh105_holdout",
+      "original_question": "产权70年是什么意思",
+      "rewritten_question": "70年产权指的是什么",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.3636
+    },
+    {
+      "source_qid": "zh106",
+      "heldout_qid": "zh106_holdout",
+      "original_question": "原地跑步能减肚子吗",
+      "rewritten_question": "原地跑步可以瘦肚子吗",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4167
+    },
+    {
+      "source_qid": "zh107",
+      "heldout_qid": "zh107_holdout",
+      "original_question": "金匮肾气丸要吃多长时间",
+      "rewritten_question": "金匮肾气丸需要服用多久",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh108",
+      "heldout_qid": "zh108_holdout",
+      "original_question": "肩颈僵硬",
+      "rewritten_question": "肩颈部位感觉僵硬",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    },
+    {
+      "source_qid": "zh109",
+      "heldout_qid": "zh109_holdout",
+      "original_question": "借书的好处",
+      "rewritten_question": "借书有哪些益处",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1111
+    },
+    {
+      "source_qid": "zh110",
+      "heldout_qid": "zh110_holdout",
+      "original_question": "完美世界出过什么游戏",
+      "rewritten_question": "完美世界公司开发了哪些游戏",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2353
+    },
+    {
+      "source_qid": "zh111",
+      "heldout_qid": "zh111_holdout",
+      "original_question": "张家港大千装饰怎样",
+      "rewritten_question": "张家港大千装饰怎么样",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.7
+    },
+    {
+      "source_qid": "zh112",
+      "heldout_qid": "zh112_holdout",
+      "original_question": "为什么qq打不开图片",
+      "rewritten_question": "QQ图片无法打开是什么原因",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2
+    },
+    {
+      "source_qid": "zh113",
+      "heldout_qid": "zh113_holdout",
+      "original_question": "辅酶q10的服用方法",
+      "rewritten_question": "如何正确服用辅酶q10",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2727
+    },
+    {
+      "source_qid": "zh114",
+      "heldout_qid": "zh114_holdout",
+      "original_question": "杀人剑没了?",
+      "rewritten_question": "杀人剑是不是被移除了？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.1818
+    },
+    {
+      "source_qid": "zh115",
+      "heldout_qid": "zh115_holdout",
+      "original_question": "excel怎么把数字全部显示出来",
+      "rewritten_question": "excel中如何让所有数字都完整显示出来",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2381
+    },
+    {
+      "source_qid": "zh116",
+      "heldout_qid": "zh116_holdout",
+      "original_question": "开国大典简介50字",
+      "rewritten_question": "请用50字以内概括开国大典的主要内容。",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2222
+    },
+    {
+      "source_qid": "zh117",
+      "heldout_qid": "zh117_holdout",
+      "original_question": "德国红铁元和绿铁元有什么区别",
+      "rewritten_question": "德国红铁元和绿铁元有哪些不同之处？",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.4444
+    },
+    {
+      "source_qid": "zh118",
+      "heldout_qid": "zh118_holdout",
+      "original_question": "诛仙法宝技能怎么洗",
+      "rewritten_question": "诛仙法宝的技能要如何重置",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.2667
+    },
+    {
+      "source_qid": "zh119",
+      "heldout_qid": "zh119_holdout",
+      "original_question": "神秘博士clara是谁",
+      "rewritten_question": "Clara在神秘博士中是什么角色",
+      "attempts": 2,
+      "normalized_equal": false,
+      "token_jaccard": 0.3333
+    },
+    {
+      "source_qid": "zh120",
+      "heldout_qid": "zh120_holdout",
+      "original_question": "保妇康栓要用多久",
+      "rewritten_question": "保妇康栓需要连续使用多长时间",
+      "attempts": 1,
+      "normalized_equal": false,
+      "token_jaccard": 0.25
+    }
+  ]
+}

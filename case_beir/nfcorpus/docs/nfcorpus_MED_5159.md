@@ -1,0 +1,9 @@
+# CANNABIS USE AND RISK OF LUNG CANCER: A CASE-CONTROL STUDY
+
+Aim: To determine the risk of lung cancer associated with cannabis smoking. Methods: A case-control study of lung cancer in adults ≤55 years of age was conducted in eight district health boards in New Zealand. Cases were identified from the New Zealand Cancer Registry and hospital databases. Controls were randomly selected from the electoral roll, with frequency matching to cases in 5-year age groups and district health boards. Interviewer administered questionnaires were used to assess possible risk factors including cannabis use. The relative risk of lung cancer associated with cannabis smoking was estimated by logistic regression. Results: There were 79 cases of lung cancer and 324 controls. The risk of lung cancer increased 8% (95% CI 2% to 15%) for each joint-year of cannabis smoking, after adjustment for confounding variables including cigarette smoking, and 7% (95% CI 5% to 9%) for each pack-year of cigarette smoking, after adjustment for confounding variables including cannabis smoking. The highest tertile of cannabis use was associated with an increased risk of lung cancer RR=5.7 (95% CI 1.5 to 21.6), after adjustment for confounding variables including cigarette smoking. Conclusions: Long term cannabis use increases the risk of lung cancer in young adults.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-5159
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/18238947

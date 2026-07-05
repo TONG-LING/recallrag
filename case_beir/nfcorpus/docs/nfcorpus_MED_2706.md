@@ -1,0 +1,9 @@
+# Adverse effects of aromatherapy: a systematic review of case reports and case series.
+
+AIM: This systematic review was aimed at critically evaluating the evidence regarding the adverse effects associated with aromatherapy. METHOD: Five electronic databases were searched to identify all relevant case reports and case series. RESULTS: Forty two primary reports met our inclusion criteria. In total, 71 patients experienced adverse effects of aromatherapy. Adverse effects ranged from mild to severe and included one fatality. The most common adverse effect was dermatitis. Lavender, peppermint, tea tree oil and ylang-ylang were the most common essential oils responsible for adverse effects. CONCLUSION: Aromatherapy has the potential to cause adverse effects some of which are serious. Their frequency remains unknown. Lack of sufficiently convincing evidence regarding the effectiveness of aromatherapy combined with its potential to cause adverse effects questions the usefulness of this modality in any condition.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-2706
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/22936057

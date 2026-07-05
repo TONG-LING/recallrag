@@ -1,0 +1,9 @@
+# Preterm birth and behaviour problems in infants and preschool-age children: a review of the recent literature.
+
+The behaviour problems of children born preterm at school age are well known, but there have been few studies on the behaviour problems of preterm-born infants during infancy and at preschool age. Fourteen cohort studies published in PubMed and PsycINFO between 2000 and 2012 were reviewed with a focus on the type, occurrence, comorbidity, stability, prediction, perinatal, social, and relational risk factors for behaviour problems of preterm-born children in infancy (0-2y) and at preschool age (3-5y). The relational risk factor was considered in an additional four papers. Very-preterm, very-low-birthweight, and moderately-preterm children, in both age groups, show more behaviour problems than term-born comparison children even after perinatal and social risk factors and cognitive performance have been controlled for. Poor social/interactive skills, poor behavioural and emotional self-regulation, emotional difficulties, and reduced attention are the most common behaviour problems. Behaviour problems in infancy are predictive of later behaviour problems and they should be included in follow-up programmes. © The Authors. Developmental Medicine & Child Neurology © 2013 Mac Keith Press.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-1954
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/23521214

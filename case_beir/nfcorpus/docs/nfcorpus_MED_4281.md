@@ -1,0 +1,9 @@
+# Beneficial effects of L-arginine on reducing obesity: potential mechanisms and important implications for human health.
+
+Over the past 20 years, growing interest in the biochemistry, nutrition, and pharmacology of L-arginine has led to extensive studies to explore its nutritional and therapeutic roles in treating and preventing human metabolic disorders. Emerging evidence shows that dietary L-arginine supplementation reduces adiposity in genetically obese rats, diet-induced obese rats, finishing pigs, and obese human subjects with Type-2 diabetes mellitus. The mechanisms responsible for the beneficial effects of L-arginine are likely complex, but ultimately involve altering the balance of energy intake and expenditure in favor of fat loss or reduced growth of white adipose tissue. Recent studies indicate that L-arginine supplementation stimulates mitochondrial biogenesis and brown adipose tissue development possibly through the enhanced synthesis of cell-signaling molecules (e.g., nitric oxide, carbon monoxide, polyamines, cGMP, and cAMP) as well as the increased expression of genes that promote whole-body oxidation of energy substrates (e.g., glucose and fatty acids) Thus, L-arginine holds great promise as a safe and cost-effective nutrient to reduce adiposity, increase muscle mass, and improve the metabolic profile in animals and humans.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-4281
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/20437186

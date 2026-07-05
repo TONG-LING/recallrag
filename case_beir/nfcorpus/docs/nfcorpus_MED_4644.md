@@ -1,0 +1,9 @@
+# Estrogen excretion patterns and plasma levels in vegetarian and omnivorous women.
+
+We studied 10 vegetarian and 10 nonvegetarian premenopausal women on four occasions approximately four months apart. During each study period, the participants kept three-day dietary records, and estrogens were measured in plasma, urinary, and fecal samples. Vegetarians consumed less total fat than omnivores did (30 per cent of total calories, as compared with 40 per cent) and more dietary fiber (28 g per day, as compared with 12 g). There was a positive correlation between fecal weight and fecal excretion of estrogens in both groups (P less than 0.001), with vegetarians having higher fecal weight and increased fecal excretion of estrogens. Urinary excretion of estriol was lower in vegetarians (P less than 0.05), and their plasma levels of estrone and estradiol were negatively correlated with fecal excretion of estrogen (P = 0.005). Among the vegetarians the beta-glucuronidase activity of fecal bacteria was significantly reduced (P = 0.05). We conclude that vegetarian women have an increased fecal output, which leads to increased fecal excretion of estrogen and a decreased plasma concentration of estrogen.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-4644
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/7144835

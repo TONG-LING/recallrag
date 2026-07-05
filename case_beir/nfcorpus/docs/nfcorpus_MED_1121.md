@@ -1,0 +1,9 @@
+# Rheumatoid Arthritis is an Autoimmune Disease Triggered by Proteus Urinary Tract Infection
+
+Rheumatoid arthritis (RA) is a chronic and disabling polyarthritic disease, which affects mainly women in middle and old age. Extensive evidence based on the results of various microbial, immunological and molecular studies from different parts of the world, shows that a strong link exists between Proteus mirabilis microbes and RA. We propose that sub-clinical Proteus urinary tract infections are the main triggering factors and that the presence of molecular mimicry and cross-reactivity between these bacteria and RA-targeted tissue antigens assists in the perpetuation of the disease process through production of cytopathic auto-antibodies. Patients with RA especially during the early stages of the disease could benefit from Proteus anti-bacterial measures involving the use of antibiotics, vegetarian diets and high intake of water and fruit juices such as cranberry juice in addition to the currently employed treatments.
+
+---
+
+source_dataset: BEIR NFCorpus
+source_corpus_id: MED-1121
+source_url: http://www.ncbi.nlm.nih.gov/pubmed/16603443
