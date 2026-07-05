@@ -423,6 +423,7 @@ python3 -m recallrag.cli qdrant-eval-rerank \
 - Patch helps only when there is a recoverable local evidence gap.
 - The held-out check is query-held-out, not document-held-out.
 - Online Qdrant serving is supported, but patch selection is still an offline validation step.
+- The primary conclusion should come from `case_zh_dureader_120/` and `runs/zh120_*`.
 
 ## Testing
 
