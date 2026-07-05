@@ -1,16 +1,16 @@
 # RecallRAG
 
-RecallRAG is a retrieval debugging benchmark for long-document RAG. It starts from one practical question:
+RecallRAG is a retrieval debugging benchmark for long-document RAG. It comes from one practical question:
 
 > The answer is in the document, so why does top-k still fail to return a complete evidence chunk?
 
-The project is aimed at a specific failure mode:
+This repo focuses on a specific failure mode:
 
 - the right document is already being retrieved
 - but the retrieved chunk is incomplete
 - the answer span is split across local chunk boundaries
 
-Instead of rebuilding the full corpus, RecallRAG adds a small validated side index of local repair chunks, referred to here as the patch index.
+In this repo, I treat that as a local repair problem. Instead of rebuilding the full corpus, RecallRAG adds a small validated side index of local repair chunks, referred to here as the patch index.
 
 ## Core Idea
 
@@ -35,7 +35,7 @@ A query is counted as successful only when:
 - a top-k result comes from the gold document
 - and that chunk covers enough of the gold evidence span
 
-Main experimental setting:
+Main setup:
 
 | Item | Value |
 |---|---|
@@ -74,7 +74,7 @@ Primary benchmark:
 | `main + patch` | 0.3417 | 0.1501 | 41 / 120 |
 | `main + patch + rerank` | 0.3250 | 0.2001 | 39 / 120 |
 
-What these results suggest:
+On this benchmark:
 
 - patch is the strongest recall-improving route in this benchmark
 - reranking improves ordering, but not recall
@@ -105,7 +105,7 @@ Held-out benchmark:
 - losses: `0`
 - exact McNemar p-value: `4.76837158203125e-07`
 
-Taken together, these results support a narrow conclusion:
+The main takeaway is simple:
 
 - many failures are local evidence-boundary failures
 - a tiny validated patch layer can fix them
@@ -174,7 +174,7 @@ pip install "fastapi>=0.115,<1.0" "uvicorn>=0.30,<1.0"
 | embedding model | `text-embedding-bge-large-zh-v1.5` |
 | embedding dimension | `1024` |
 | reranker model | `BAAI/bge-reranker-v2-m3` |
-| HyDE model in published `zh120` run | `deepseek-v4-flash` |
+| HyDE model in the current `zh120` run | `deepseek-v4-flash` |
 | Qdrant URL | `http://localhost:6333` |
 | main collection | `recallrag_main` |
 | patch collection | `recallrag_patch` |
