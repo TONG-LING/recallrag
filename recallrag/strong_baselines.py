@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -45,7 +46,7 @@ class HyDEGenerator:
         self.protocol = self._normalize_protocol(protocol)
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.api_key = api_key
+        self.api_key = api_key or os.environ.get("RECALLRAG_HYDE_API_KEY")
         self.auth_mode = auth_mode
         self.api_version = api_version
         self.disable_thinking = disable_thinking

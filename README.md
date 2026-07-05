@@ -1,178 +1,366 @@
 # RecallRAG
 
-RecallRAG 不是普通的 RAG 应用演示。
+RecallRAG is a retrieval debugging and patch-index benchmark for long-document RAG.
 
-它是一个用于排查检索失败的实验系统，要解决的问题是：
+This project is not a generic chatbot demo. It is built for a narrower and more practical question:
 
-> 文档里明明有答案，为什么 topK 里还是没有完整的证据块？
+> The answer is in the document, so why does top-k still fail to return a complete evidence chunk?
 
-现在重点不是“给 RAG 多加一个 patch 层就一定更强”，而是：
+The core claim is also narrow on purpose:
+
+- It does not claim that a patch layer beats every production retrieval stack.
+- It does claim that some retrieval failures are really local evidence-boundary failures.
+- For that failure type, a small side patch index can recover missing evidence without rewriting the main index.
+
+## What Problem This Project Targets
+
+Many retrieval failures are not true document-level misses.
+
+In this project, the gold document is often already near the top, but the returned chunk is incomplete:
+
+- the chunk starts too early or too late
+- the answer span is split across adjacent chunks
+- the returned chunk contains the right document but not enough local evidence
+
+RecallRAG treats this as a local repair problem.
+
+Instead of rebuilding the whole corpus or claiming a brand new chunking method, it does the following:
+
+1. Run baseline dense retrieval.
+2. Diagnose failed queries.
+3. Localize suspicious near-miss windows inside the gold document.
+4. Materialize candidate patch chunks around those windows.
+5. Validate patches in a separate side index.
+6. Keep only patches that actually fix retrieval.
+
+The main index is kept unchanged. The patch index is a small shadow layer.
+
+## Core Idea
 
 ```text
-baseline 检索失败
--> 判断是不是 chunk / local context 问题
--> 只对可疑局部窗口生成备选 patch
--> 用独立 patch index 单独验证
--> 只保留验证有效的局部修补
+baseline retrieval
+-> failure diagnosis
+-> local patch candidate generation
+-> patch validation
+-> keep only successful patches
+-> evaluate main + patch
+-> optionally serve main and patch as two Qdrant collections
 ```
 
-## 当前主要结论
+The current implementation supports both:
 
-当前正式讲的版本是：
+- offline experiments with JSON chunk/vector files
+- online shadow-index experiments with Qdrant
 
-- 中文复杂文档扩样实验：`case_zh_dureader_120/`
-- 主结果目录：`runs/zh120_*`
-- 新问法验证：`case_zh_dureader_120/eval/questions_heldout.jsonl`
-- 小样本机制验证：`case_zh_dureader/` + `runs/zh_*`
-- Qdrant 双集合：`recallrag_zh_main` + `recallrag_zh_patch`
-- 本地 reranker：`BAAI/bge-reranker-v2-m3`
-- 主流对照：BM25、Dense+BM25、RRF、HyDE
+## How Success Is Measured
 
-旧英文 controlled case 还保留着，但现在只算历史记录，不再作为主结果。
+This project does not use a weak success definition such as:
 
-## 当前主要结果
+- "the correct document appeared somewhere in the result list"
 
-### 扩样主对照（120 条）
+Instead, success means:
 
-| 路线 | Recall@5 | MRR | 说明 |
-|---|---:|---:|---|
-| `main` | 0.1417 | 0.0651 | `17 / 120`，能检索到相关文档，但完整的证据块不够 |
-| `main + rerank` | 0.1333 | 0.0822 | MRR 提升，但召回降到 `16 / 120` |
-| `BM25` | 0.0667 | 0.0244 | 纯词法召回更弱 |
-| `Dense + BM25` | 0.0917 | 0.0318 | 在这批问题上没有超过 dense |
-| `Dense + BM25 + RRF + rerank` | 0.1333 | 0.0822 | 没有超过 dense baseline |
-| `HyDE + Dense + BM25 + RRF + rerank` | 0.1250 | 0.0739 | HyDE 在这批问题上也没有提高召回 |
-| `main + patch` | 0.3417 | 0.1501 | `41 / 120`，新增了一批命中 |
-| `main + patch + rerank` | 0.3250 | 0.2001 | 排序更好，但召回掉到 `39 / 120` |
+- within top-k, there is a chunk from the gold document
+- and that chunk covers enough of the gold evidence span
 
-### 新问法验证（固定 patch，不重选）
+Current formal setting:
 
-| 路线 | Recall@5 | MRR | 说明 |
-|---|---:|---:|
-| `main` | 0.1417 | 0.0608 | 改写 query 后 baseline 基本不变 |
-| `main + fixed patch` | 0.3250 | 0.1374 | `39 / 120`，固定 patch 对新问法仍然有效 |
+- `top_k = 5`
+- `coverage_threshold = 0.65`
 
-这里需要特别说明：
+In code, relevance is span-coverage based for span-style questions. That means this benchmark is specifically aimed at evidence completeness, not only document recall.
 
-> 这里的 Recall@5，不是“有没有检索到正确文档”，  
-> 而是“前 5 个结果里有没有足够完整的证据块”。
+## Main Result Snapshot
 
-### paired 统计
+Current primary benchmark:
 
-120 条扩样主实验里：
+- dataset: `case_zh_dureader_120/`
+- main result directories: `runs/zh120_*`
+- patch-source queries: `case_zh_dureader_120/eval/questions_patch_source.jsonl`
+- held-out queries: `case_zh_dureader_120/eval/questions_heldout.jsonl`
+
+### Main 120-query benchmark
+
+| Route | Recall@5 | MRR | Hits |
+|---|---:|---:|---:|
+| `main` | 0.1417 | 0.0651 | 17 / 120 |
+| `main + rerank` | 0.1333 | 0.0822 | 16 / 120 |
+| `BM25` | 0.0667 | 0.0244 | 8 / 120 |
+| `Dense + BM25` | 0.0917 | 0.0318 | 11 / 120 |
+| `Dense + BM25 + RRF + rerank` | 0.1333 | 0.0822 | 16 / 120 |
+| `HyDE + Dense + BM25 + RRF + rerank` | 0.1250 | 0.0739 | 15 / 120 |
+| `main + patch` | 0.3417 | 0.1501 | 41 / 120 |
+| `main + patch + rerank` | 0.3250 | 0.2001 | 39 / 120 |
+
+Key reading:
+
+- Patch is the strongest recall-improving route in this benchmark.
+- Reranking helps ordering quality, but not recall.
+- Stronger retrieval combinations such as BM25 hybrid, RRF, and HyDE do not remove the need for local evidence repair on this dataset.
+
+### Held-out query generalization
+
+This is the most important validity check in the repo.
+
+- Patch selection is done on `questions_patch_source.jsonl`.
+- The selected patch set is then frozen.
+- That frozen patch set is evaluated on rewritten held-out queries in `questions_heldout.jsonl`.
+
+| Route | Recall@5 | MRR | Hits |
+|---|---:|---:|---:|
+| `main` | 0.1417 | 0.0608 | 17 / 120 |
+| `main + fixed patch` | 0.3250 | 0.1374 | 39 / 120 |
+
+### Paired significance
+
+Patch-source benchmark:
 
 - `17 / 120 -> 41 / 120`
-- wins：`24`
-- losses：`0`
-- exact McNemar p-value：`1.19e-7`
+- wins: `24`
+- losses: `0`
+- exact McNemar p-value: `1.1920928955078125e-07`
 
-120 条新问法验证里：
+Held-out benchmark:
 
 - `17 / 120 -> 39 / 120`
-- wins：`22`
-- losses：`0`
-- exact McNemar p-value：`4.77e-7`
+- wins: `22`
+- losses: `0`
+- exact McNemar p-value: `4.76837158203125e-07`
 
-这两个结果合起来说明：
+Interpretation:
 
-> patch 的效果不只是“只对原始问题有效”，  
-> 换一种问法后，固定 patch 仍然保留了大部分效果。
+- The improvement is not just a reranking artifact.
+- The improvement is not only visible on the same queries used to source the repairs.
+- The fixed patch set still helps on new phrasings of the same evidence need.
 
-还需要补充一点：
+## Why The Patch Result Matters
 
-> 120 条版本补充常见检索路线以后，  
-> 结论反而更清楚了：  
-> patch 负责补齐证据，rerank 负责调整排序。  
-> 这批数据上，rerank / RRF / HyDE 都没有提高召回。
+The main benchmark improvement comes from a very small repair footprint:
 
-### 小样本机制验证和更完整的对照实验
+- main chunks: `1634`
+- selected patch chunks: `24`
+- patch/main ratio: `0.0147`
 
-早期 18 条小样本现在还保留着，主要用于：
+So the project is not "make everything bigger and hope recall increases".
+It is "repair a narrow failure type with a small, validated side index".
 
-- 更快演示 patch 机制
-- 运行 reranker / RRF / HyDE 这些补充对照
-
-对应结果：
-
-| 路线 | Recall@5 | MRR |
-|---|---:|---:|
-| `main` | 0.1111 | 0.0556 |
-| `main + rerank` | 0.1111 | 0.0741 |
-| `main + patch` | 0.4444 | 0.1796 |
-| `main + patch + rerank` | 0.4444 | 0.2796 |
-| `Dense + BM25 + RRF + rerank` | 0.1111 | 0.0741 |
-| `HyDE + Dense + BM25 + RRF + rerank` | 0.1111 | 0.0741 |
-
-因此更准确的说法是：
-
-> 18 条版本负责证明“patch 和 rerank 不是一回事”。  
-> 120 条版本负责补样本量、补全对照路线、再补一份新问法验证。
-
-### 当前比较准确的结论
-
-更准确的说法是：
-
-> 相关文档往往已经能进前几条检索结果，  
-> 主要问题是 chunk 不够完整。  
-> patch 对这类局部证据缺口有效，但不是适用于所有问题的通用方法。
-
-## 推荐先看哪里
-
-如果需要快速看懂项目，可以先看这几份：
-
-- 文档总入口：`project_docs/00_docs_start_here.md`
-- 面试入口：`project_docs/02_interview_materials/00_interview_start_here.md`
-- 主实验总结：`project_docs/03_experiment_reports/production_patch_report.md`
-- 运行入口：`project_docs/05_run_guides_and_setup/RUN_BASELINE.md`
-- 现场演示：`project_docs/05_run_guides_and_setup/INTERVIEW_DEMO_RUNBOOK.md`
-
-现在仓库里主要用来阅读和面试讲解的文档，已经统一收在 `project_docs/` 下面。
-
-## 仓库结构
+## Repository Layout
 
 ```text
-recallrag/      主要实现
-project_docs/   当前主要文档
-case_zh_dureader/ 中文主实验数据
-case/           旧英文 controlled case
-case_beir/      BEIR 补充数据
-runs/           实验结果
-scripts/        构建数据和旧脚本
-tests/          单元测试
-tools/qdrant/   本地 Qdrant binary
+recallrag/                Core implementation
+scripts/                  Dataset, held-out, and evaluation utilities
+tests/                    Unit tests
+case/                     Legacy English controlled case
+case_beir/                Additional historical benchmark material
+case_zh_dureader/         Earlier Chinese small benchmark
+case_zh_dureader_120/     Current primary Chinese long-document benchmark
+tools/qdrant/             Local Qdrant area for binary/server storage
 ```
 
-主要模块：
+Important modules:
 
 ```text
-eval.py              baseline retrieval 评估
-diagnose.py          failure diagnosis
-patch_index.py       patch 备选内容生成与验证
-bm25.py              BM25 / dense+BM25 对照
-strong_baselines.py  RRF / rerank / HyDE 对照
-qdrant_backend.py    Qdrant 双集合与在线合并
-triage.py            最终归因和边界判断
+recallrag/eval.py              Dense retrieval evaluation and coverage-based scoring
+recallrag/diagnose.py          Failure diagnosis
+recallrag/patch_index.py       Patch materialization and offline validation
+recallrag/bm25.py              BM25 and dense+BM25 baselines
+recallrag/strong_baselines.py  RRF, reranking, and HyDE baselines
+recallrag/qdrant_backend.py    Online main/patch collections with Qdrant
+recallrag/reranker.py          Local cross-encoder reranker wrapper
+recallrag/cli.py               CLI entrypoint
 ```
 
-## 当前最常用的命令
+## Environment Requirements
 
-安装：
+Minimum:
+
+- Python `3.10+`
+- a shell environment that can run local Python scripts
+- an OpenAI-compatible embedding endpoint exposing `/v1/embeddings`
+
+Optional but recommended:
+
+- a CUDA-capable GPU for reranker experiments
+- PyTorch + Transformers for the local reranker
+- a local Qdrant server for online shadow-index experiments
+
+## Installation
+
+### 1. Create a Python environment
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install --upgrade pip setuptools wheel
 pip install -e .
 ```
 
-测试：
+Optional API dependencies:
 
 ```bash
-python3 -m unittest discover -s tests -v
+pip install "fastapi>=0.115,<1.0" "uvicorn>=0.30,<1.0"
 ```
 
-当前中文主实验入口：
+### 2. Install reranker dependencies
+
+The reranker is not part of the base runtime dependencies in `pyproject.toml`.
+Install it manually when you need reranking:
 
 ```bash
-cd /mnt/d/projects/RecallRAG
-source /mnt/d/projects/.venvs/recallrag-reranker/bin/activate
+pip install torch transformers
+```
+
+If you want a dedicated reranker environment, that is also fine.
+
+### 3. Keep API keys out of commands
+
+This repo now supports environment-variable based API keys for the two places that may call an external generation model:
+
+```bash
+cp .env.example .env
+```
+
+Then set:
+
+- `RECALLRAG_HYDE_API_KEY` for HyDE generation in `eval-rrf-rerank`
+- `RECALLRAG_QUERY_REWRITE_API_KEY` for `scripts/build_query_heldout.py`
+
+This is safer than putting keys directly on the command line.
+
+## Models And Services Used In The Current Main Experiment
+
+### Embedding model
+
+Current main Chinese benchmark:
+
+- endpoint: `http://localhost:1234/v1/embeddings`
+- model: `text-embedding-bge-large-zh-v1.5`
+- vector dimension: `1024`
+
+The embedding client expects an OpenAI-style response with:
+
+- `data`
+- one embedding per input row
+- correct `index` ordering
+
+### Reranker model
+
+Current local cross-encoder reranker:
+
+- model: `BAAI/bge-reranker-v2-m3`
+
+Implementation details:
+
+- code path: `recallrag/reranker.py`
+- default Hugging Face model id: `BAAI/bge-reranker-v2-m3`
+- if local path `/mnt/d/projects/hf_models/BAAI__bge-reranker-v2-m3` exists, the code prefers that path
+- you can override with `RECALLRAG_RERANKER_MODEL`
+
+### HyDE model
+
+Current published `zh120` HyDE ablation recorded:
+
+- HyDE enabled: `true`
+- HyDE generation model: `deepseek-v4-flash`
+
+Important detail:
+
+- the generic code default in `recallrag/strong_baselines.py` is still `hy-mt2-1.8b`
+- the current formal `zh120` result was not produced with that default
+- the current held-out query rewrite file also records `deepseek-v4-flash`
+
+### Database
+
+For online shadow-index evaluation, this project uses Qdrant:
+
+- default URL: `http://localhost:6333`
+- default main collection: `recallrag_main`
+- default patch collection: `recallrag_patch`
+
+The Qdrant binary is not guaranteed to be bundled for future public use.
+If `tools/qdrant/qdrant` is not present on your machine, provide your own local Qdrant server.
+
+## Qdrant Setup
+
+### Option A: use your own local Qdrant server
+
+Run any local Qdrant instance that exposes:
+
+```text
+http://localhost:6333
+```
+
+### Option B: use the helper script
+
+This repo includes:
+
+- `scripts/start_qdrant.sh`
+
+That script expects a local binary at:
+
+- `tools/qdrant/qdrant`
+
+If your binary is available there, start it with:
+
+```bash
+bash scripts/start_qdrant.sh
+```
+
+Health check:
+
+```bash
+python3 -m recallrag.cli qdrant-health --url http://localhost:6333
+```
+
+## Current Primary Dataset
+
+Primary dataset directory:
+
+- `case_zh_dureader_120/`
+
+Source metadata is recorded in:
+
+- `case_zh_dureader_120/source_metadata.json`
+
+Current configuration:
+
+| Field | Value |
+|---|---|
+| source | `zyznull/dureader-retrieval-ranking` dev subset |
+| source URL | `https://huggingface.co/datasets/zyznull/dureader-retrieval-ranking/resolve/main/dev.jsonl.gz` |
+| sample size | `120` |
+| negatives per document | `4` |
+| positive length range | `380` to `1400` |
+| seed | `42` |
+| documents | `120` |
+| patch-source queries | `120` |
+| held-out rewritten queries | `120` |
+
+Data split files:
+
+- `eval/questions.jsonl`: original evaluation questions
+- `eval/questions_patch_source.jsonl`: explicit patch-source split used for patch generation
+- `eval/questions_heldout.jsonl`: held-out rewritten queries for generalization check
+
+## Current Main Experiment Configuration
+
+From `runs/zh120_base/index_meta.json`:
+
+| Field | Value |
+|---|---|
+| chunk size | `220` |
+| overlap | `0` |
+| keep heading | `true` |
+| chunk count | `1634` |
+| embedding model | `text-embedding-bge-large-zh-v1.5` |
+| embedding dimension | `1024` |
+| coverage threshold | `0.65` |
+
+## Reproduce The Current Chinese Benchmark
+
+### 1. Build the baseline index and run dense retrieval
+
+```bash
 python3 -m recallrag.cli run-baseline \
   --docs case_zh_dureader_120/docs \
   --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
@@ -186,49 +374,266 @@ python3 -m recallrag.cli run-baseline \
   --coverage-threshold 0.65
 ```
 
-更完整的运行说明见：
+### 2. Diagnose failed queries
 
-- `project_docs/05_run_guides_and_setup/RUN_BASELINE.md`
-- `project_docs/05_run_guides_and_setup/QDRANT_BACKEND.md`
-
-## 这两个脚本不要当主入口
-
-仓库里这两个脚本还在：
-
-- `scripts/run_mvp.sh`
-- `scripts/run_qdrant_mvp.sh`
-
-但它们运行的还是早期英文小样本：
-
-- `case/`
-- `runs/base`
-- `runs/qdrant`
-- `recallrag_main`
-- `recallrag_patch`
-
-所以它们现在更适合作为：
-
-- 历史机制验证脚本
-- 旧英文快速演示脚本
-
-不要把这些脚本得到的结果当成当前主实验结论。
-
-## 当前环境说明
-
-Embedding endpoint：
-
-```text
-http://localhost:1234/v1/embeddings
+```bash
+python3 -m recallrag.cli diagnose \
+  --index runs/zh120_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --coverage-threshold 0.65
 ```
 
-当前主实验 embedding 模型：
+### 3. Materialize patch candidates
 
-```text
-text-embedding-bge-large-zh-v1.5
+```bash
+python3 -m recallrag.cli materialize-patches \
+  --index runs/zh120_base \
+  --out runs/zh120_patches \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5
 ```
 
-Qdrant binary：
+### 4. Evaluate baseline + selected patch index
 
-```text
-tools/qdrant/qdrant
+```bash
+python3 -m recallrag.cli eval-hybrid \
+  --index runs/zh120_base \
+  --patch-index runs/zh120_patches \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_hybrid \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --coverage-threshold 0.65
 ```
+
+This step writes:
+
+- `selected_patch_chunks.json`
+- `selected_patch_vectors.json`
+
+Those files are the frozen selected patch set used for later online or held-out evaluation.
+
+## Reproduce Comparison Baselines
+
+### Main + local reranker
+
+```bash
+python3 -m recallrag.cli eval-rerank \
+  --index runs/zh120_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_rerank_main \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --candidate-k 20 \
+  --coverage-threshold 0.65
+```
+
+### Main + fixed patch + rerank
+
+This is the route behind the `39 / 120` result in `runs/zh120_patch_rerank`.
+
+```bash
+python3 scripts/eval_fixed_patch_rerank.py \
+  --index runs/zh120_base \
+  --patch-dir runs/zh120_patches \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_patch_rerank \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --candidate-k 20 \
+  --coverage-threshold 0.65 \
+  --reranker-model-path <local_or_hf_reranker_path>
+```
+
+### BM25 and dense+BM25
+
+```bash
+python3 -m recallrag.cli eval-bm25-hybrid \
+  --index runs/zh120_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_hybrid_bm25 \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --coverage-threshold 0.65 \
+  --alpha-dense 0.65
+```
+
+### Dense + BM25 + RRF + rerank
+
+```bash
+python3 -m recallrag.cli eval-rrf-rerank \
+  --index runs/zh120_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_rrf_rerank \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --dense-k 20 \
+  --bm25-k 20 \
+  --candidate-k 20 \
+  --rrf-k 60 \
+  --coverage-threshold 0.65
+```
+
+### HyDE + Dense + BM25 + RRF + rerank
+
+Example command shape:
+
+```bash
+python3 -m recallrag.cli eval-rrf-rerank \
+  --index runs/zh120_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_rrf_rerank_hyde \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --dense-k 20 \
+  --bm25-k 20 \
+  --candidate-k 20 \
+  --rrf-k 60 \
+  --coverage-threshold 0.65 \
+  --hyde-model deepseek-v4-flash \
+  --hyde-endpoint <your_messages_endpoint> \
+  --hyde-protocol messages \
+  --hyde-auth-mode x-api-key \
+  --hyde-disable-thinking
+```
+
+If `--hyde-api-key` is omitted, the code uses `RECALLRAG_HYDE_API_KEY`.
+
+## Build And Evaluate Held-out Queries
+
+### 1. Build the held-out rewritten queries
+
+The repo includes a dedicated builder:
+
+```bash
+python3 scripts/build_query_heldout.py \
+  --questions case_zh_dureader_120/eval/questions.jsonl \
+  --out case_zh_dureader_120/eval/questions_heldout.jsonl \
+  --patch-source-out case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --endpoint <your_messages_endpoint> \
+  --model deepseek-v4-flash \
+  --protocol messages \
+  --auth-mode x-api-key \
+  --disable-thinking
+```
+
+If `--api-key` is omitted, the script uses `RECALLRAG_QUERY_REWRITE_API_KEY`.
+
+Current checked-in held-out file records:
+
+- rewrite model: `deepseek-v4-flash`
+- rewrite endpoint: `https://api.openmodel.ai/v1/messages`
+
+### 2. Evaluate the frozen patch set on held-out queries
+
+```bash
+python3 scripts/eval_fixed_patch_generalization.py \
+  --index runs/zh120_base \
+  --patch-dir runs/zh120_patches \
+  --questions case_zh_dureader_120/eval/questions_heldout.jsonl \
+  --out runs/zh120_generalization \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+```
+
+This is the correct generalization protocol for this project:
+
+- patch selection happens first
+- selected patch chunks are frozen
+- held-out queries do not participate in patch generation or patch selection
+
+## Online Shadow-Index Workflow With Qdrant
+
+After `runs/zh120_base` and `runs/zh120_patches` are ready:
+
+### 1. Build Qdrant collections
+
+```bash
+python3 -m recallrag.cli qdrant-build \
+  --index runs/zh120_base \
+  --patch-index runs/zh120_patches \
+  --out runs/zh120_qdrant \
+  --url http://localhost:6333 \
+  --main-collection recallrag_main \
+  --patch-collection recallrag_patch
+```
+
+### 2. Evaluate online main + patch retrieval
+
+```bash
+python3 -m recallrag.cli qdrant-eval \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_qdrant \
+  --url http://localhost:6333 \
+  --main-collection recallrag_main \
+  --patch-collection recallrag_patch \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --main-k 5 \
+  --patch-k 3 \
+  --final-k 5 \
+  --coverage-threshold 0.65
+```
+
+### 3. Evaluate online main + patch + rerank
+
+```bash
+python3 -m recallrag.cli qdrant-eval-rerank \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_qdrant_rerank \
+  --url http://localhost:6333 \
+  --main-collection recallrag_main \
+  --patch-collection recallrag_patch \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --main-k 10 \
+  --patch-k 5 \
+  --final-k 5 \
+  --coverage-threshold 0.65
+```
+
+## What The Current Results Say
+
+The current evidence supports a specific conclusion:
+
+- Many failed queries already retrieve the right document neighborhood.
+- The missing part is often complete local evidence, not document identity.
+- A small validated patch index can recover that evidence more effectively than the current rerank-only or hybrid-only baselines in this benchmark.
+
+The current evidence does not support an over-broad conclusion such as:
+
+- "patch index is always better than strong hybrid retrieval"
+- "patch index replaces BM25, reranking, or HyDE in production"
+- "every retrieval failure is a chunking failure"
+
+This repo is intentionally narrower and more defensible than that.
+
+## Limitations
+
+- The benchmark is designed for long-document evidence-boundary failures, not for every retrieval regime.
+- Patch helps only when there is a recoverable local evidence gap.
+- Held-out validation here is query-held-out, not document-held-out.
+- Qdrant online serving is supported, but the patch selection workflow is still an offline validation step.
+- The repo keeps legacy English and earlier Chinese cases for historical comparison, but the current primary conclusion should come from `case_zh_dureader_120/` and `runs/zh120_*`.
+
+## Testing
+
+Run unit tests with:
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+## Notes For Future Public Packaging
+
+- Heavy run artifacts under `runs/` are local experiment outputs.
+- Personal study material under `project_docs/` is intentionally not the source of truth for this README.
+- The formal README above is aligned to the actual code paths and raw experiment outputs in this repository.

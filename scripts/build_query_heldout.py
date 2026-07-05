@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import urllib.error
@@ -80,7 +81,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--api-key",
         default=None,
-        help="Optional API key",
+        help="Optional API key. If omitted, uses RECALLRAG_QUERY_REWRITE_API_KEY.",
     )
     parser.add_argument(
         "--auth-mode",
@@ -297,6 +298,7 @@ def _token_overlap(a: str, b: str) -> float:
 
 def main() -> None:
     args = parse_args()
+    api_key = args.api_key or os.environ.get("RECALLRAG_QUERY_REWRITE_API_KEY")
     questions = load_questions(args.questions)
     out_path = Path(args.out)
     patch_source_path = Path(args.patch_source_out) if args.patch_source_out else None
@@ -317,7 +319,7 @@ def main() -> None:
             max_tokens=args.max_tokens,
             retries=args.retries,
             protocol=args.protocol,
-            api_key=args.api_key,
+            api_key=api_key,
             auth_mode=args.auth_mode,
             api_version=args.api_version,
             disable_thinking=args.disable_thinking,

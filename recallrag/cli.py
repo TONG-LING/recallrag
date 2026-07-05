@@ -372,7 +372,7 @@ def main():
     hrr.add_argument('--hyde-protocol', choices=['openai_chat', 'messages', 'anthropic_messages'], default='openai_chat')
     hrr.add_argument('--hyde-temperature', type=float, default=0.0)
     hrr.add_argument('--hyde-max-tokens', type=int, default=160)
-    hrr.add_argument('--hyde-api-key', default=None)
+    hrr.add_argument('--hyde-api-key', default=None, help='Optional HyDE API key. If omitted, uses RECALLRAG_HYDE_API_KEY.')
     hrr.add_argument('--hyde-auth-mode', choices=['auto', 'none', 'authorization', 'x-api-key'], default='auto')
     hrr.add_argument('--hyde-api-version', default='2023-06-01')
     hrr.add_argument('--hyde-disable-thinking', action='store_true')
