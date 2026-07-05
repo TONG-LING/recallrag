@@ -1,16 +1,16 @@
 # RecallRAG
 
-RecallRAG is a retrieval debugging benchmark for long-document RAG. It focuses on one practical question:
+RecallRAG is a retrieval debugging benchmark for long-document RAG. It starts from one practical question:
 
 > The answer is in the document, so why does top-k still fail to return a complete evidence chunk?
 
-The project targets a narrow failure type:
+The project is aimed at a specific failure mode:
 
-- the right document is already nearby
+- the right document is already being retrieved
 - but the retrieved chunk is incomplete
 - the answer span is split across local chunk boundaries
 
-Instead of rebuilding the whole corpus, RecallRAG adds a small validated side index of local repair chunks, called the patch index.
+Instead of rebuilding the full corpus, RecallRAG adds a small validated side index of local repair chunks, referred to here as the patch index.
 
 ## Core Idea
 
@@ -24,18 +24,18 @@ baseline dense retrieval
 -> evaluate main + patch
 ```
 
-The main index is never overwritten. The patch index is a small shadow layer.
+The main index stays unchanged. The patch index acts as a small shadow layer.
 
 ## What Counts As Success
 
-This benchmark does not use the weak condition "the gold document appeared somewhere".
+This benchmark uses a stricter criterion than "the gold document appeared somewhere in the results."
 
 A query is counted as successful only when:
 
 - a top-k result comes from the gold document
 - and that chunk covers enough of the gold evidence span
 
-Current main setting:
+Main experimental setting:
 
 | Item | Value |
 |---|---|
@@ -74,7 +74,7 @@ Primary benchmark:
 | `main + patch` | 0.3417 | 0.1501 | 41 / 120 |
 | `main + patch + rerank` | 0.3250 | 0.2001 | 39 / 120 |
 
-Takeaway:
+What these results suggest:
 
 - patch is the strongest recall-improving route in this benchmark
 - reranking improves ordering, but not recall
@@ -105,7 +105,7 @@ Held-out benchmark:
 - losses: `0`
 - exact McNemar p-value: `4.76837158203125e-07`
 
-This supports a narrow conclusion:
+Taken together, these results support a narrow conclusion:
 
 - many failures are local evidence-boundary failures
 - a tiny validated patch layer can fix them
@@ -166,7 +166,7 @@ Optional API serving extras:
 pip install "fastapi>=0.115,<1.0" "uvicorn>=0.30,<1.0"
 ```
 
-## Models And Services Used In The Current Main Experiment
+## Main Experiment Setup
 
 | Component | Current main setting |
 |---|---|
@@ -179,7 +179,7 @@ pip install "fastapi>=0.115,<1.0" "uvicorn>=0.30,<1.0"
 | main collection | `recallrag_main` |
 | patch collection | `recallrag_patch` |
 
-Notes:
+Practical notes:
 
 - `recallrag/reranker.py` prefers local path `/mnt/d/projects/hf_models/BAAI__bge-reranker-v2-m3` if it exists.
 - `recallrag/strong_baselines.py` still has a generic HyDE default of `hy-mt2-1.8b`, but the current formal `zh120` HyDE result was produced with `deepseek-v4-flash`.
@@ -222,7 +222,7 @@ Split files:
 - `eval/questions_patch_source.jsonl`: patch-source split
 - `eval/questions_heldout.jsonl`: held-out rewritten split
 
-## Quick Reproduction
+## Reproducing The Main Benchmark
 
 ### 1. Baseline
 
@@ -269,7 +269,7 @@ python3 -m recallrag.cli eval-hybrid \
   --coverage-threshold 0.65
 ```
 
-This writes the frozen selected patch set:
+This step writes the selected patch set used in later runs:
 
 - `selected_patch_chunks.json`
 - `selected_patch_vectors.json`
@@ -304,7 +304,7 @@ python3 -m recallrag.cli eval-bm25-hybrid \
   --alpha-dense 0.65
 ```
 
-RRF + rerank, with optional HyDE:
+RRF + rerank, optionally with HyDE:
 
 ```bash
 python3 -m recallrag.cli eval-rrf-rerank \
@@ -337,9 +337,9 @@ python3 scripts/eval_fixed_patch_rerank.py \
   --reranker-model-path <local_or_hf_reranker_path>
 ```
 
-## Held-out Generalization
+## Held-out Evaluation
 
-Build held-out rewrites:
+Build the held-out rewrites:
 
 ```bash
 python3 scripts/build_query_heldout.py \
@@ -353,7 +353,7 @@ python3 scripts/build_query_heldout.py \
   --disable-thinking
 ```
 
-Evaluate frozen patch set on held-out queries:
+Evaluate the frozen patch set on held-out queries:
 
 ```bash
 python3 scripts/eval_fixed_patch_generalization.py \
@@ -367,9 +367,9 @@ python3 scripts/eval_fixed_patch_generalization.py \
   --coverage-threshold 0.65
 ```
 
-## Qdrant Shadow-Index Workflow
+## Qdrant Workflow
 
-Start your own Qdrant server, or use `bash scripts/start_qdrant.sh` if `tools/qdrant/qdrant` exists.
+Start your own Qdrant server, or use `bash scripts/start_qdrant.sh` if `tools/qdrant/qdrant` is available.
 
 Build collections:
 
