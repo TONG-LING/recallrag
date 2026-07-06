@@ -1,0 +1,978 @@
+[
+  {
+    "qid": "zh002",
+    "patch_id": "patch_zh002_001_adjacent_merge",
+    "chunk_id": "patch_zh002_001_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1904,
+    "success": true,
+    "rank": 1,
+    "best_topk_coverage": 0.952,
+    "top_patch_hits": [
+      {
+        "rank": 1,
+        "chunk_id": "patch_zh002_001_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.7072,
+        "coverage": 0.952
+      }
+    ]
+  },
+  {
+    "qid": "zh002",
+    "patch_id": "patch_zh002_001_contextual",
+    "chunk_id": "patch_zh002_001_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 420,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.566,
+    "top_patch_hits": [
+      {
+        "rank": 1,
+        "chunk_id": "patch_zh002_001_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.734102,
+        "coverage": 0.264
+      }
+    ]
+  },
+  {
+    "qid": "zh002",
+    "patch_id": "patch_zh002_001_local_proposition",
+    "chunk_id": "patch_zh002_001_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 432,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.566,
+    "top_patch_hits": [
+      {
+        "rank": 1,
+        "chunk_id": "patch_zh002_001_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.73549,
+        "coverage": 0.264
+      }
+    ]
+  },
+  {
+    "qid": "zh002",
+    "patch_id": "patch_zh002_001_local_summary",
+    "chunk_id": "patch_zh002_001_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 293,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.566,
+    "top_patch_hits": [
+      {
+        "rank": 1,
+        "chunk_id": "patch_zh002_001_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.718725,
+        "coverage": 0.158
+      }
+    ]
+  },
+  {
+    "qid": "zh003",
+    "patch_id": "patch_zh003_002_adjacent_merge",
+    "chunk_id": "patch_zh003_002_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1350,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.637,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh003_002_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.606047,
+        "coverage": 0.637
+      }
+    ]
+  },
+  {
+    "qid": "zh003",
+    "patch_id": "patch_zh003_002_contextual",
+    "chunk_id": "patch_zh003_002_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 803,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.517,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh003_002_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.597233,
+        "coverage": 0.517
+      }
+    ]
+  },
+  {
+    "qid": "zh003",
+    "patch_id": "patch_zh003_002_local_proposition",
+    "chunk_id": "patch_zh003_002_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 815,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.517,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh003_002_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.592401,
+        "coverage": 0.517
+      }
+    ]
+  },
+  {
+    "qid": "zh003",
+    "patch_id": "patch_zh003_002_local_summary",
+    "chunk_id": "patch_zh003_002_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 784,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.517,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh003_002_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.597233,
+        "coverage": 0.517
+      }
+    ]
+  },
+  {
+    "qid": "zh004",
+    "patch_id": "patch_zh004_003_adjacent_merge",
+    "chunk_id": "patch_zh004_003_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1912,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.576,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh004",
+    "patch_id": "patch_zh004_003_contextual",
+    "chunk_id": "patch_zh004_003_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1048,
+    "success": true,
+    "rank": 2,
+    "best_topk_coverage": 0.786,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh004_003_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.711199,
+        "coverage": 0.786
+      }
+    ]
+  },
+  {
+    "qid": "zh004",
+    "patch_id": "patch_zh004_003_local_proposition",
+    "chunk_id": "patch_zh004_003_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 1060,
+    "success": true,
+    "rank": 2,
+    "best_topk_coverage": 0.786,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh004_003_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.713576,
+        "coverage": 0.786
+      }
+    ]
+  },
+  {
+    "qid": "zh004",
+    "patch_id": "patch_zh004_003_local_summary",
+    "chunk_id": "patch_zh004_003_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 447,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.576,
+    "top_patch_hits": [
+      {
+        "rank": 1,
+        "chunk_id": "patch_zh004_003_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.72231,
+        "coverage": 0.378
+      }
+    ]
+  },
+  {
+    "qid": "zh006",
+    "patch_id": "patch_zh006_004_adjacent_merge",
+    "chunk_id": "patch_zh006_004_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1229,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.612,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh006_004_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.6565,
+        "coverage": 0.612
+      }
+    ]
+  },
+  {
+    "qid": "zh006",
+    "patch_id": "patch_zh006_004_contextual",
+    "chunk_id": "patch_zh006_004_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 667,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.605,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh006_004_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.647268,
+        "coverage": 0.279
+      }
+    ]
+  },
+  {
+    "qid": "zh006",
+    "patch_id": "patch_zh006_004_local_proposition",
+    "chunk_id": "patch_zh006_004_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 679,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.605,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh006_004_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.645854,
+        "coverage": 0.279
+      }
+    ]
+  },
+  {
+    "qid": "zh006",
+    "patch_id": "patch_zh006_004_local_summary",
+    "chunk_id": "patch_zh006_004_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 625,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.605,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh006_004_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.647268,
+        "coverage": 0.248
+      }
+    ]
+  },
+  {
+    "qid": "zh007",
+    "patch_id": "patch_zh007_005_adjacent_merge",
+    "chunk_id": "patch_zh007_005_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1884,
+    "success": true,
+    "rank": 4,
+    "best_topk_coverage": 0.886,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh007_005_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.729913,
+        "coverage": 0.886
+      }
+    ]
+  },
+  {
+    "qid": "zh007",
+    "patch_id": "patch_zh007_005_contextual",
+    "chunk_id": "patch_zh007_005_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 537,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.648,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh007_005_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.749028,
+        "coverage": 0.21
+      }
+    ]
+  },
+  {
+    "qid": "zh007",
+    "patch_id": "patch_zh007_005_local_proposition",
+    "chunk_id": "patch_zh007_005_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 549,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.648,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh007_005_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.74976,
+        "coverage": 0.21
+      }
+    ]
+  },
+  {
+    "qid": "zh007",
+    "patch_id": "patch_zh007_005_local_summary",
+    "chunk_id": "patch_zh007_005_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 281,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.648,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh007_005_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.757538,
+        "coverage": 0.133
+      }
+    ]
+  },
+  {
+    "qid": "zh008",
+    "patch_id": "patch_zh008_006_adjacent_merge",
+    "chunk_id": "patch_zh008_006_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1884,
+    "success": true,
+    "rank": 5,
+    "best_topk_coverage": 0.834,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh008_006_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.561427,
+        "coverage": 0.834
+      }
+    ]
+  },
+  {
+    "qid": "zh008",
+    "patch_id": "patch_zh008_006_contextual",
+    "chunk_id": "patch_zh008_006_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 884,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh008",
+    "patch_id": "patch_zh008_006_local_proposition",
+    "chunk_id": "patch_zh008_006_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 896,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh008_006_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.557271,
+        "coverage": 0.098
+      }
+    ]
+  },
+  {
+    "qid": "zh008",
+    "patch_id": "patch_zh008_006_local_summary",
+    "chunk_id": "patch_zh008_006_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 604,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh010",
+    "patch_id": "patch_zh010_007_adjacent_merge",
+    "chunk_id": "patch_zh010_007_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1229,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.6,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh010_007_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.732089,
+        "coverage": 0.6
+      }
+    ]
+  },
+  {
+    "qid": "zh010",
+    "patch_id": "patch_zh010_007_contextual",
+    "chunk_id": "patch_zh010_007_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 684,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.587,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh010_007_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.737543,
+        "coverage": 0.206
+      }
+    ]
+  },
+  {
+    "qid": "zh010",
+    "patch_id": "patch_zh010_007_local_proposition",
+    "chunk_id": "patch_zh010_007_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 696,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.587,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh010_007_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.740314,
+        "coverage": 0.206
+      }
+    ]
+  },
+  {
+    "qid": "zh010",
+    "patch_id": "patch_zh010_007_local_summary",
+    "chunk_id": "patch_zh010_007_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 567,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.587,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh010_007_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.737543,
+        "coverage": 0.095
+      }
+    ]
+  },
+  {
+    "qid": "zh011",
+    "patch_id": "patch_zh011_008_adjacent_merge",
+    "chunk_id": "patch_zh011_008_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1088,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh011",
+    "patch_id": "patch_zh011_008_contextual",
+    "chunk_id": "patch_zh011_008_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 959,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh011_008_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.51516,
+        "coverage": 0.548
+      }
+    ]
+  },
+  {
+    "qid": "zh011",
+    "patch_id": "patch_zh011_008_local_proposition",
+    "chunk_id": "patch_zh011_008_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 971,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh011_008_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.524852,
+        "coverage": 0.548
+      }
+    ]
+  },
+  {
+    "qid": "zh011",
+    "patch_id": "patch_zh011_008_local_summary",
+    "chunk_id": "patch_zh011_008_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 775,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.623,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh011_008_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.51516,
+        "coverage": 0.546
+      }
+    ]
+  },
+  {
+    "qid": "zh017",
+    "patch_id": "patch_zh017_009_adjacent_merge",
+    "chunk_id": "patch_zh017_009_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1215,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.646,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh017_009_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.606119,
+        "coverage": 0.646
+      }
+    ]
+  },
+  {
+    "qid": "zh017",
+    "patch_id": "patch_zh017_009_contextual",
+    "chunk_id": "patch_zh017_009_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1139,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.644,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh017_009_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.593069,
+        "coverage": 0.644
+      }
+    ]
+  },
+  {
+    "qid": "zh017",
+    "patch_id": "patch_zh017_009_local_proposition",
+    "chunk_id": "patch_zh017_009_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 1151,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.644,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh017_009_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.598084,
+        "coverage": 0.644
+      }
+    ]
+  },
+  {
+    "qid": "zh017",
+    "patch_id": "patch_zh017_009_local_summary",
+    "chunk_id": "patch_zh017_009_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 816,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.639,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh017_009_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.593069,
+        "coverage": 0.639
+      }
+    ]
+  },
+  {
+    "qid": "zh027",
+    "patch_id": "patch_zh027_010_adjacent_merge",
+    "chunk_id": "patch_zh027_010_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1408,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.305,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh027",
+    "patch_id": "patch_zh027_010_contextual",
+    "chunk_id": "patch_zh027_010_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1180,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.305,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh027",
+    "patch_id": "patch_zh027_010_local_proposition",
+    "chunk_id": "patch_zh027_010_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 1192,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.305,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh027",
+    "patch_id": "patch_zh027_010_local_summary",
+    "chunk_id": "patch_zh027_010_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 1083,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.305,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh033",
+    "patch_id": "patch_zh033_011_adjacent_merge",
+    "chunk_id": "patch_zh033_011_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1229,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.608,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh033_011_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.750479,
+        "coverage": 0.608
+      }
+    ]
+  },
+  {
+    "qid": "zh033",
+    "patch_id": "patch_zh033_011_contextual",
+    "chunk_id": "patch_zh033_011_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1160,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.604,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh033_011_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.760855,
+        "coverage": 0.604
+      }
+    ]
+  },
+  {
+    "qid": "zh033",
+    "patch_id": "patch_zh033_011_local_proposition",
+    "chunk_id": "patch_zh033_011_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 1172,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.604,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh033_011_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.74959,
+        "coverage": 0.604
+      }
+    ]
+  },
+  {
+    "qid": "zh033",
+    "patch_id": "patch_zh033_011_local_summary",
+    "chunk_id": "patch_zh033_011_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 830,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.558,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh033_011_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.760855,
+        "coverage": 0.174
+      }
+    ]
+  },
+  {
+    "qid": "zh057",
+    "patch_id": "patch_zh057_012_adjacent_merge",
+    "chunk_id": "patch_zh057_012_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1273,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.423,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh057",
+    "patch_id": "patch_zh057_012_contextual",
+    "chunk_id": "patch_zh057_012_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1021,
+    "success": true,
+    "rank": 5,
+    "best_topk_coverage": 0.854,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh057_012_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.642847,
+        "coverage": 0.854
+      }
+    ]
+  },
+  {
+    "qid": "zh057",
+    "patch_id": "patch_zh057_012_local_proposition",
+    "chunk_id": "patch_zh057_012_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 1033,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.423,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh057",
+    "patch_id": "patch_zh057_012_local_summary",
+    "chunk_id": "patch_zh057_012_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 729,
+    "success": true,
+    "rank": 5,
+    "best_topk_coverage": 0.851,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh057_012_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.642847,
+        "coverage": 0.851
+      }
+    ]
+  },
+  {
+    "qid": "zh067",
+    "patch_id": "patch_zh067_013_adjacent_merge",
+    "chunk_id": "patch_zh067_013_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1884,
+    "success": true,
+    "rank": 3,
+    "best_topk_coverage": 0.997,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh067_013_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.6346,
+        "coverage": 0.997
+      }
+    ]
+  },
+  {
+    "qid": "zh067",
+    "patch_id": "patch_zh067_013_contextual",
+    "chunk_id": "patch_zh067_013_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 886,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.646,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh067_013_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.65148,
+        "coverage": 0.027
+      }
+    ]
+  },
+  {
+    "qid": "zh067",
+    "patch_id": "patch_zh067_013_local_proposition",
+    "chunk_id": "patch_zh067_013_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 898,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.646,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh067_013_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.639585,
+        "coverage": 0.027
+      }
+    ]
+  },
+  {
+    "qid": "zh067",
+    "patch_id": "patch_zh067_013_local_summary",
+    "chunk_id": "patch_zh067_013_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 787,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.646,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh067_013_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.65148,
+        "coverage": 0.027
+      }
+    ]
+  },
+  {
+    "qid": "zh101",
+    "patch_id": "patch_zh101_014_adjacent_merge",
+    "chunk_id": "patch_zh101_014_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1911,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.592,
+    "top_patch_hits": []
+  },
+  {
+    "qid": "zh101",
+    "patch_id": "patch_zh101_014_contextual",
+    "chunk_id": "patch_zh101_014_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1127,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.592,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh101_014_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.708011,
+        "coverage": 0.592
+      }
+    ]
+  },
+  {
+    "qid": "zh101",
+    "patch_id": "patch_zh101_014_local_proposition",
+    "chunk_id": "patch_zh101_014_local_proposition_c001",
+    "candidate_type": "local_proposition",
+    "text_len": 1139,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.592,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh101_014_local_proposition_c001",
+        "candidate_type": "local_proposition",
+        "score": 0.711409,
+        "coverage": 0.592
+      }
+    ]
+  },
+  {
+    "qid": "zh101",
+    "patch_id": "patch_zh101_014_local_summary",
+    "chunk_id": "patch_zh101_014_local_summary_c001",
+    "candidate_type": "local_summary",
+    "text_len": 800,
+    "success": false,
+    "rank": null,
+    "best_topk_coverage": 0.592,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh101_014_local_summary_c001",
+        "candidate_type": "local_summary",
+        "score": 0.708011,
+        "coverage": 0.577
+      }
+    ]
+  }
+]

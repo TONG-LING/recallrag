@@ -1,0 +1,116 @@
+[
+  {
+    "qid": "zh002",
+    "patch_id": "patch_zh002_001_adjacent_merge",
+    "chunk_id": "patch_zh002_001_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1904,
+    "success": true,
+    "rank": 1,
+    "best_topk_coverage": 0.952,
+    "top_patch_hits": [
+      {
+        "rank": 1,
+        "chunk_id": "patch_zh002_001_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.7072,
+        "coverage": 0.952
+      }
+    ]
+  },
+  {
+    "qid": "zh004",
+    "patch_id": "patch_zh004_003_contextual",
+    "chunk_id": "patch_zh004_003_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1048,
+    "success": true,
+    "rank": 2,
+    "best_topk_coverage": 0.786,
+    "top_patch_hits": [
+      {
+        "rank": 2,
+        "chunk_id": "patch_zh004_003_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.711199,
+        "coverage": 0.786
+      }
+    ]
+  },
+  {
+    "qid": "zh007",
+    "patch_id": "patch_zh007_005_adjacent_merge",
+    "chunk_id": "patch_zh007_005_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1884,
+    "success": true,
+    "rank": 4,
+    "best_topk_coverage": 0.886,
+    "top_patch_hits": [
+      {
+        "rank": 4,
+        "chunk_id": "patch_zh007_005_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.729913,
+        "coverage": 0.886
+      }
+    ]
+  },
+  {
+    "qid": "zh008",
+    "patch_id": "patch_zh008_006_adjacent_merge",
+    "chunk_id": "patch_zh008_006_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1884,
+    "success": true,
+    "rank": 5,
+    "best_topk_coverage": 0.834,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh008_006_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.561427,
+        "coverage": 0.834
+      }
+    ]
+  },
+  {
+    "qid": "zh057",
+    "patch_id": "patch_zh057_012_contextual",
+    "chunk_id": "patch_zh057_012_contextual_c001",
+    "candidate_type": "contextual",
+    "text_len": 1021,
+    "success": true,
+    "rank": 5,
+    "best_topk_coverage": 0.854,
+    "top_patch_hits": [
+      {
+        "rank": 5,
+        "chunk_id": "patch_zh057_012_contextual_c001",
+        "candidate_type": "contextual",
+        "score": 0.642847,
+        "coverage": 0.854
+      }
+    ]
+  },
+  {
+    "qid": "zh067",
+    "patch_id": "patch_zh067_013_adjacent_merge",
+    "chunk_id": "patch_zh067_013_adjacent_merge_c001",
+    "candidate_type": "adjacent_merge",
+    "text_len": 1884,
+    "success": true,
+    "rank": 3,
+    "best_topk_coverage": 0.997,
+    "top_patch_hits": [
+      {
+        "rank": 3,
+        "chunk_id": "patch_zh067_013_adjacent_merge_c001",
+        "candidate_type": "adjacent_merge",
+        "score": 0.6346,
+        "coverage": 0.997
+      }
+    ]
+  }
+]

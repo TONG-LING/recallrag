@@ -68,6 +68,8 @@ Primary benchmark files:
 - held-out queries: `case_zh_dureader_120/eval/questions_heldout.jsonl`
 - main result directories: `runs/zh120_*`
 
+The lightweight artifacts of every `zh120` run (metrics, evaluation reports, significance tests, patch decisions) are committed in `runs/zh120_*`, so the headline numbers in this README can be checked without rerunning anything. Regenerable heavyweight files (vectors, chunk dumps, per-query retrieval traces) are excluded; the overlap-mechanism analysis below reads those traces, so reproducing it requires a rerun.
+
 ### Diagnostic setting: `220/0`
 
 I still keep this setting because it explains why the patch idea existed in the first place.
@@ -83,7 +85,7 @@ I still keep this setting because it explains why the patch idea existed in the 
 | `main + patch` | 0.3417 | 0.1501 | 41 / 120 |
 | `main + patch + rerank` | 0.3250 | 0.2001 | 39 / 120 |
 
-I still keep this setting, but I would not use it as the whole story anymore.
+It is still useful for diagnosis, but it is no longer the whole story.
 
 ### Stronger chunking and neighbor-expansion baselines
 
@@ -104,7 +106,7 @@ Important takeaways from this sweep:
 - simply adding overlap did not solve the problem in this setup
 - larger chunks solved most of the recall problem
 - a simple no-validation neighbor-expansion baseline was already very strong
-- on this dataset, brute-force local context expansion can solve more recall than the patch layer does
+- on this dataset, brute-force local context expansion recovers more recall than the patch layer does
 
 So the real question became:
 
@@ -148,10 +150,10 @@ I also ran reranking on `600/0`.
 
 So even on the stronger split, reranking still helped ordering more than recall.
 
-For reference, the strongest no-validation local-context route was even more aggressive:
+For reference, the no-validation neighbor-expansion route reaches even higher recall, at a much larger context cost:
 
 - `600/0 + neighbor expansion`: Recall@5 `1.0000`, MRR `0.9153`, hits `120 / 120`
-- but it returned far more context: avg top-5 chars / query `7597.8` instead of `2942.1` for `600/0 + patch`
+- avg top-5 chars / query: `7597.8`, versus `2942.1` for `600/0 + patch`
 
 ### Held-out query check on the strongest split
 
@@ -180,7 +182,7 @@ On top of `600/0`, the patch layer fixes `6` of the `14` remaining misses. The o
 - all `8` are fixed by `600/0 + neighbor expansion`
 - none of their generated patch candidates crosses the `0.65` bar on its own
 - their best patch-candidate coverage stays in roughly the `0.305` to `0.646` range
-- once the same local window is expanded more bluntly with a same-doc `±1` merge, those cases jump to roughly `0.893` to `1.000`
+- once the same local window is expanded more bluntly with a same-doc `±1` merge, coverage at the first passing rank ranges from `0.893` to `1.000`, and the best top-5 coverage reaches `0.998` to `1.000`
 
 I would summarize those `8` misses in two buckets:
 
@@ -197,7 +199,7 @@ That means the current patch layer is not the highest-recall local-context metho
 
 ### What I would now claim
 
-- `220/0` was useful for making the problem visible, but it is not the final story.
+- `220/0` was useful for making the problem visible, but it is not the final story
 - on this dataset, larger chunks and neighbor expansion do most of the heavy lifting
 - if raw recall is the only target, neighbor expansion is stronger here
 - after those stronger baselines are already in place, a tiny validated patch layer still fixes a few cases while using much less returned context
@@ -210,6 +212,7 @@ That means the current patch layer is not the highest-recall local-context metho
 recallrag/                Core implementation
 scripts/                  Dataset and evaluation utilities
 tests/                    Unit tests
+runs/zh120_*/             Committed lightweight artifacts of the main benchmark
 case/                     Legacy English controlled case
 case_beir/                Historical benchmark material
 case_zh_dureader/         Earlier Chinese benchmark
@@ -622,6 +625,7 @@ python3 -m recallrag.cli qdrant-eval-rerank \
 
 - This project targets evidence-boundary failures, not every retrieval problem.
 - Patch helps only when there is a recoverable local evidence gap.
+- On this benchmark, every failure is recoverable within a same-doc `±1` window by construction: the gold evidence is a contiguous `380`-to-`1400`-char span. That is why neighbor expansion can reach `120 / 120` here. Real corpora also contain non-local failures (evidence spread across distant sections or documents), where blunt local expansion stops working but the diagnose-then-validate loop still applies.
 - The held-out check is query-held-out, not document-held-out.
 - Online Qdrant serving is supported, but patch selection is still an offline validation step.
 - The primary conclusion should come from `case_zh_dureader_120/` and `runs/zh120_*`.

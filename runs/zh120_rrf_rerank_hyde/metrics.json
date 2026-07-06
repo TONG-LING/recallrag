@@ -1,0 +1,19 @@
+{
+  "total": 120,
+  "fusion_recall@5": 0.09166666666666666,
+  "recall@5": 0.125,
+  "fusion_mrr": 0.041666666666666664,
+  "mrr": 0.07388888888888889,
+  "fusion_hits_before_rerank": 11,
+  "hits": 15,
+  "failed": 105,
+  "rerank_fixed": 5,
+  "rerank_improved": 11,
+  "dense_k": 20,
+  "bm25_k": 20,
+  "candidate_k": 20,
+  "rrf_k": 60,
+  "coverage_threshold": 0.65,
+  "hyde_enabled": true,
+  "hyde_model": "deepseek-v4-flash"
+}

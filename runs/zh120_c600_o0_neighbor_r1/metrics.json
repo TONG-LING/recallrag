@@ -1,0 +1,16 @@
+{
+  "total": 120,
+  "dense_recall@5": 0.8833333333333333,
+  "recall@5": 1.0,
+  "dense_mrr": 0.5508333333333334,
+  "mrr": 0.9152777777777776,
+  "dense_hits_before_expansion": 106,
+  "hits": 120,
+  "failed": 0,
+  "fixed_by_expansion": 14,
+  "coverage_threshold": 0.65,
+  "neighbor_radius": 1,
+  "avg_top5_total_chars": 7597.783333333334,
+  "avg_top5_chars_per_item": 1519.5566666666668,
+  "avg_top5_merged_chunks": 2.601666666666666
+}

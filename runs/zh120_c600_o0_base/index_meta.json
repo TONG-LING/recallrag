@@ -1,0 +1,9 @@
+{
+  "endpoint": "http://localhost:1234/v1/embeddings",
+  "model": "text-embedding-bge-large-zh-v1.5",
+  "count": 634,
+  "dim": 1024,
+  "chunk_size": 600,
+  "overlap": 0,
+  "keep_heading": true
+}

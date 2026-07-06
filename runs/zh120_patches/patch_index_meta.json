@@ -1,0 +1,13 @@
+{
+  "endpoint": "http://localhost:1234/v1/embeddings",
+  "model": "text-embedding-bge-large-zh-v1.5",
+  "count": 412,
+  "dim": 1024,
+  "main_index": "runs/zh120_base",
+  "candidate_search": [
+    "adjacent_merge",
+    "contextual",
+    "local_proposition",
+    "local_summary"
+  ]
+}

@@ -1,0 +1,1098 @@
+[
+  {
+    "patch_id": "patch_zh002_001_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh002",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh002_001_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh002",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh002_001_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh002",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh002_001_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh002",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh003_002_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh003",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh003_002_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh003",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh003_002_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh003",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh003_002_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh003",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh004_003_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh004",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh004_003_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh004",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh004_003_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh004",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh004_003_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh004",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh006_004_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh006",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh006_004_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh006",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh006_004_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh006",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh006_004_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh006",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh007_005_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh007",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh007_005_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh007",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh007_005_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh007",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh007_005_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh007",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh008_006_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh008",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh008_006_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh008",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh008_006_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh008",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh008_006_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh008",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh010_007_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh010",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh010_007_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh010",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh010_007_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh010",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh010_007_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh010",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh011_008_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh011",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh011_008_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh011",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh011_008_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh011",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh011_008_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh011",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh017_009_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh017",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh017_009_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh017",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh017_009_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh017",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh017_009_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh017",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh027_010_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh027",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh027_010_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh027",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh027_010_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh027",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh027_010_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh027",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh033_011_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh033",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh033_011_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh033",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh033_011_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh033",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh033_011_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh033",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh057_012_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh057",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh057_012_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh057",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh057_012_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh057",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh057_012_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh057",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh067_013_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh067",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh067_013_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh067",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh067_013_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh067",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh067_013_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh067",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh101_014_adjacent_merge",
+    "status": "candidate_materialized",
+    "qid": "zh101",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh101_014_contextual",
+    "status": "candidate_materialized",
+    "qid": "zh101",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh101_014_local_proposition",
+    "status": "candidate_materialized",
+    "qid": "zh101",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  },
+  {
+    "patch_id": "patch_zh101_014_local_summary",
+    "status": "candidate_materialized",
+    "qid": "zh101",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation."
+  }
+]

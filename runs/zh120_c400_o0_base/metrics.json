@@ -1,0 +1,8 @@
+{
+  "total": 120,
+  "recall@5": 0.575,
+  "mrr": 0.3279166666666667,
+  "hits": 69,
+  "failed": 51,
+  "coverage_threshold": 0.65
+}

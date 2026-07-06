@@ -1,0 +1,402 @@
+[
+  {
+    "qid": "zh002",
+    "question": "空气净化器哪种净化方式好",
+    "gold_doc": "zh_doc_002.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_002.md::c0002",
+      "anchor_doc_id": "zh_doc_002.md",
+      "anchor_section_path": "中文复杂检索文档 > 关",
+      "anchor_rank_in_trace": 1,
+      "anchor_query_overlap": 0.7,
+      "anchor_localization_score": 0.73,
+      "candidate_window_chunk_ids": [
+        "zh_doc_002.md::c0001",
+        "zh_doc_002.md::c0002",
+        "zh_doc_002.md::c0003"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh003",
+    "question": "黄山风景古诗赞",
+    "gold_doc": "zh_doc_003.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_003.md::c0003",
+      "anchor_doc_id": "zh_doc_003.md",
+      "anchor_section_path": "中文复杂检索文档 > 关键材料",
+      "anchor_rank_in_trace": 1,
+      "anchor_query_overlap": 0.5,
+      "anchor_localization_score": 0.55,
+      "candidate_window_chunk_ids": [
+        "zh_doc_003.md::c0002",
+        "zh_doc_003.md::c0003",
+        "zh_doc_003.md::c0004"
+      ],
+      "topk_same_doc_count": 4,
+      "topk_same_section_count": 3
+    }
+  },
+  {
+    "qid": "zh004",
+    "question": "一天放很多屁",
+    "gold_doc": "zh_doc_004.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_004.md::c0007",
+      "anchor_doc_id": "zh_doc_004.md",
+      "anchor_section_path": "中文复杂检索文档 > 背景材料2",
+      "anchor_rank_in_trace": 5,
+      "anchor_query_overlap": 0.6,
+      "anchor_localization_score": 0.56,
+      "candidate_window_chunk_ids": [
+        "zh_doc_004.md::c0006",
+        "zh_doc_004.md::c0007",
+        "zh_doc_004.md::c0008"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh006",
+    "question": "春光成语",
+    "gold_doc": "zh_doc_006.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_006.md::c0000",
+      "anchor_doc_id": "zh_doc_006.md",
+      "anchor_section_path": "",
+      "anchor_rank_in_trace": 3,
+      "anchor_query_overlap": 1.0,
+      "anchor_localization_score": 0.933,
+      "candidate_window_chunk_ids": [
+        "zh_doc_006.md::c0000",
+        "zh_doc_006.md::c0001"
+      ],
+      "topk_same_doc_count": 4,
+      "topk_same_section_count": 0
+    }
+  },
+  {
+    "qid": "zh007",
+    "question": "经常用肥皂洗脸好吗",
+    "gold_doc": "zh_doc_007.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_007.md::c0001",
+      "anchor_doc_id": "zh_doc_007.md",
+      "anchor_section_path": "中文复杂检索文档 > 背景材料2",
+      "anchor_rank_in_trace": 2,
+      "anchor_query_overlap": 1.0,
+      "anchor_localization_score": 0.95,
+      "candidate_window_chunk_ids": [
+        "zh_doc_007.md::c0000",
+        "zh_doc_007.md::c0001",
+        "zh_doc_007.md::c0002"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh008",
+    "question": "冬天怎样养鹦鹉",
+    "gold_doc": "zh_doc_008.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_008.md::c0001",
+      "anchor_doc_id": "zh_doc_008.md",
+      "anchor_section_path": "中文复杂检索文档 > 背景材料1",
+      "anchor_rank_in_trace": 1,
+      "anchor_query_overlap": 0.5,
+      "anchor_localization_score": 0.55,
+      "candidate_window_chunk_ids": [
+        "zh_doc_008.md::c0000",
+        "zh_doc_008.md::c0001",
+        "zh_doc_008.md::c0002"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh010",
+    "question": "硫磺皂能长期用吗",
+    "gold_doc": "zh_doc_010.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_010.md::c0000",
+      "anchor_doc_id": "zh_doc_010.md",
+      "anchor_section_path": "",
+      "anchor_rank_in_trace": 2,
+      "anchor_query_overlap": 0.857,
+      "anchor_localization_score": 0.821,
+      "candidate_window_chunk_ids": [
+        "zh_doc_010.md::c0000",
+        "zh_doc_010.md::c0001"
+      ],
+      "topk_same_doc_count": 3,
+      "topk_same_section_count": 0
+    }
+  },
+  {
+    "qid": "zh011",
+    "question": "比较好看的电视剧",
+    "gold_doc": "zh_doc_011.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_011.md::c0003",
+      "anchor_doc_id": "zh_doc_011.md",
+      "anchor_section_path": "中文复杂检索文档 > 补充材料1",
+      "anchor_rank_in_trace": 1,
+      "anchor_query_overlap": 0.714,
+      "anchor_localization_score": 0.743,
+      "candidate_window_chunk_ids": [
+        "zh_doc_011.md::c0002",
+        "zh_doc_011.md::c0003"
+      ],
+      "topk_same_doc_count": 4,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh017",
+    "question": "阴部变白",
+    "gold_doc": "zh_doc_017.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_017.md::c0003",
+      "anchor_doc_id": "zh_doc_017.md",
+      "anchor_section_path": "中文复杂检索文档 > 补充材料1",
+      "anchor_rank_in_trace": 3,
+      "anchor_query_overlap": 1.0,
+      "anchor_localization_score": 0.933,
+      "candidate_window_chunk_ids": [
+        "zh_doc_017.md::c0002",
+        "zh_doc_017.md::c0003"
+      ],
+      "topk_same_doc_count": 4,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh027",
+    "question": "小米平板钢化膜怎么贴",
+    "gold_doc": "zh_doc_027.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_027.md::c0003",
+      "anchor_doc_id": "zh_doc_027.md",
+      "anchor_section_path": "中文复杂检索文档 > 关键材料",
+      "anchor_rank_in_trace": 1,
+      "anchor_query_overlap": 0.889,
+      "anchor_localization_score": 0.9,
+      "candidate_window_chunk_ids": [
+        "zh_doc_027.md::c0002",
+        "zh_doc_027.md::c0003",
+        "zh_doc_027.md::c0004"
+      ],
+      "topk_same_doc_count": 3,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh033",
+    "question": "电暖桌哪个牌子好",
+    "gold_doc": "zh_doc_033.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_033.md::c0000",
+      "anchor_doc_id": "zh_doc_033.md",
+      "anchor_section_path": "",
+      "anchor_rank_in_trace": 4,
+      "anchor_query_overlap": 0.857,
+      "anchor_localization_score": 0.796,
+      "candidate_window_chunk_ids": [
+        "zh_doc_033.md::c0000",
+        "zh_doc_033.md::c0001"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 0
+    }
+  },
+  {
+    "qid": "zh057",
+    "question": "word怎么不能修改",
+    "gold_doc": "zh_doc_057.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_057.md::c0007",
+      "anchor_doc_id": "zh_doc_057.md",
+      "anchor_section_path": "中文复杂检索文档 > 补充材料1",
+      "anchor_rank_in_trace": 2,
+      "anchor_query_overlap": 0.833,
+      "anchor_localization_score": 0.8,
+      "candidate_window_chunk_ids": [
+        "zh_doc_057.md::c0006",
+        "zh_doc_057.md::c0007"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh067",
+    "question": "武松属什么",
+    "gold_doc": "zh_doc_067.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_067.md::c0001",
+      "anchor_doc_id": "zh_doc_067.md",
+      "anchor_section_path": "中文复杂检索文档 > 背景材料2",
+      "anchor_rank_in_trace": 1,
+      "anchor_query_overlap": 0.75,
+      "anchor_localization_score": 0.775,
+      "candidate_window_chunk_ids": [
+        "zh_doc_067.md::c0000",
+        "zh_doc_067.md::c0001",
+        "zh_doc_067.md::c0002"
+      ],
+      "topk_same_doc_count": 4,
+      "topk_same_section_count": 1
+    }
+  },
+  {
+    "qid": "zh101",
+    "question": "小米的平板好用吗",
+    "gold_doc": "zh_doc_101.md",
+    "gold_section": "关键材料",
+    "expected_failure_type": "zh_long_span_boundary_candidate",
+    "diagnosed_failure_type": "missing_local_context_candidate",
+    "failure_family": "chunking_failure_candidate",
+    "patch_allowed": true,
+    "confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "recommendation": "generate_local_proposition_patch_candidates_and_validate",
+    "evidence": {
+      "localization_mode": "production_near_miss_trace",
+      "anchor_chunk_id": "zh_doc_101.md::c0004",
+      "anchor_doc_id": "zh_doc_101.md",
+      "anchor_section_path": "中文复杂检索文档 > 关键材料",
+      "anchor_rank_in_trace": 2,
+      "anchor_query_overlap": 0.571,
+      "anchor_localization_score": 0.564,
+      "candidate_window_chunk_ids": [
+        "zh_doc_101.md::c0003",
+        "zh_doc_101.md::c0004",
+        "zh_doc_101.md::c0005"
+      ],
+      "topk_same_doc_count": 5,
+      "topk_same_section_count": 1
+    }
+  }
+]

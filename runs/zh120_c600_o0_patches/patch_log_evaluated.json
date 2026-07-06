@@ -1,0 +1,2354 @@
+[
+  {
+    "patch_id": "patch_zh002_001_adjacent_merge",
+    "status": "accepted",
+    "qid": "zh002",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "source query fixed and no regression detected",
+    "candidate_probe": {
+      "qid": "zh002",
+      "patch_id": "patch_zh002_001_adjacent_merge",
+      "chunk_id": "patch_zh002_001_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1904,
+      "success": true,
+      "rank": 1,
+      "best_topk_coverage": 0.952,
+      "top_patch_hits": [
+        {
+          "rank": 1,
+          "chunk_id": "patch_zh002_001_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.7072,
+          "coverage": 0.952
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 1,
+    "before_best_coverage": 0.578,
+    "after_best_coverage": 0.952
+  },
+  {
+    "patch_id": "patch_zh002_001_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh002",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh002",
+      "patch_id": "patch_zh002_001_contextual",
+      "chunk_id": "patch_zh002_001_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 420,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.566,
+      "top_patch_hits": [
+        {
+          "rank": 1,
+          "chunk_id": "patch_zh002_001_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.734102,
+          "coverage": 0.264
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 1,
+    "before_best_coverage": 0.578,
+    "after_best_coverage": 0.952
+  },
+  {
+    "patch_id": "patch_zh002_001_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh002",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh002",
+      "patch_id": "patch_zh002_001_local_proposition",
+      "chunk_id": "patch_zh002_001_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 432,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.566,
+      "top_patch_hits": [
+        {
+          "rank": 1,
+          "chunk_id": "patch_zh002_001_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.73549,
+          "coverage": 0.264
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 1,
+    "before_best_coverage": 0.578,
+    "after_best_coverage": 0.952
+  },
+  {
+    "patch_id": "patch_zh002_001_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh002",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_002.md::c0002` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_002.md::c0002",
+    "affected_main_chunks": [
+      "zh_doc_002.md::c0001",
+      "zh_doc_002.md::c0002",
+      "zh_doc_002.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh002_001_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh002",
+      "patch_id": "patch_zh002_001_local_summary",
+      "chunk_id": "patch_zh002_001_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 293,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.566,
+      "top_patch_hits": [
+        {
+          "rank": 1,
+          "chunk_id": "patch_zh002_001_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.718725,
+          "coverage": 0.158
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 1,
+    "before_best_coverage": 0.578,
+    "after_best_coverage": 0.952
+  },
+  {
+    "patch_id": "patch_zh003_002_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh003",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh003",
+      "patch_id": "patch_zh003_002_adjacent_merge",
+      "chunk_id": "patch_zh003_002_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1350,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.637,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh003_002_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.606047,
+          "coverage": 0.637
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.511,
+    "after_best_coverage": 0.511
+  },
+  {
+    "patch_id": "patch_zh003_002_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh003",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh003",
+      "patch_id": "patch_zh003_002_contextual",
+      "chunk_id": "patch_zh003_002_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 803,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.517,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh003_002_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.597233,
+          "coverage": 0.517
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.511,
+    "after_best_coverage": 0.511
+  },
+  {
+    "patch_id": "patch_zh003_002_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh003",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh003",
+      "patch_id": "patch_zh003_002_local_proposition",
+      "chunk_id": "patch_zh003_002_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 815,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.517,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh003_002_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.592401,
+          "coverage": 0.517
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.511,
+    "after_best_coverage": 0.511
+  },
+  {
+    "patch_id": "patch_zh003_002_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh003",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_003.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_003.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_003.md::c0002",
+      "zh_doc_003.md::c0003",
+      "zh_doc_003.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh003_002_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh003",
+      "patch_id": "patch_zh003_002_local_summary",
+      "chunk_id": "patch_zh003_002_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 784,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.517,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh003_002_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.597233,
+          "coverage": 0.517
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.511,
+    "after_best_coverage": 0.511
+  },
+  {
+    "patch_id": "patch_zh004_003_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh004",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh004",
+      "patch_id": "patch_zh004_003_adjacent_merge",
+      "chunk_id": "patch_zh004_003_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1912,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.576,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": 2,
+    "before_best_coverage": 0.576,
+    "after_best_coverage": 0.786
+  },
+  {
+    "patch_id": "patch_zh004_003_contextual",
+    "status": "accepted",
+    "qid": "zh004",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "source query fixed and no regression detected",
+    "candidate_probe": {
+      "qid": "zh004",
+      "patch_id": "patch_zh004_003_contextual",
+      "chunk_id": "patch_zh004_003_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 1048,
+      "success": true,
+      "rank": 2,
+      "best_topk_coverage": 0.786,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh004_003_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.711199,
+          "coverage": 0.786
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 2,
+    "before_best_coverage": 0.576,
+    "after_best_coverage": 0.786
+  },
+  {
+    "patch_id": "patch_zh004_003_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh004",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh004",
+      "patch_id": "patch_zh004_003_local_proposition",
+      "chunk_id": "patch_zh004_003_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 1060,
+      "success": true,
+      "rank": 2,
+      "best_topk_coverage": 0.786,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh004_003_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.713576,
+          "coverage": 0.786
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 2,
+    "before_best_coverage": 0.576,
+    "after_best_coverage": 0.786
+  },
+  {
+    "patch_id": "patch_zh004_003_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh004",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_004.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_004.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_004.md::c0006",
+      "zh_doc_004.md::c0007",
+      "zh_doc_004.md::c0008"
+    ],
+    "created_patch_chunks": [
+      "patch_zh004_003_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh004",
+      "patch_id": "patch_zh004_003_local_summary",
+      "chunk_id": "patch_zh004_003_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 447,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.576,
+      "top_patch_hits": [
+        {
+          "rank": 1,
+          "chunk_id": "patch_zh004_003_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.72231,
+          "coverage": 0.378
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 2,
+    "before_best_coverage": 0.576,
+    "after_best_coverage": 0.786
+  },
+  {
+    "patch_id": "patch_zh006_004_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh006",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh006",
+      "patch_id": "patch_zh006_004_adjacent_merge",
+      "chunk_id": "patch_zh006_004_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1229,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.612,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh006_004_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.6565,
+          "coverage": 0.612
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.605,
+    "after_best_coverage": 0.605
+  },
+  {
+    "patch_id": "patch_zh006_004_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh006",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh006",
+      "patch_id": "patch_zh006_004_contextual",
+      "chunk_id": "patch_zh006_004_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 667,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.605,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh006_004_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.647268,
+          "coverage": 0.279
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.605,
+    "after_best_coverage": 0.605
+  },
+  {
+    "patch_id": "patch_zh006_004_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh006",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh006",
+      "patch_id": "patch_zh006_004_local_proposition",
+      "chunk_id": "patch_zh006_004_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 679,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.605,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh006_004_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.645854,
+          "coverage": 0.279
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.605,
+    "after_best_coverage": 0.605
+  },
+  {
+    "patch_id": "patch_zh006_004_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh006",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_006.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_006.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_006.md::c0000",
+      "zh_doc_006.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh006_004_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh006",
+      "patch_id": "patch_zh006_004_local_summary",
+      "chunk_id": "patch_zh006_004_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 625,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.605,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh006_004_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.647268,
+          "coverage": 0.248
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.605,
+    "after_best_coverage": 0.605
+  },
+  {
+    "patch_id": "patch_zh007_005_adjacent_merge",
+    "status": "accepted",
+    "qid": "zh007",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "source query fixed and no regression detected",
+    "candidate_probe": {
+      "qid": "zh007",
+      "patch_id": "patch_zh007_005_adjacent_merge",
+      "chunk_id": "patch_zh007_005_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1884,
+      "success": true,
+      "rank": 4,
+      "best_topk_coverage": 0.886,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh007_005_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.729913,
+          "coverage": 0.886
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 4,
+    "before_best_coverage": 0.648,
+    "after_best_coverage": 0.886
+  },
+  {
+    "patch_id": "patch_zh007_005_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh007",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh007",
+      "patch_id": "patch_zh007_005_contextual",
+      "chunk_id": "patch_zh007_005_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 537,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.648,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh007_005_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.749028,
+          "coverage": 0.21
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 4,
+    "before_best_coverage": 0.648,
+    "after_best_coverage": 0.886
+  },
+  {
+    "patch_id": "patch_zh007_005_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh007",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh007",
+      "patch_id": "patch_zh007_005_local_proposition",
+      "chunk_id": "patch_zh007_005_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 549,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.648,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh007_005_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.74976,
+          "coverage": 0.21
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 4,
+    "before_best_coverage": 0.648,
+    "after_best_coverage": 0.886
+  },
+  {
+    "patch_id": "patch_zh007_005_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh007",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_007.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_007.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_007.md::c0000",
+      "zh_doc_007.md::c0001",
+      "zh_doc_007.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh007_005_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh007",
+      "patch_id": "patch_zh007_005_local_summary",
+      "chunk_id": "patch_zh007_005_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 281,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.648,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh007_005_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.757538,
+          "coverage": 0.133
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 4,
+    "before_best_coverage": 0.648,
+    "after_best_coverage": 0.886
+  },
+  {
+    "patch_id": "patch_zh008_006_adjacent_merge",
+    "status": "accepted",
+    "qid": "zh008",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "source query fixed and no regression detected",
+    "candidate_probe": {
+      "qid": "zh008",
+      "patch_id": "patch_zh008_006_adjacent_merge",
+      "chunk_id": "patch_zh008_006_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1884,
+      "success": true,
+      "rank": 5,
+      "best_topk_coverage": 0.834,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh008_006_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.561427,
+          "coverage": 0.834
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.834
+  },
+  {
+    "patch_id": "patch_zh008_006_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh008",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh008",
+      "patch_id": "patch_zh008_006_contextual",
+      "chunk_id": "patch_zh008_006_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 884,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.834
+  },
+  {
+    "patch_id": "patch_zh008_006_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh008",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh008",
+      "patch_id": "patch_zh008_006_local_proposition",
+      "chunk_id": "patch_zh008_006_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 896,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh008_006_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.557271,
+          "coverage": 0.098
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.834
+  },
+  {
+    "patch_id": "patch_zh008_006_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh008",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_008.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_008.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_008.md::c0000",
+      "zh_doc_008.md::c0001",
+      "zh_doc_008.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh008_006_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh008",
+      "patch_id": "patch_zh008_006_local_summary",
+      "chunk_id": "patch_zh008_006_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 604,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.834
+  },
+  {
+    "patch_id": "patch_zh010_007_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh010",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh010",
+      "patch_id": "patch_zh010_007_adjacent_merge",
+      "chunk_id": "patch_zh010_007_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1229,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.6,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh010_007_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.732089,
+          "coverage": 0.6
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.587,
+    "after_best_coverage": 0.587
+  },
+  {
+    "patch_id": "patch_zh010_007_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh010",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh010",
+      "patch_id": "patch_zh010_007_contextual",
+      "chunk_id": "patch_zh010_007_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 684,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.587,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh010_007_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.737543,
+          "coverage": 0.206
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.587,
+    "after_best_coverage": 0.587
+  },
+  {
+    "patch_id": "patch_zh010_007_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh010",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh010",
+      "patch_id": "patch_zh010_007_local_proposition",
+      "chunk_id": "patch_zh010_007_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 696,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.587,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh010_007_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.740314,
+          "coverage": 0.206
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.587,
+    "after_best_coverage": 0.587
+  },
+  {
+    "patch_id": "patch_zh010_007_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh010",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_010.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_010.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_010.md::c0000",
+      "zh_doc_010.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh010_007_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh010",
+      "patch_id": "patch_zh010_007_local_summary",
+      "chunk_id": "patch_zh010_007_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 567,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.587,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh010_007_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.737543,
+          "coverage": 0.095
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.587,
+    "after_best_coverage": 0.587
+  },
+  {
+    "patch_id": "patch_zh011_008_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh011",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh011",
+      "patch_id": "patch_zh011_008_adjacent_merge",
+      "chunk_id": "patch_zh011_008_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1088,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.623
+  },
+  {
+    "patch_id": "patch_zh011_008_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh011",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh011",
+      "patch_id": "patch_zh011_008_contextual",
+      "chunk_id": "patch_zh011_008_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 959,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh011_008_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.51516,
+          "coverage": 0.548
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.623
+  },
+  {
+    "patch_id": "patch_zh011_008_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh011",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh011",
+      "patch_id": "patch_zh011_008_local_proposition",
+      "chunk_id": "patch_zh011_008_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 971,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh011_008_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.524852,
+          "coverage": 0.548
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.623
+  },
+  {
+    "patch_id": "patch_zh011_008_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh011",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_011.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_011.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_011.md::c0002",
+      "zh_doc_011.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh011_008_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh011",
+      "patch_id": "patch_zh011_008_local_summary",
+      "chunk_id": "patch_zh011_008_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 775,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.623,
+      "top_patch_hits": [
+        {
+          "rank": 4,
+          "chunk_id": "patch_zh011_008_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.51516,
+          "coverage": 0.546
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.623,
+    "after_best_coverage": 0.623
+  },
+  {
+    "patch_id": "patch_zh017_009_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh017",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh017",
+      "patch_id": "patch_zh017_009_adjacent_merge",
+      "chunk_id": "patch_zh017_009_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1215,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.646,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh017_009_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.606119,
+          "coverage": 0.646
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.629,
+    "after_best_coverage": 0.629
+  },
+  {
+    "patch_id": "patch_zh017_009_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh017",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh017",
+      "patch_id": "patch_zh017_009_contextual",
+      "chunk_id": "patch_zh017_009_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 1139,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.644,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh017_009_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.593069,
+          "coverage": 0.644
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.629,
+    "after_best_coverage": 0.629
+  },
+  {
+    "patch_id": "patch_zh017_009_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh017",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh017",
+      "patch_id": "patch_zh017_009_local_proposition",
+      "chunk_id": "patch_zh017_009_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 1151,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.644,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh017_009_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.598084,
+          "coverage": 0.644
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.629,
+    "after_best_coverage": 0.629
+  },
+  {
+    "patch_id": "patch_zh017_009_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh017",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_017.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_017.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_017.md::c0002",
+      "zh_doc_017.md::c0003"
+    ],
+    "created_patch_chunks": [
+      "patch_zh017_009_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh017",
+      "patch_id": "patch_zh017_009_local_summary",
+      "chunk_id": "patch_zh017_009_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 816,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.639,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh017_009_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.593069,
+          "coverage": 0.639
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.629,
+    "after_best_coverage": 0.629
+  },
+  {
+    "patch_id": "patch_zh027_010_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh027",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh027",
+      "patch_id": "patch_zh027_010_adjacent_merge",
+      "chunk_id": "patch_zh027_010_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1408,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.305,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.305,
+    "after_best_coverage": 0.305
+  },
+  {
+    "patch_id": "patch_zh027_010_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh027",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh027",
+      "patch_id": "patch_zh027_010_contextual",
+      "chunk_id": "patch_zh027_010_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 1180,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.305,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.305,
+    "after_best_coverage": 0.305
+  },
+  {
+    "patch_id": "patch_zh027_010_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh027",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh027",
+      "patch_id": "patch_zh027_010_local_proposition",
+      "chunk_id": "patch_zh027_010_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 1192,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.305,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.305,
+    "after_best_coverage": 0.305
+  },
+  {
+    "patch_id": "patch_zh027_010_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh027",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_027.md::c0003` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_027.md::c0003",
+    "affected_main_chunks": [
+      "zh_doc_027.md::c0002",
+      "zh_doc_027.md::c0003",
+      "zh_doc_027.md::c0004"
+    ],
+    "created_patch_chunks": [
+      "patch_zh027_010_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh027",
+      "patch_id": "patch_zh027_010_local_summary",
+      "chunk_id": "patch_zh027_010_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 1083,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.305,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.305,
+    "after_best_coverage": 0.305
+  },
+  {
+    "patch_id": "patch_zh033_011_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh033",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh033",
+      "patch_id": "patch_zh033_011_adjacent_merge",
+      "chunk_id": "patch_zh033_011_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1229,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.608,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh033_011_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.750479,
+          "coverage": 0.608
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.574,
+    "after_best_coverage": 0.574
+  },
+  {
+    "patch_id": "patch_zh033_011_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh033",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh033",
+      "patch_id": "patch_zh033_011_contextual",
+      "chunk_id": "patch_zh033_011_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 1160,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.604,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh033_011_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.760855,
+          "coverage": 0.604
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.574,
+    "after_best_coverage": 0.574
+  },
+  {
+    "patch_id": "patch_zh033_011_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh033",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh033",
+      "patch_id": "patch_zh033_011_local_proposition",
+      "chunk_id": "patch_zh033_011_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 1172,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.604,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh033_011_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.74959,
+          "coverage": 0.604
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.574,
+    "after_best_coverage": 0.574
+  },
+  {
+    "patch_id": "patch_zh033_011_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh033",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_033.md::c0000` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_033.md::c0000",
+    "affected_main_chunks": [
+      "zh_doc_033.md::c0000",
+      "zh_doc_033.md::c0001"
+    ],
+    "created_patch_chunks": [
+      "patch_zh033_011_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh033",
+      "patch_id": "patch_zh033_011_local_summary",
+      "chunk_id": "patch_zh033_011_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 830,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.558,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh033_011_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.760855,
+          "coverage": 0.174
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.574,
+    "after_best_coverage": 0.574
+  },
+  {
+    "patch_id": "patch_zh057_012_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh057",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh057",
+      "patch_id": "patch_zh057_012_adjacent_merge",
+      "chunk_id": "patch_zh057_012_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1273,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.423,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.423,
+    "after_best_coverage": 0.854
+  },
+  {
+    "patch_id": "patch_zh057_012_contextual",
+    "status": "accepted",
+    "qid": "zh057",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "source query fixed and no regression detected",
+    "candidate_probe": {
+      "qid": "zh057",
+      "patch_id": "patch_zh057_012_contextual",
+      "chunk_id": "patch_zh057_012_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 1021,
+      "success": true,
+      "rank": 5,
+      "best_topk_coverage": 0.854,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh057_012_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.642847,
+          "coverage": 0.854
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.423,
+    "after_best_coverage": 0.854
+  },
+  {
+    "patch_id": "patch_zh057_012_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh057",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh057",
+      "patch_id": "patch_zh057_012_local_proposition",
+      "chunk_id": "patch_zh057_012_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 1033,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.423,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.423,
+    "after_best_coverage": 0.854
+  },
+  {
+    "patch_id": "patch_zh057_012_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh057",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_057.md::c0007` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_057.md::c0007",
+    "affected_main_chunks": [
+      "zh_doc_057.md::c0006",
+      "zh_doc_057.md::c0007"
+    ],
+    "created_patch_chunks": [
+      "patch_zh057_012_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh057",
+      "patch_id": "patch_zh057_012_local_summary",
+      "chunk_id": "patch_zh057_012_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 729,
+      "success": true,
+      "rank": 5,
+      "best_topk_coverage": 0.851,
+      "top_patch_hits": [
+        {
+          "rank": 5,
+          "chunk_id": "patch_zh057_012_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.642847,
+          "coverage": 0.851
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 5,
+    "before_best_coverage": 0.423,
+    "after_best_coverage": 0.854
+  },
+  {
+    "patch_id": "patch_zh067_013_adjacent_merge",
+    "status": "accepted",
+    "qid": "zh067",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "source query fixed and no regression detected",
+    "candidate_probe": {
+      "qid": "zh067",
+      "patch_id": "patch_zh067_013_adjacent_merge",
+      "chunk_id": "patch_zh067_013_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1884,
+      "success": true,
+      "rank": 3,
+      "best_topk_coverage": 0.997,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh067_013_adjacent_merge_c001",
+          "candidate_type": "adjacent_merge",
+          "score": 0.6346,
+          "coverage": 0.997
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 3,
+    "before_best_coverage": 0.646,
+    "after_best_coverage": 0.997
+  },
+  {
+    "patch_id": "patch_zh067_013_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh067",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh067",
+      "patch_id": "patch_zh067_013_contextual",
+      "chunk_id": "patch_zh067_013_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 886,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.646,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh067_013_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.65148,
+          "coverage": 0.027
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 3,
+    "before_best_coverage": 0.646,
+    "after_best_coverage": 0.997
+  },
+  {
+    "patch_id": "patch_zh067_013_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh067",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh067",
+      "patch_id": "patch_zh067_013_local_proposition",
+      "chunk_id": "patch_zh067_013_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 898,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.646,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh067_013_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.639585,
+          "coverage": 0.027
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 3,
+    "before_best_coverage": 0.646,
+    "after_best_coverage": 0.997
+  },
+  {
+    "patch_id": "patch_zh067_013_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh067",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_067.md::c0001` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_067.md::c0001",
+    "affected_main_chunks": [
+      "zh_doc_067.md::c0000",
+      "zh_doc_067.md::c0001",
+      "zh_doc_067.md::c0002"
+    ],
+    "created_patch_chunks": [
+      "patch_zh067_013_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh067",
+      "patch_id": "patch_zh067_013_local_summary",
+      "chunk_id": "patch_zh067_013_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 787,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.646,
+      "top_patch_hits": [
+        {
+          "rank": 2,
+          "chunk_id": "patch_zh067_013_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.65148,
+          "coverage": 0.027
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": 3,
+    "before_best_coverage": 0.646,
+    "after_best_coverage": 0.997
+  },
+  {
+    "patch_id": "patch_zh101_014_adjacent_merge",
+    "status": "candidate_not_selected",
+    "qid": "zh101",
+    "candidate_type": "adjacent_merge",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_adjacent_merge_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh101",
+      "patch_id": "patch_zh101_014_adjacent_merge",
+      "chunk_id": "patch_zh101_014_adjacent_merge_c001",
+      "candidate_type": "adjacent_merge",
+      "text_len": 1911,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.592,
+      "top_patch_hits": []
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.592,
+    "after_best_coverage": 0.592
+  },
+  {
+    "patch_id": "patch_zh101_014_contextual",
+    "status": "candidate_not_selected",
+    "qid": "zh101",
+    "candidate_type": "contextual",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_contextual_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh101",
+      "patch_id": "patch_zh101_014_contextual",
+      "chunk_id": "patch_zh101_014_contextual_c001",
+      "candidate_type": "contextual",
+      "text_len": 1127,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.592,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh101_014_contextual_c001",
+          "candidate_type": "contextual",
+          "score": 0.708011,
+          "coverage": 0.592
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.592,
+    "after_best_coverage": 0.592
+  },
+  {
+    "patch_id": "patch_zh101_014_local_proposition",
+    "status": "candidate_not_selected",
+    "qid": "zh101",
+    "candidate_type": "local_proposition",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_local_proposition_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh101",
+      "patch_id": "patch_zh101_014_local_proposition",
+      "chunk_id": "patch_zh101_014_local_proposition_c001",
+      "candidate_type": "local_proposition",
+      "text_len": 1139,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.592,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh101_014_local_proposition_c001",
+          "candidate_type": "local_proposition",
+          "score": 0.711409,
+          "coverage": 0.592
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.592,
+    "after_best_coverage": 0.592
+  },
+  {
+    "patch_id": "patch_zh101_014_local_summary",
+    "status": "candidate_not_selected",
+    "qid": "zh101",
+    "candidate_type": "local_summary",
+    "failure_type": "missing_local_context_candidate",
+    "diagnosis_confidence": 0.82,
+    "reason": "failed query has near-miss retrieval evidence; localized a candidate window around `zh_doc_101.md::c0004` without using gold labels",
+    "strategy": "failure_driven_local_proposition_patch_search",
+    "anchor_chunk_id": "zh_doc_101.md::c0004",
+    "affected_main_chunks": [
+      "zh_doc_101.md::c0003",
+      "zh_doc_101.md::c0004",
+      "zh_doc_101.md::c0005"
+    ],
+    "created_patch_chunks": [
+      "patch_zh101_014_local_summary_c001"
+    ],
+    "notes": "Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.",
+    "decision_reason": "candidate was materialized/probed but not selected under the stronger-coverage-then-shorter rule",
+    "candidate_probe": {
+      "qid": "zh101",
+      "patch_id": "patch_zh101_014_local_summary",
+      "chunk_id": "patch_zh101_014_local_summary_c001",
+      "candidate_type": "local_summary",
+      "text_len": 800,
+      "success": false,
+      "rank": null,
+      "best_topk_coverage": 0.592,
+      "top_patch_hits": [
+        {
+          "rank": 3,
+          "chunk_id": "patch_zh101_014_local_summary_c001",
+          "candidate_type": "local_summary",
+          "score": 0.708011,
+          "coverage": 0.577
+        }
+      ]
+    },
+    "before_rank": null,
+    "after_rank": null,
+    "before_best_coverage": 0.592,
+    "after_best_coverage": 0.592
+  }
+]

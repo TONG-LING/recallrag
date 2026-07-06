@@ -1,0 +1,14 @@
+{
+  "total": 120,
+  "dense_recall@5": 0.8833333333333333,
+  "recall@5": 0.875,
+  "dense_mrr": 0.5508333333333334,
+  "mrr": 0.6004166666666667,
+  "dense_hits_before_rerank": 106,
+  "hits": 105,
+  "failed": 15,
+  "rerank_fixed": 2,
+  "rerank_improved": 37,
+  "rerank_candidate_k": 20,
+  "coverage_threshold": 0.65
+}

@@ -36,8 +36,16 @@ pip-wheel-metadata/
 Thumbs.db
 *.log
 
-# Local experiment outputs and heavyweight data
-runs/
+# Local experiment outputs and heavyweight data.
+# Keep lightweight, verifiable artifacts of the primary zh120 benchmark
+# (metrics, reports, significance, patch decisions) in the repo, but not
+# regenerable heavyweight files (vectors, chunks, per-query traces).
+runs/*
+!runs/zh120_*/
+runs/zh120_*/*vectors*.json
+runs/zh120_*/chunks.json
+runs/zh120_*/*retrieval_results*.json
+runs/zh120_*/hybrid_bm25_results.json
 datasets/
 tools/qdrant/storage/
 tools/qdrant/qdrant

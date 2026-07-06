@@ -1,0 +1,18 @@
+{
+  "total": 120,
+  "fusion_recall@5": 0.10833333333333334,
+  "recall@5": 0.13333333333333333,
+  "fusion_mrr": 0.03902777777777778,
+  "mrr": 0.08222222222222222,
+  "fusion_hits_before_rerank": 13,
+  "hits": 16,
+  "failed": 104,
+  "rerank_fixed": 4,
+  "rerank_improved": 11,
+  "dense_k": 20,
+  "bm25_k": 20,
+  "candidate_k": 20,
+  "rrf_k": 60,
+  "coverage_threshold": 0.65,
+  "hyde_enabled": false
+}
