@@ -35,7 +35,7 @@ A query is counted as successful only when:
 - a top-k result comes from the gold document
 - and that chunk covers enough of the gold evidence span
 
-Main setup:
+Initial diagnostic setting:
 
 | Item | Value |
 |---|---|
@@ -55,13 +55,22 @@ So Recall@5 here means:
 
 ## Main Results
 
-Primary benchmark:
+The primary conclusion should come from `case_zh_dureader_120/` and `runs/zh120_*`.
+
+I now read this repo in two passes:
+
+- `220/0` is the diagnostic setting. It makes the local boundary failure easy to see.
+- stronger chunking and neighbor-expansion baselines test whether the patch idea still matters after a more practical context budget.
+
+Primary benchmark files:
 
 - patch-source queries: `case_zh_dureader_120/eval/questions_patch_source.jsonl`
 - held-out queries: `case_zh_dureader_120/eval/questions_heldout.jsonl`
 - main result directories: `runs/zh120_*`
 
-### 120-query main benchmark
+### Diagnostic setting: `220/0`
+
+I still keep this setting because it explains why the patch idea existed in the first place.
 
 | Route | Recall@5 | MRR | Hits |
 |---|---:|---:|---:|
@@ -74,42 +83,82 @@ Primary benchmark:
 | `main + patch` | 0.3417 | 0.1501 | 41 / 120 |
 | `main + patch + rerank` | 0.3250 | 0.2001 | 39 / 120 |
 
-On this benchmark:
+This setting is still useful, but it is no longer the only story I would tell in an interview.
 
-- patch is the strongest recall-improving route in this benchmark
-- reranking improves ordering, but not recall
-- stronger retrieval combinations still do not remove the local evidence-boundary problem here
+### Stronger chunking and neighbor-expansion baselines
 
-### Held-out query generalization
+After I added stronger baselines, the project story became narrower and more honest.
 
-The selected patch set is frozen first, then evaluated on rewritten held-out queries.
+| Route | Main chunks | Avg top-5 chars / query | Recall@5 | MRR | Hits |
+|---|---:|---:|---:|---:|---:|
+| `220/0` | 1634 | 1203.4 | 0.1417 | 0.0651 | 17 / 120 |
+| `220/50` | 2066 | 1212.4 | 0.0917 | 0.0475 | 11 / 120 |
+| `220/100` | 2854 | 1216.8 | 0.1000 | 0.0753 | 12 / 120 |
+| `400/0` | 928 | 2011.2 | 0.5750 | 0.3279 | 69 / 120 |
+| `600/0` | 634 | 2893.0 | 0.8833 | 0.5508 | 106 / 120 |
+| `220/0 + neighbor expansion (same-doc ±1)` | 1634 | 3414.2 | 0.8750 | 0.5582 | 105 / 120 |
+
+Important takeaways from this sweep:
+
+- simply adding overlap did not solve the problem in this setup
+- larger chunks solved most of the recall problem
+- a no-validation neighbor-expansion baseline was already very strong
+
+So the real patch question became:
+
+> after stronger context baselines are already in place, is there still a small residual set worth repairing?
+
+### Strongest split + patch
+
+I reran the full patch pipeline on top of the strongest static split instead of only comparing against `220/0`.
+
+| Route | Total chunks | Selected patch chunks | Avg top-5 chars / query | Recall@5 | MRR | Hits |
+|---|---:|---:|---:|---:|---:|---:|
+| `600/0` | 634 | 0 | 2893.0 | 0.8833 | 0.5508 | 106 / 120 |
+| `600/0 + patch` | 640 | 6 | 2942.1 | 0.9333 | 0.5715 | 112 / 120 |
+
+Patch-source significance on the strongest split:
+
+- `106 / 120 -> 112 / 120`
+- wins: `6`
+- losses: `0`
+- recall delta: `+0.0500`
+- recall 95% bootstrap CI: `[0.0167, 0.0917]`
+- exact McNemar p-value: `0.03125`
+
+I also ran reranking on `600/0`.
+
+- `600/0 + rerank`: Recall@5 `0.8750`, MRR `0.6004`, hits `105 / 120`
+
+So even on the stronger split, reranking still helped ordering more than recall.
+
+### Held-out query check on the strongest split
+
+The selected `600/0` patch set was frozen first, then evaluated on rewritten held-out queries.
 
 | Route | Recall@5 | MRR | Hits |
 |---|---:|---:|---:|
-| `main` | 0.1417 | 0.0608 | 17 / 120 |
-| `main + fixed patch` | 0.3250 | 0.1374 | 39 / 120 |
+| `600/0` | 0.8917 | 0.5696 | 107 / 120 |
+| `600/0 + fixed patch` | 0.9333 | 0.5938 | 112 / 120 |
 
-### Paired significance
+Held-out significance on the strongest split:
 
-Patch-source benchmark:
-
-- `17 / 120 -> 41 / 120`
-- wins: `24`
+- `107 / 120 -> 112 / 120`
+- wins: `5`
 - losses: `0`
-- exact McNemar p-value: `1.1920928955078125e-07`
+- recall delta: `+0.0417`
+- recall 95% bootstrap CI: `[0.0083, 0.0833]`
+- exact McNemar p-value: `0.0625`
 
-Held-out benchmark:
+I treat this held-out result as useful directional evidence, not as a huge universal claim.
 
-- `17 / 120 -> 39 / 120`
-- wins: `22`
-- losses: `0`
-- exact McNemar p-value: `4.76837158203125e-07`
+### What I would now claim
 
-The main takeaway is simple:
-
-- many failures are local evidence-boundary failures
-- a tiny validated patch layer can fix them
-- the effect is still visible on held-out query rewrites
+- `220/0` was useful as a diagnostic setting, but it was not the final story.
+- on this dataset, larger chunks and neighbor expansion do most of the heavy lifting
+- after those stronger baselines are already in place, a tiny validated patch layer still fixes a small residual set
+- so the honest claim is not "patch beats every retrieval recipe"
+- the honest claim is "patch is a targeted repair layer for residual local-context failures"
 
 ## Repository Layout
 
@@ -222,7 +271,7 @@ Split files:
 - `eval/questions_patch_source.jsonl`: patch-source split
 - `eval/questions_heldout.jsonl`: held-out rewritten split
 
-## Reproducing The Main Benchmark
+## Reproducing The Diagnostic `220/0` Benchmark
 
 ### 1. Baseline
 
@@ -361,6 +410,114 @@ python3 scripts/eval_fixed_patch_generalization.py \
   --patch-dir runs/zh120_patches \
   --questions case_zh_dureader_120/eval/questions_heldout.jsonl \
   --out runs/zh120_generalization \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+```
+
+## Reproducing The Stronger-Baseline Sweep
+
+Static chunking sweep:
+
+```bash
+python3 -m recallrag.cli run-baseline \
+  --docs case_zh_dureader_120/docs \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_c220_o50_base \
+  --chunk-size 220 \
+  --overlap 50 \
+  --keep-heading \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --batch-size 4 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+
+python3 -m recallrag.cli run-baseline \
+  --docs case_zh_dureader_120/docs \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_c220_o100_base \
+  --chunk-size 220 \
+  --overlap 100 \
+  --keep-heading \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --batch-size 4 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+
+python3 -m recallrag.cli run-baseline \
+  --docs case_zh_dureader_120/docs \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_c400_o0_base \
+  --chunk-size 400 \
+  --overlap 0 \
+  --keep-heading \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --batch-size 4 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+
+python3 -m recallrag.cli run-baseline \
+  --docs case_zh_dureader_120/docs \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_c600_o0_base \
+  --chunk-size 600 \
+  --overlap 0 \
+  --keep-heading \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --batch-size 4 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+```
+
+Neighbor-expansion baseline on top of the original `220/0` index:
+
+```bash
+PYTHONPATH=. python3 scripts/eval_neighbor_expansion.py \
+  --index runs/zh120_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_neighbor_r1 \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --coverage-threshold 0.65 \
+  --radius 1
+```
+
+Strongest split + patch:
+
+```bash
+python3 -m recallrag.cli diagnose \
+  --index runs/zh120_c600_o0_base \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --coverage-threshold 0.65
+
+python3 -m recallrag.cli materialize-patches \
+  --index runs/zh120_c600_o0_base \
+  --out runs/zh120_c600_o0_patches \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --batch-size 4
+
+python3 -m recallrag.cli eval-hybrid \
+  --index runs/zh120_c600_o0_base \
+  --patch-index runs/zh120_c600_o0_patches \
+  --questions case_zh_dureader_120/eval/questions_patch_source.jsonl \
+  --out runs/zh120_c600_o0_hybrid \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --top-k 5 \
+  --coverage-threshold 0.65
+
+PYTHONPATH=. python3 scripts/eval_fixed_patch_generalization.py \
+  --index runs/zh120_c600_o0_base \
+  --patch-dir runs/zh120_c600_o0_patches \
+  --questions case_zh_dureader_120/eval/questions_heldout.jsonl \
+  --out runs/zh120_c600_o0_generalization \
   --endpoint http://localhost:1234/v1/embeddings \
   --model text-embedding-bge-large-zh-v1.5 \
   --top-k 5 \
