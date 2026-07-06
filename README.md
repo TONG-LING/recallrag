@@ -57,10 +57,10 @@ So Recall@5 here means:
 
 The primary conclusion should come from `case_zh_dureader_120/` and `runs/zh120_*`.
 
-I now read this repo in two passes:
+I now read the repo in two layers:
 
-- `220/0` is the diagnostic setting. It makes the local boundary failure easy to see.
-- stronger chunking and neighbor-expansion baselines test whether the patch idea still matters after a more practical context budget.
+- `220/0` is the diagnostic setting. It makes the chunk-boundary problem easy to see.
+- the stronger chunking and neighbor-expansion runs answer a simpler question: if retrieval already gets more context in a more practical way, does patch still help?
 
 Primary benchmark files:
 
@@ -83,11 +83,11 @@ I still keep this setting because it explains why the patch idea existed in the 
 | `main + patch` | 0.3417 | 0.1501 | 41 / 120 |
 | `main + patch + rerank` | 0.3250 | 0.2001 | 39 / 120 |
 
-This setting is still useful, but it is no longer the only story I would tell in an interview.
+I still keep this setting, but I would not use it as the whole story anymore.
 
 ### Stronger chunking and neighbor-expansion baselines
 
-After I added stronger baselines, the project story became narrower and more honest.
+After I added stronger baselines, the claim became smaller but much more believable.
 
 | Route | Main chunks | Avg top-5 chars / query | Recall@5 | MRR | Hits |
 |---|---:|---:|---:|---:|---:|
@@ -97,20 +97,36 @@ After I added stronger baselines, the project story became narrower and more hon
 | `400/0` | 928 | 2011.2 | 0.5750 | 0.3279 | 69 / 120 |
 | `600/0` | 634 | 2893.0 | 0.8833 | 0.5508 | 106 / 120 |
 | `220/0 + neighbor expansion (same-doc ±1)` | 1634 | 3414.2 | 0.8750 | 0.5582 | 105 / 120 |
+| `600/0 + neighbor expansion (same-doc ±1)` | 634 | 7597.8 | 1.0000 | 0.9153 | 120 / 120 |
 
 Important takeaways from this sweep:
 
 - simply adding overlap did not solve the problem in this setup
 - larger chunks solved most of the recall problem
-- a no-validation neighbor-expansion baseline was already very strong
+- a simple no-validation neighbor-expansion baseline was already very strong
+- on this dataset, brute-force local context expansion can solve more recall than the patch layer does
 
-So the real patch question became:
+So the real question became:
 
-> after stronger context baselines are already in place, is there still a small residual set worth repairing?
+> once retrieval already gets more context, is there still anything left for patch to fix?
+
+### Why overlap got worse instead of better
+
+This result looked odd at first, so I checked the mechanics.
+
+- the gold evidence spans are long for a `220`-char setting: min `382`, median `525`, average `605.8`, max `1310`
+- with a coverage threshold of `0.65`, a single `220`-char chunk is often too small to pass, even when retrieval is close
+- overlap also increases near-duplicate candidates: the chunk count grows from `1634` to `2066` and `2854`, and the ratio of top-5 items that overlap another top-5 item jumps from `0.0` to `0.67` and `0.705`
+- in `220/50`, many queries become near-misses instead of clean hits: `47` queries land in the `0.5 <= best_topk_coverage < 0.65` band
+
+So my current reading is simple:
+
+> `220/0` is a deliberately harsh diagnostic setting.  
+> overlap creates more local copies, but those copies still fail the `0.65` completeness bar often enough that recall does not improve.
 
 ### Strongest split + patch
 
-I reran the full patch pipeline on top of the strongest static split instead of only comparing against `220/0`.
+I reran the full patch pipeline on top of the strongest fixed chunk setting instead of only comparing against `220/0`.
 
 | Route | Total chunks | Selected patch chunks | Avg top-5 chars / query | Recall@5 | MRR | Hits |
 |---|---:|---:|---:|---:|---:|---:|
@@ -132,6 +148,11 @@ I also ran reranking on `600/0`.
 
 So even on the stronger split, reranking still helped ordering more than recall.
 
+For reference, the strongest no-validation local-context route was even more aggressive:
+
+- `600/0 + neighbor expansion`: Recall@5 `1.0000`, MRR `0.9153`, hits `120 / 120`
+- but it returned far more context: avg top-5 chars / query `7597.8` instead of `2942.1` for `600/0 + patch`
+
 ### Held-out query check on the strongest split
 
 The selected `600/0` patch set was frozen first, then evaluated on rewritten held-out queries.
@@ -150,15 +171,38 @@ Held-out significance on the strongest split:
 - recall 95% bootstrap CI: `[0.0083, 0.0833]`
 - exact McNemar p-value: `0.0625`
 
-I treat this held-out result as useful directional evidence, not as a huge universal claim.
+I see this held-out result as a positive sign, not as a big universal claim.
+
+### What patch still leaves on the table
+
+On top of `600/0`, the patch layer fixes `6` of the `14` remaining misses. The other `8` are still interesting, because they are not impossible cases:
+
+- all `8` are fixed by `600/0 + neighbor expansion`
+- none of their generated patch candidates crosses the `0.65` bar on its own
+- their best patch-candidate coverage stays in roughly the `0.305` to `0.646` range
+- once the same local window is expanded more bluntly with a same-doc `±1` merge, those cases jump to roughly `0.893` to `1.000`
+
+I would summarize those `8` misses in two buckets:
+
+- adjacent continuation in definition / explanation style prose
+  for example `zh006`, `zh010`, `zh011`, `zh017`, `zh033`, `zh101`
+- nearby section or step transitions where the answer stays local, but the selected patch text stays too compressed
+  for example `zh003`, `zh027`
+
+That means the current patch layer is not the highest-recall local-context method in this repo. Its value is narrower:
+
+- it adds much less returned context than brute-force neighbor expansion
+- it has a validation gate instead of merging neighbors for every result
+- it still fixes a few misses without changing the main index
 
 ### What I would now claim
 
-- `220/0` was useful as a diagnostic setting, but it was not the final story.
+- `220/0` was useful for making the problem visible, but it is not the final story.
 - on this dataset, larger chunks and neighbor expansion do most of the heavy lifting
-- after those stronger baselines are already in place, a tiny validated patch layer still fixes a small residual set
+- if raw recall is the only target, neighbor expansion is stronger here
+- after those stronger baselines are already in place, a tiny validated patch layer still fixes a few cases while using much less returned context
 - so the honest claim is not "patch beats every retrieval recipe"
-- the honest claim is "patch is a targeted repair layer for residual local-context failures"
+- the honest claim is "patch is a small validated repair layer for local misses that are still worth fixing without blowing up context"
 
 ## Repository Layout
 
