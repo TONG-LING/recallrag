@@ -105,6 +105,37 @@ flowchart TD
 
 held-out 这组结果只能视为正向信号，不应表述为强显著结论。
 
+## 附属实验：reranker 微调
+
+主项目主要解决的是：
+
+```text
+完整证据没有进入候选池 -> 用 Patch Index 补一小块证据
+```
+
+另外加入了一个附属实验，处理排序阶段的另一个问题：
+
+```text
+完整证据已经在候选池里，但排在半截证据后面 -> 微调 reranker
+```
+
+这个实验位于：
+
+```text
+experiments/reranker_boundary_finetune/
+```
+
+做法是用 `600/0` 的 Top-30 检索结果构造训练样本。正样本是“正确文档里的完整答案块”，负样本主要是“同一篇正确文档里的半截答案块”，再加少量排名靠前但文档不对的块。
+
+当前 test split 是 `18` 题，结果如下：
+
+| Route | Recall@5 | MRR | Hits |
+|---|---:|---:|---:|
+| base reranker | 0.944444 | 0.668519 | 17 / 18 |
+| fine-tuned reranker | 0.944444 | 0.824074 | 17 / 18 |
+
+这说明它没有扩大召回范围，但能把已有的完整答案块排得更靠前。这个实验是主项目的排序侧补充，不替代 Patch Index。
+
 ## 当前结论
 
 本项目不主张“patch 打败所有 RAG 检索方案”。
@@ -148,7 +179,7 @@ recallrag/cli.py               命令入口
 experiments/reranker_boundary_finetune/
 ```
 
-这个实验微调 cross-encoder reranker，让模型在候选池里已有完整答案块时，更倾向于把完整答案块排到半截答案块前面。它补充的是排序侧问题，不替代主项目的 Patch Index。
+这个目录保存 reranker 微调实验的脚本和轻量结果。
 仓库里只保留实验脚本和轻量指标，训练样本、模型权重和运行输出不会提交。
 
 ## 环境
