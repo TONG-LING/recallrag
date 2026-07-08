@@ -36,7 +36,7 @@ flowchart TD
 整体上，它是一个闭环：
 
 ```text
-先发现失败 -> 定位可能断裂的位置 -> 生成局部修复块 -> 验证有效才保留 -> 再做完整对照
+失败发现 -> 断裂位置定位 -> 局部修复块生成 -> 验证通过后保留 -> 完整对照评估
 ```
 
 主索引不被直接改写。Patch Index 是一个旁路的小索引，只放通过验证的局部修复块。
@@ -55,7 +55,7 @@ flowchart TD
 
 项目分成四步：
 
-1. 先用普通 dense retrieval 做 baseline。
+1. 使用普通 dense retrieval 建立 baseline。
 2. 对失败 query 做诊断，只用检索 trace 定位 near-miss 窗口，不用 gold span 去找 patch。
 3. 在局部窗口生成 patch candidate，例如相邻块合并、相关句抽取、要点句、局部摘要。
 4. 把 patch 放到旁路索引里验证，只保留能修复源问题且没有回归的 patch。
@@ -103,38 +103,38 @@ flowchart TD
 - patch-source：`106 / 120 -> 112 / 120`，wins `6`，losses `0`，McNemar p-value `0.03125`
 - held-out 改写 query：`107 / 120 -> 112 / 120`，wins `5`，losses `0`，McNemar p-value `0.0625`
 
-held-out 这组结果只能视为正向信号，不应表述为强显著结论。
+held-out 结果作为正向信号保留，尚不足以支撑强显著结论。
 
 ## 附属实验：reranker 微调
 
-主项目主要解决的是：
+Patch Index 主线覆盖的是召回候选不足的情况：
 
 ```text
-完整证据没有进入候选池 -> 用 Patch Index 补一小块证据
+完整证据没有进入候选池 -> 通过 Patch Index 补充局部证据
 ```
 
-另外加入了一个附属实验，处理排序阶段的另一个问题：
+Reranker fine-tuning 作为附属实验，覆盖排序阶段的另一个问题：
 
 ```text
-完整证据已经在候选池里，但排在半截证据后面 -> 微调 reranker
+完整证据已经在候选池里，但排在半截证据后面 -> 通过 reranker 微调改善排序
 ```
 
-这个实验位于：
+代码与轻量结果位于：
 
 ```text
 experiments/reranker_boundary_finetune/
 ```
 
-做法是用 `600/0` 的 Top-30 检索结果构造训练样本。正样本是“正确文档里的完整答案块”，负样本主要是“同一篇正确文档里的半截答案块”，再加少量排名靠前但文档不对的块。
+训练样本来自 `600/0` 的 Top-30 检索结果。正样本是“正确文档里的完整答案块”，负样本主要是“同一篇正确文档里的半截答案块”，再加少量排名靠前但文档不对的块。
 
-当前 test split 是 `18` 题，结果如下：
+Test split 包含 `18` 题，结果如下：
 
 | Route | Recall@5 | MRR | Hits |
 |---|---:|---:|---:|
 | base reranker | 0.944444 | 0.668519 | 17 / 18 |
 | fine-tuned reranker | 0.944444 | 0.824074 | 17 / 18 |
 
-这说明它没有扩大召回范围，但能把已有的完整答案块排得更靠前。这个实验是主项目的排序侧补充，不替代 Patch Index。
+结果显示，微调没有扩大召回范围，但能把已有的完整答案块排得更靠前。该实验是主项目的排序侧补充，不替代 Patch Index。
 
 ## 当前结论
 
@@ -179,7 +179,7 @@ recallrag/cli.py               命令入口
 experiments/reranker_boundary_finetune/
 ```
 
-这个目录保存 reranker 微调实验的脚本和轻量结果。
+该目录保存 reranker 微调实验的脚本和轻量结果。
 仓库里只保留实验脚本和轻量指标，训练样本、模型权重和运行输出不会提交。
 
 ## 环境
