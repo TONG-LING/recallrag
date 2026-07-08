@@ -1,12 +1,14 @@
 # RecallRAG
 
-RecallRAG 是一个面向长文档 RAG 的检索修复项目。
+RecallRAG 是一个面向 RAG 证据召回断裂问题的检索修复实验项目。
 
-它关注的问题很具体：
+它关注的不是“完全搜不到相关文档”，而是更隐蔽的一类失败：
 
-> 答案明明在文档里，为什么 top-k 检索结果里还是拿不到完整证据？
+> 相关文档已经进入 top-k，但答案证据被 chunk 边界切断，最终只召回了半截内容。
 
-这个项目不是做一个通用聊天应用，也不是简单调用 LLM。它主要研究 RAG 检索阶段的一类失败：文档找到了，但答案被 chunk 边界切断，导致 top-k 里只有半截证据。
+这类问题已有很多常见解决办法，例如增大 chunk size、增加 overlap、使用 parent-child chunking、neighbor expansion、Hybrid Retrieval 或 reranker。RecallRAG 不试图替代这些方法，而是提供另一种工程思路：
+
+> 在主索引不变的前提下，对失败 query 做诊断，定位局部 near-miss 窗口，生成可验证的 patch chunk，并把通过验证的 patch 放入旁路 Patch Index。
 
 完整复现实验命令放在 [RUN_EXPERIMENTS.md](RUN_EXPERIMENTS.md)。README 只保留项目思路、关键结果和阅读入口。
 
