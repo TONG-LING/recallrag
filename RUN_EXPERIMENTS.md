@@ -217,7 +217,7 @@ python3 scripts/eval_fixed_patch_generalization.py \
   --coverage-threshold 0.65
 ```
 
-## 4. 更强切分和邻居扩展
+## 4. 更强切分和相邻块扩展
 
 ### 4.1 overlap 和大 chunk 对照
 
@@ -275,7 +275,7 @@ python3 -m recallrag.cli run-baseline \
   --coverage-threshold 0.65
 ```
 
-### 4.2 邻居扩展 baseline
+### 4.2 相邻块扩展 baseline
 
 ```bash
 PYTHONPATH=. python3 scripts/eval_neighbor_expansion.py \
