@@ -91,7 +91,7 @@ flowchart TD
 | `220/0 + neighbor expansion` | 1634 | 3414.2 | 0.8750 | 0.5582 | 105 / 120 |
 | `600/0 + neighbor expansion` | 634 | 7597.8 | 1.0000 | 0.9153 | 120 / 120 |
 
-在最强固定切分 `600/0` 上重新跑完整 patch 流程：
+在较强固定切分 `600/0` 上重新跑完整 patch 流程：
 
 | Route | Total chunks | Selected patch chunks | Avg top-5 chars / query | Recall@5 | MRR | Hits |
 |---|---:|---:|---:|---:|---:|---:|

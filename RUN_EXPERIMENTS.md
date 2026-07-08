@@ -301,7 +301,7 @@ PYTHONPATH=. python3 scripts/eval_neighbor_expansion.py \
   --radius 1
 ```
 
-## 5. 最强固定切分 `600/0 + patch`
+## 5. 较强固定切分 `600/0 + patch`
 
 ```bash
 python3 -m recallrag.cli diagnose \
