@@ -1,3 +1,8 @@
+"""patch侧索引：生成候选 → probe验证 → 拼进主索引 → 对比fixed/regressed
+
+主索引chunks.json始终不改，patch是旁路一层
+"""
+
 from __future__ import annotations
 import json, re
 from pathlib import Path
@@ -24,34 +29,40 @@ def _sentences(text: str) -> list[str]:
     return split_sentences(text, min_chars=18)
 
 def _score_sentence(query: str, sent: str) -> float:
+    #定位器查询到的局部窗口进行句子打分
     q=_tokens(query)
     if not q: return 0.0
     st=_tokens(sent)
+    #召回率+长句偏向奖励值
     return len(q & st)/len(q) + min(len(st), 40)/400.0
 
 def _top_relevant_sentences(query: str, text: str, limit: int = 4) -> list[str]:
+    """从局部窗口里挑出和问题最相关的几句
+    适配：contextual/local_proposition/local_summary三类patch
+    切不出句子时退化成截断原文前500字符
+    """
     sents=_sentences(text)
     if not sents:
         return [normalize_text(text)[:500]] if text else []
     ranked=sorted(enumerate(sents), key=lambda x: (_score_sentence(query,x[1]), -x[0]), reverse=True)
+    #原文顺序返回，避免patch的文本顺序乱了
     selected=sorted([i for i,_ in ranked[:limit]])
     return [sents[i] for i in selected]
 
 def _make_patch_text(candidate_type: str, qid: str, question: str, section_path: str, diagnosis: str, body: str) -> str:
-    """Build the text that will be embedded for a patch candidate.
+    """拼patch最终要写进embedding的文本。
 
-    Important anti-leakage rule:
-    - The embedded text must NOT contain qid, the failed question, or diagnosis labels.
-    - Those fields are stored only as metadata/logs.
+    防泄漏：qid/原question/diagnosis不能进patch text，只能放 metadata
+    question只用来挑相关句，不会原文写进patch中去，防止"问题对问题"
+    section_path来自源chunk可以留
 
-    Otherwise the source query can match the patch because the patch literally
-    contains the query text, which would make the experiment look like
-    case-specific / question-leaking retrieval instead of evidence retrieval.
+    四种candidate_type：
+    - adjacent_merge：邻居chunk原文直接合并,噪声很大
+    - contextual：挑出的相关句原样拼接
+    - local_proposition：相关句改成项目符号列表,embedded模型原因
+    - local_summary：前几句压成一段摘要,高度压缩的zhaiyao
     """
     rel = _top_relevant_sentences(question, body, limit=4)
-    # Keep only document-derived context in the embedded text.  Section paths
-    # are allowed because they come from the source document and are a common
-    # production chunking technique; qid/question/diagnosis are not allowed.
     header = f"Section: {section_path}\n\n" if section_path else ""
     if candidate_type == 'adjacent_merge':
         return header + body
@@ -75,11 +86,11 @@ def materialize_patches(
     model: str = 'bge-small-en-v1.5',
     batch_size: int = 16,
 ):
-    """Create candidate Patch Index chunks from production-style diagnoses.
+    """从 failure_diagnosis.json (patch_allowed)生成 patch 索引
 
-    Main index is never mutated.  For each localized failure, we create multiple
-    evidence-representation candidates around the same near-miss window:
-    adjacent_merge, contextual, local_proposition, local_summary.
+    读diagnose输出的局部窗口，对每个patch_allowed的失败query固定生成
+    4种表示，embed后写到patch_chunks.json/patch_vectors.json。
+    主索引chunks.json始终不动。
     """
     index_dir = Path(index_dir)
     out_dir = Path(out_dir)
@@ -90,23 +101,29 @@ def materialize_patches(
     patch_log = []
     candidate_types = ['adjacent_merge', 'contextual', 'local_proposition', 'local_summary']
     for n, d in enumerate(diagnoses, 1):
+        #过滤：如果诊断结果是不允许打补丁 (patch_allowed=False)，直接跳过
         if not d.get('patch_allowed'):
             continue
+        # 提取出诊断定位到的“问题上下文窗口”所包含的所有 chunk ID
         ids = d.get('evidence', {}).get('candidate_window_chunk_ids') or d.get('evidence', {}).get('adjacent_chunk_ids') or []
         selected = [by_id[i] for i in ids if i in by_id]
         if not selected:
             continue
+        # 排序：确保这些块按照文档物理顺序（从前到后）排列，防止拼出来的文本顺序错乱
         selected.sort(key=lambda c: (c['doc_id'], c['start_offset']))
+
+        # 提取窗口的边界和元数据
         doc_id = selected[0]['doc_id']
         anchor_id = d.get('evidence', {}).get('anchor_chunk_id') or selected[len(selected)//2]['chunk_id']
         anchor = by_id.get(anchor_id, selected[len(selected)//2])
-        # Section labels in patch text must come from source chunks only.
-        # Offline gold annotations are allowed in evaluation/reporting, but
-        # must not leak into the embedded patch text.
         section_path = anchor.get('section_path') or selected[0].get('section_path') or ''
+
+        # 计算当前窗口在原文档里的物理跨度（起始偏移和结束偏移）
         start = min(c['start_offset'] for c in selected)
         end = max(c['end_offset'] for c in selected)
+        # 合并窗口：用换行符连接这个窗口里所有的 chunks 文本，形成“大原材料段落”
         body = '\n'.join(c['text'] for c in selected)
+        #开始生成四种patch的元数据
         created=[]
         for cand_i, cand_type in enumerate(candidate_types, 1):
             patch_id = f"patch_{d['qid']}_{n:03d}_{cand_type}"
@@ -123,6 +140,7 @@ def materialize_patches(
                 'end_offset': end,
                 'text': text,
                 'strategy': 'failure_driven_local_proposition_patch_search',
+                # *** 记录这个补丁可以“替换/覆盖”主索引中的哪些原始 chunk ID
                 'replaces': ids,
                 'anchor_chunk_id': anchor_id,
                 'active': True,
@@ -133,6 +151,7 @@ def materialize_patches(
             }
             patch_chunks.append(pc)
             created.append(pc['chunk_id'])
+            #添加patch审计日志
             patch_log.append({
                 'patch_id': patch_id,
                 'status': 'candidate_materialized',
@@ -148,12 +167,15 @@ def materialize_patches(
                 'notes': 'Main index is untouched. Candidate patch is stored in the side Patch Index for shadow validation.'
             })
     out_dir.mkdir(parents=True, exist_ok=True)
+    # 将生成的补丁数据和审计日志落盘保存
     _write_json(out_dir / 'patch_chunks.json', patch_chunks)
     _write_json(out_dir / 'patch_log.json', patch_log)
+    #调用本地嵌入模型接口，把这些补丁文本全部转化为向量
     if patch_chunks:
         vectors = embed_lmstudio([c['text'] for c in patch_chunks], endpoint=endpoint, model=model, batch_size=batch_size)
     else:
         vectors = []
+    # 保存独立的补丁向量文件和元数据文件  Qdrant
     _write_json(out_dir / 'patch_vectors.json', vectors)
     _write_json(out_dir / 'patch_index_meta.json', {
         'endpoint': endpoint,
@@ -175,7 +197,14 @@ def evaluate_hybrid(
     top_k: int = 5,
     coverage_threshold: float = 0.65,
 ):
-    """Evaluate main-only vs main+patch retrieval and write decision reports."""
+    """patch验证与混合检索的主流程。
+
+    1.先 probe：每个patch单独加到主索引后，用源query测能不能修好（4选1）：
+    再筛选：每题只留 probe成功且 coverage最高的一个候选
+    2.再评估：选中patch拼到主索引后跑全量检索
+    最后对比main-only baseline，统计fixed/regressed，给patch打 accepted/rejected
+    （第二个评估主要是怕这个patch把除了自己query对应以外其他的query搞坏）
+    """
     main_index_dir = Path(main_index_dir)
     patch_dir = Path(patch_dir)
     out_dir = Path(out_dir)
@@ -189,6 +218,9 @@ def evaluate_hybrid(
     if patch_vectors:
         require_vector_dimensions(patch_vectors, 'evaluate_hybrid.patch_vectors', expected_dim=main_dim)
     questions = load_questions(questions_path)
+    # 会遍历每一个失败 Query，对于它生成的 4 种补丁变体（直接合并、上下文、命题化、摘要），
+    # 每次只将其中一个补丁加入主索引进行单点测试
+    # 如果4选x的话，向量空间中距离极近，从而互相抢夺 Top-K 位置，也方便以后统计具体是哪种patch较多
     candidate_probe = probe_patch_candidates(
         main_chunks, main_vectors, patch_chunks, patch_vectors, questions,
         endpoint=endpoint, model=model, top_k=top_k, coverage_threshold=coverage_threshold,
@@ -198,6 +230,8 @@ def evaluate_hybrid(
     selected_pairs = [(c, v) for c, v in zip(patch_chunks, patch_vectors) if c.get('patch_id') in selected_ids]
     selected_patch_chunks = [c for c, _ in selected_pairs]
     selected_patch_vectors = [v for _, v in selected_pairs]
+
+    # 第二次评估：检查某个patch上线后，会不会干扰其他query（除了自己对应的query）
     chunks = main_chunks + selected_patch_chunks
     vectors = main_vectors + selected_patch_vectors
     results, metrics = evaluate(
@@ -232,6 +266,7 @@ def evaluate_hybrid(
     comparison = write_comparison(main_index_dir, patch_dir, out_dir, len(main_chunks), len(selected_patch_chunks), candidate_probe)
     accepted_ids = _accepted_patch_ids(comparison.get('patch_decisions', []))
     accepted_patch_chunks, accepted_patch_vectors = _filter_patch_pairs_by_ids(patch_chunks, patch_vectors, accepted_ids)
+    # 最终只有被接受的（accepted）补丁才会写入正式的 selected_* ,为了保证 query的"零回退"
     _write_json(patch_dir / 'selected_patch_chunks.json', accepted_patch_chunks)
     _write_json(patch_dir / 'selected_patch_vectors.json', accepted_patch_vectors)
     return results, metrics, comparison
@@ -277,7 +312,12 @@ def probe_patch_candidates(
     top_k: int,
     coverage_threshold: float,
 ):
-    """Evaluate each patch candidate alone for its source query."""
+    """逐个patch做shadow验证。
+
+    每次只在主索引后面加一个patch，用源query检索，看Top-K coverage能不能
+    修好这道题。不把同题多个候选一次性塞进去，避免互相抢排名。
+    同题多个probe成功的候选，后续按coverage → rank → 文本长度 → 类型优先级择优。
+    """
     if not patch_chunks:
         return []
     require_equal_length('main_chunks', main_chunks, 'main_vectors', main_vectors, 'probe_patch_candidates.main_index')
@@ -325,10 +365,6 @@ def _accepted_patch_ids(patch_decisions: list[dict]) -> set[str]:
 
 def _patch_selection_key(row: dict):
     priority = {'local_proposition': 0, 'contextual': 1, 'local_summary': 2, 'adjacent_merge': 3}
-    # Prefer candidates with stronger evidence coverage before using text length
-    # as a tie-breaker. This avoids selecting a shorter patch that only barely
-    # clears the threshold while a slightly longer patch captures the evidence
-    # much more completely.
     return (
         -(row.get('best_topk_coverage') or 0.0),
         row.get('rank') or 999,
@@ -337,6 +373,7 @@ def _patch_selection_key(row: dict):
     )
 
 def _select_successful_patch_candidates(candidate_probe: list[dict]) -> dict[str, dict]:
+    #
     selected_by_qid: dict[str, dict] = {}
     for row in candidate_probe:
         if not row.get('success'):
@@ -356,6 +393,15 @@ def _filter_patch_pairs_by_ids(
     return [c for c, _ in pairs], [v for _, v in pairs]
 
 def write_comparison(main_dir: Path, patch_dir: Path, hybrid_dir: Path, main_chunks: int, patch_chunks: int, candidate_probe: list[dict] | None = None):
+    """对比main-only和main+patch，输出fixed/regressed与patch决策。
+
+    逐题比较检索成败变化（fixed/regressed/unchanged）。
+    对每个patch打标签：
+    - accepted：被选为最优候选，源query从失败变成功，且全局无regression
+    - rejected：加了patch源query还是失败
+    - candidate_not_selected：probe过但没被选上
+    - needs_review：出现regression或改进不明确
+    """
     base_metrics = _load_json(main_dir / 'metrics.json')
     hybrid_metrics = _load_json(hybrid_dir / 'metrics.json')
     base_results = {r['qid']: r for r in _load_json(main_dir / 'retrieval_results.json')}
@@ -399,9 +445,6 @@ def write_comparison(main_dir: Path, patch_dir: Path, hybrid_dir: Path, main_chu
         except Exception:
             selected_patch_ids = set()
 
-    # Patch-level decision: only the selected patch candidate can be accepted.
-    # Non-selected candidates stay auditable but should not be described as
-    # accepted, even if the qid was fixed by another selected candidate.
     decisions = []
     for p in patch_log:
         qid = p['qid']
@@ -459,7 +502,6 @@ def write_comparison(main_dir: Path, patch_dir: Path, hybrid_dir: Path, main_chu
     }
     _write_json(hybrid_dir / 'comparison.json', comparison)
     _write_json(hybrid_dir / 'patch_decisions.json', decisions)
-    # Also update patch log with decision statuses for easier inspection.
     if decisions:
         _write_json(patch_dir / 'patch_log_evaluated.json', decisions)
 
