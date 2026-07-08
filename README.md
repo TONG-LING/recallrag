@@ -125,6 +125,7 @@ scripts/                  数据构建、评估和分析脚本
 tests/                    单元测试
 runs/zh120_*/             主要实验的轻量结果文件
 case_zh_dureader_120/     当前中文主数据集
+experiments/              附属实验
 RUN_EXPERIMENTS.md        复现实验命令
 ```
 
@@ -140,6 +141,15 @@ recallrag/qdrant_backend.py    Qdrant 双集合检索
 recallrag/reranker.py          本地 cross-encoder reranker
 recallrag/cli.py               命令入口
 ```
+
+附属实验：
+
+```text
+experiments/reranker_boundary_finetune/
+```
+
+这个实验微调 cross-encoder reranker，让模型在候选池里已有完整答案块时，更倾向于把完整答案块排到半截答案块前面。它补充的是排序侧问题，不替代主项目的 Patch Index。
+仓库里只保留实验脚本和轻量指标，训练样本、模型权重和运行输出不会提交。
 
 ## 环境
 
@@ -210,6 +220,7 @@ RECALLRAG_QUERY_REWRITE_API_KEY=
 1. 运行 `220/0` 诊断版，用于观察 chunk 边界导致的证据断裂。
 2. 运行 `400/0`、`600/0`、overlap 和相邻块扩展，用于确认更强切分策略下的效果。
 3. 运行 `600/0 + patch`、held-out 和 Qdrant 双集合，用于验证 patch 在强基线之后的增量和工程形态。
+4. 运行 `experiments/reranker_boundary_finetune/`，用于验证排序侧的附属实验。
 
 测试命令：
 

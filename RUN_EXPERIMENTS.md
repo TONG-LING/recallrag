@@ -428,3 +428,37 @@ python3 -m recallrag.cli qdrant-eval-rerank \
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+## 8. 附属实验：reranker 微调
+
+这个实验位于：
+
+```text
+experiments/reranker_boundary_finetune/
+```
+
+它依赖 `600/0` 检索结果：
+
+```text
+runs/zh120_c600_o0_base/chunks.json
+runs/zh120_c600_o0_base/retrieval_results.json
+```
+
+运行：
+
+```bash
+cd experiments/reranker_boundary_finetune
+python3 -m pip install -r requirements.txt
+bash run_example.sh
+```
+
+核心结果：
+
+```text
+Recall@5: 0.944444 -> 0.944444
+MRR:      0.668519 -> 0.824074
+hits:     17 / 18  -> 17 / 18
+```
+
+这个结果说明它主要改善排序质量，不负责扩大候选召回。
+运行产生的训练样本、模型和详细输出默认写入 `data/`、`outputs/`，这些目录不会提交到仓库。

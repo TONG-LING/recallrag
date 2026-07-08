@@ -54,3 +54,9 @@ tools/qdrant/.qdrant-initialized
 # Personal docs and interview prep
 project_docs/
 reranker_finetune/
+
+# Generated files for public auxiliary experiments
+experiments/**/data/
+experiments/**/outputs/
+experiments/**/models/
+experiments/**/*.safetensors
