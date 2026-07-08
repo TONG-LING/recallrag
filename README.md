@@ -29,7 +29,8 @@ flowchart TD
     K -->|通过| L[放入 Patch Index]
     K -->|失败| M[保留日志, 不进入最终索引]
     L --> N[Main Index + Patch Index 联合评估]
-    N --> O[和 BM25 / RRF / Reranker / HyDE / Qdrant 对照]
+    N --> O[和 BM25 / RRF / Reranker / HyDE 等检索路线对照]
+    N --> P[用 Qdrant 验证 Main / Patch 双集合检索]
 ```
 
 整体上，它是一个闭环：
@@ -125,7 +126,6 @@ tests/                    单元测试
 runs/zh120_*/             主要实验的轻量结果文件
 case_zh_dureader_120/     当前中文主数据集
 RUN_EXPERIMENTS.md        复现实验命令
-reranker_finetune/        辅助 reranker 微调实验
 ```
 
 重点代码文件：
