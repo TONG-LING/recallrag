@@ -156,7 +156,7 @@ experiments/reranker_boundary_finetune/
 最低要求：
 
 - Python `3.10+`
-- 一个 OpenAI-compatible embedding 服务，地址为 `/v1/embeddings`
+- 可通过 `/v1/embeddings` 调用的 embedding 模型
 
 推荐环境：
 
@@ -185,7 +185,7 @@ pip install torch transformers
 | HyDE model | `deepseek-v4-flash` |
 | Qdrant URL | `http://localhost:6333` |
 
-API key 不要写进代码。`.env.example` 里保留了变量名：
+HyDE 和 query rewrite 的密钥从环境变量读取，变量名见 `.env.example`：
 
 ```bash
 RECALLRAG_HYDE_API_KEY=
