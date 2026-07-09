@@ -14,13 +14,16 @@ def _write_json(p, obj):
     Path(p).write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding='utf-8')
 
 def tokenize(text: str) -> list[str]:
+    """BM25 分词，复用 text_utils.mixed_tokens，与 coverage 口径一致。"""
     return mixed_tokens(text)
 
 class BM25Index:
+    """词面检索索引。建库时算 tf/idf，查询时按 BM25 公式打分"""
+
     def __init__(self, texts: list[str], k1: float = 1.5, b: float = 0.75):
         self.texts = texts
-        self.k1 = k1
-        self.b = b
+        self.k1 = k1  # 词频饱和参数，越大高频词权重涨得越慢
+        self.b = b    # 文档长度归一化，0=不看长度，1=完全按长度折损
         self.doc_tokens = [tokenize(t) for t in texts]
         self.doc_len = [len(toks) for toks in self.doc_tokens]
         self.avgdl = sum(self.doc_len) / len(self.doc_len) if self.doc_len else 0.0
@@ -28,11 +31,12 @@ class BM25Index:
         df = defaultdict(int)
         for toks in self.doc_tokens:
             for tok in set(toks):
-                df[tok] += 1
+                df[tok] += 1  # 包含该词的文档数
         n = len(texts)
         self.idf = {tok: math.log(1 + (n - freq + 0.5) / (freq + 0.5)) for tok, freq in df.items()}
 
     def score(self, query: str, idx: int) -> float:
+        """算 query 与第 idx 个文档的 BM25 分 """
         q_tokens = tokenize(query)
         score = 0.0
         dl = self.doc_len[idx] or 1
@@ -48,11 +52,13 @@ class BM25Index:
         return score
 
     def search(self, query: str, top_k: int) -> list[tuple[int,float]]:
+        """返回 (文档下标, 分数) 的 Top-k 列表"""
         scored = [(i, self.score(query, i)) for i in range(len(self.texts))]
         scored.sort(key=lambda x: x[1], reverse=True)
         return scored[:top_k]
 
 def minmax(scores: list[float]) -> list[float]:
+    """把分数归一化到 [0,1]，供 dense 和 BM25 混合时的值对齐"""
     if not scores:
         return []
     lo, hi = min(scores), max(scores)
@@ -68,8 +74,14 @@ def eval_bm25_and_hybrid(
     model: str = 'bge-small-en-v1.5',
     top_k: int = 5,
     coverage_threshold: float = 0.65,
+    ###这个值可能有点问题，混合比纯向量效果更差，需要多测试几次看看
     alpha_dense: float = 0.65,
 ):
+    """对照评测三条检索路线：dense / bm25 / dense_bm25
+    dense_bm25 = alpha_dense * norm(dense) + (1-alpha_dense) * norm(bm25)
+    成功标准与 eval.py 相同：Top-k 内有 coverage>=threshold 的 gold 块
+    用途：判断失败是 chunk 问题还是检索策略问题。
+    """
     index_dir = Path(index_dir)
     out_dir = Path(out_dir)
     chunks = _load_json(index_dir / 'chunks.json')
@@ -147,6 +159,7 @@ def eval_bm25_and_hybrid(
     return all_results, all_metrics
 
 def write_report(path: Path, metrics: dict, results: dict, alpha_dense: float):
+    """输出三路检索对照报告，并标出相对 dense 的 fixed / regressed 题。"""
     lines = ['# Dense / BM25 / Hybrid Retrieval Report', '', f'- dense weight in hybrid: `{alpha_dense}`', '']
     lines += ['## Metrics', '', '| mode | Recall@5 | MRR | hits | failed |', '|---|---:|---:|---:|---:|']
     for mode, m in metrics.items():

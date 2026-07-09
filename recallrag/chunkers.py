@@ -3,8 +3,10 @@ import re
 from .schemas import Document, Chunk
 
 def _heading_before(text: str, offset: int) -> tuple[str, str]:
+    """查 chunk 起点前最近的 Markdown标题,返回 (叶子标题, 章节路径)。"""
     heading = ""
     path: list[str] = []
+    #Markdown 标题树状结构
     for m in re.finditer(r'^(#{1,6})\s+(.+?)\s*$', text[:offset], flags=re.MULTILINE):
         level = len(m.group(1))
         title = m.group(2).strip()
@@ -19,6 +21,11 @@ def fixed_char_chunk(
     keep_heading: bool = False,
     strategy_name: str | None = None,
 ) -> list[Chunk]:
+    """按字符滑窗切块。chunk_size/overlap 即实验名如 220/0、600/0。
+
+    step = chunk_size - overlap，按 [start : start+chunk_size] 切到文档末尾。
+    答案常比单块更长，容易在边界处被截断
+    """
     if overlap >= chunk_size:
         raise ValueError('overlap must be smaller than chunk_size')
     strategy_name = strategy_name or f'fixed_char_{chunk_size}_overlap_{overlap}_heading_{keep_heading}'
@@ -27,6 +34,7 @@ def fixed_char_chunk(
         text = doc.text
         start = 0
         idx = 0
+        #滑动切块
         step = chunk_size - overlap
         while start < len(text):
             end = min(len(text), start + chunk_size)
@@ -34,6 +42,7 @@ def fixed_char_chunk(
             if raw:
                 heading, section_path = _heading_before(text, start)
                 chunk_text = raw
+                # 防止分块丢失上下文
                 if keep_heading and section_path:
                     chunk_text = f'[Section: {section_path}]\n' + raw
                 chunks.append(Chunk(

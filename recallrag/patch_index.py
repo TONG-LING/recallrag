@@ -373,7 +373,6 @@ def _patch_selection_key(row: dict):
     )
 
 def _select_successful_patch_candidates(candidate_probe: list[dict]) -> dict[str, dict]:
-    #
     selected_by_qid: dict[str, dict] = {}
     for row in candidate_probe:
         if not row.get('success'):
@@ -395,7 +394,7 @@ def _filter_patch_pairs_by_ids(
 def write_comparison(main_dir: Path, patch_dir: Path, hybrid_dir: Path, main_chunks: int, patch_chunks: int, candidate_probe: list[dict] | None = None):
     """对比main-only和main+patch，输出fixed/regressed与patch决策。
 
-    逐题比较检索成败变化（fixed/regressed/unchanged）。
+    逐题比较检索变化（fixed/regressed/unchanged）。
     对每个patch打标签：
     - accepted：被选为最优候选，源query从失败变成功，且全局无regression
     - rejected：加了patch源query还是失败
