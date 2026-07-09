@@ -136,7 +136,9 @@ Test split 包含 `18` 题，结果如下：
 
 优化器为 `AdamW`，训练目标为二分类 `BCE loss`。loss 曲线整体下降。
 
-![Reranker fine-tuning loss curve](experiments/reranker_boundary_finetune/results/loss.png)
+<p align="center">
+  <img src="experiments/reranker_boundary_finetune/results/loss.png" alt="Reranker fine-tuning loss curve" width="640">
+</p>
 
 结果显示，微调没有扩大召回范围，但能把已有的完整答案块排得更靠前。该实验是主项目的排序侧补充，不替代 Patch Index。
 
