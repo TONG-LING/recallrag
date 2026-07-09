@@ -93,6 +93,12 @@ results/train/train_config.json
 ```
 
 训练后的模型、候选数据和大 JSON 不提交到仓库。
+本地重跑后，训练目录额外生成：
+
+```text
+outputs/.../loss_history.jsonl
+outputs/.../loss_curve.png
+```
 
 ## 运行方式
 
@@ -122,8 +128,9 @@ bash run_example.sh
 1. 从主项目 Top-30 检索结果构造训练样本
 2. 评估 base reranker
 3. 微调 BAAI/bge-reranker-base
-4. 评估 fine-tuned reranker
-5. 输出 before/after 对比
+4. 保存 step-level loss_history.jsonl 和 loss_curve.png
+5. 评估 fine-tuned reranker
+6. 输出 before/after 对比
 ```
 
 默认模型是：

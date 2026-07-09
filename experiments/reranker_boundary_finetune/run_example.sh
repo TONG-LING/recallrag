@@ -25,7 +25,7 @@ echo "==> using python: $PYTHON"
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 echo "==> CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES"
 
-"$PYTHON" -c "import torch, sentence_transformers" 2>/dev/null || {
+"$PYTHON" -c "import torch, sentence_transformers, datasets, matplotlib" 2>/dev/null || {
   echo "error: missing dependencies. Run:" >&2
   echo "  $PYTHON -m pip install -r requirements.txt" >&2
   exit 1
@@ -134,6 +134,8 @@ echo "[4/5] compare before/after"
 echo
 echo "done."
 echo "  data dir:          $DATA_DIR"
+echo "  loss history:      $MODEL_OUTPUT_DIR/loss_history.jsonl"
+echo "  loss curve:        $MODEL_OUTPUT_DIR/loss_curve.png"
 echo "  base metrics:      $BASE_EVAL_DIR/metrics.json"
 echo "  finetuned metrics: $FINETUNED_EVAL_DIR/metrics.json"
 echo "  compare report:    $COMPARE_REPORT"

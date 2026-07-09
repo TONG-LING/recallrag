@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import random
 from pathlib import Path
 
@@ -22,19 +23,89 @@ DEFAULT_MODEL = "BAAI/bge-reranker-base"
 DEFAULT_PAIRS = str(SCRIPT_DIR / "data" / "pairs.jsonl")
 
 
-def cmd_train(args: argparse.Namespace) -> None:
-    from sentence_transformers import InputExample
-    from torch.utils.data import DataLoader
+class LossHistoryCallback:
+    def __init__(self, path: str | Path) -> None:
+        self.path = Path(path)
+        self.records: list[dict] = []
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.path.write_text("", encoding="utf-8")
 
-    random.seed(args.seed)
-    rows = load_jsonl(args.pairs)
-    train_examples = [
-        InputExample(texts=[row["query"], row["text"]], label=float(row["label"]))
+    def on_log(self, args, state, control, logs=None, **kwargs) -> None:
+        if not logs or "loss" not in logs:
+            return
+        record = {
+            "step": int(state.global_step),
+            "epoch": None if state.epoch is None else float(state.epoch),
+            "loss": float(logs["loss"]),
+        }
+        if logs.get("learning_rate") is not None:
+            record["learning_rate"] = float(logs["learning_rate"])
+        self.records.append(record)
+        with self.path.open("a", encoding="utf-8") as fout:
+            fout.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def write_loss_curve(records: list[dict], path: str | Path) -> None:
+    if not records:
+        raise RuntimeError("No training loss records were captured; loss curve cannot be generated.")
+
+    import matplotlib
+
+    matplotlib.use("Agg")
+    from matplotlib import pyplot as plt
+
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    steps = [row["step"] for row in records]
+    losses = [row["loss"] for row in records]
+
+    plt.figure(figsize=(7, 4))
+    plt.plot(steps, losses, linewidth=1.5, marker="o", markersize=2.5)
+    plt.title("Training Loss Curve")
+    plt.xlabel("Global step")
+    plt.ylabel("Loss")
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig(path, dpi=200)
+    plt.close()
+
+
+def build_train_dataset(rows: list[dict]):
+    from datasets import Dataset
+
+    train_rows = [
+        {
+            "sentence_0": row["query"],
+            "sentence_1": row["text"],
+            "label": float(row["label"]),
+        }
         for row in rows
         if row.get("split") == "train"
     ]
-    if not train_examples:
+    if not train_rows:
         raise RuntimeError("No train examples found in pairs file.")
+    return Dataset.from_list(train_rows)
+
+
+def cmd_train(args: argparse.Namespace) -> None:
+    import torch
+    import transformers
+    from packaging import version
+    from sentence_transformers.cross_encoder.losses.binary_cross_entropy import BinaryCrossEntropyLoss
+    from sentence_transformers.cross_encoder.losses.cross_entropy import CrossEntropyLoss
+    from sentence_transformers.cross_encoder.trainer import CrossEncoderTrainer
+    from sentence_transformers.cross_encoder.training_args import CrossEncoderTrainingArguments
+    from sentence_transformers.sentence_transformer.model import SentenceTransformer
+    from transformers import TrainerCallback
+
+    class _LossHistoryCallback(TrainerCallback, LossHistoryCallback):
+        def __init__(self, path: str | Path) -> None:
+            LossHistoryCallback.__init__(self, path)
+
+    random.seed(args.seed)
+    rows = load_jsonl(args.pairs)
+    train_dataset = build_train_dataset(rows)
 
     device = resolve_device(args.device)
     dev_count = sum(1 for row in rows if row.get("split") == "dev")
@@ -45,11 +116,15 @@ def cmd_train(args: argparse.Namespace) -> None:
         num_labels=1,
         device=device,
     )
-    train_loader = DataLoader(train_examples, shuffle=True, batch_size=args.batch_size)
-    warmup_steps = int(len(train_loader) * args.epochs * args.warmup_ratio)
+    steps_per_epoch = max(1, (len(train_dataset) + args.batch_size - 1) // args.batch_size)
+    scheduler_steps_per_epoch = max(1, len(train_dataset) // args.batch_size)
+    warmup_steps = int(steps_per_epoch * args.epochs * args.warmup_ratio)
+    num_train_steps = int(scheduler_steps_per_epoch * args.epochs)
 
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
+    loss_history_path = out_dir / "loss_history.jsonl"
+    loss_curve_path = out_dir / "loss_curve.png"
     write_json(
         out_dir / "train_config.json",
         {
@@ -59,27 +134,79 @@ def cmd_train(args: argparse.Namespace) -> None:
             "epochs": args.epochs,
             "batch_size": args.batch_size,
             "lr": args.lr,
+            "weight_decay": args.weight_decay,
             "max_length": args.max_length,
             "warmup_steps": warmup_steps,
-            "train_examples": len(train_examples),
+            "logging_steps": args.logging_steps,
+            "train_examples": len(train_dataset),
             "dev_examples": dev_count,
+            "loss_history": str(loss_history_path.resolve()),
+            "loss_curve": str(loss_curve_path.resolve()),
         },
     )
 
-    model.fit(
-        train_dataloader=train_loader,
-        epochs=args.epochs,
-        warmup_steps=warmup_steps,
-        optimizer_params={"lr": args.lr},
-        output_path=args.output_dir,
-        show_progress_bar=True,
-        use_amp=args.fp16,
+    args_kwargs = {
+        "output_dir": str(out_dir),
+        "overwrite_output_dir": True,
+        "num_train_epochs": args.epochs,
+        "per_device_train_batch_size": args.batch_size,
+        "learning_rate": args.lr,
+        "warmup_steps": warmup_steps,
+        "fp16": args.fp16,
+        "weight_decay": args.weight_decay,
+        "lr_scheduler_type": "linear",
+        "max_grad_norm": 1.0,
+        "logging_strategy": "steps",
+        "logging_steps": args.logging_steps,
+        "save_strategy": "no",
+        "report_to": [],
+        "disable_tqdm": False,
+        "seed": args.seed,
+    }
+    eval_strategy_key = (
+        "eval_strategy" if version.parse(transformers.__version__) >= version.parse("4.41.0") else "evaluation_strategy"
     )
+    args_kwargs[eval_strategy_key] = "no"
+
+    param_optimizer = list(model.named_parameters())
+    no_decay = ["bias", "LayerNorm.bias", "LayerNorm.weight"]
+    optimizer_grouped_parameters = [
+        {
+            "params": [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
+            "weight_decay": args.weight_decay,
+        },
+        {
+            "params": [p for n, p in param_optimizer if any(nd in n for nd in no_decay)],
+            "weight_decay": 0.0,
+        },
+    ]
+    optimizer = torch.optim.AdamW(optimizer_grouped_parameters, lr=args.lr)
+    scheduler = SentenceTransformer._get_scheduler(
+        optimizer,
+        scheduler="WarmupLinear",
+        warmup_steps=warmup_steps,
+        t_total=num_train_steps,
+    )
+    loss_fct = BinaryCrossEntropyLoss(model) if model.config.num_labels == 1 else CrossEntropyLoss(model)
+
+    loss_callback = _LossHistoryCallback(loss_history_path)
+    trainer = CrossEncoderTrainer(
+        model=model,
+        args=CrossEncoderTrainingArguments(**args_kwargs),
+        train_dataset=train_dataset,
+        loss=loss_fct,
+        optimizers=(optimizer, scheduler),
+        callbacks=[loss_callback],
+    )
+    trainer.train()
 
     export_dir = export_cross_encoder(model, out_dir)
     if not is_loadable_dir(export_dir):
         raise RuntimeError(f"Training finished but export is not loadable: {export_dir}")
+    write_loss_curve(loss_callback.records, loss_curve_path)
     print(f"saved fine-tuned reranker -> {export_dir}")
+    print(f"saved loss history -> {loss_history_path}")
+    print(f"saved loss curve -> {loss_curve_path}")
 
 
 def fmt(value) -> str:
@@ -131,8 +258,10 @@ def parse_args() -> argparse.Namespace:
     train.add_argument("--epochs", type=int, default=2)
     train.add_argument("--batch-size", type=int, default=8)
     train.add_argument("--lr", type=float, default=2e-5)
+    train.add_argument("--weight-decay", type=float, default=0.01)
     train.add_argument("--max-length", type=int, default=512)
     train.add_argument("--warmup-ratio", type=float, default=0.1)
+    train.add_argument("--logging-steps", type=int, default=1)
     train.add_argument("--fp16", action="store_true")
     train.add_argument("--trust-remote-code", action="store_true")
     train.add_argument("--hf-endpoint", default=None)

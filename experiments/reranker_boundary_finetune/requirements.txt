@@ -2,4 +2,5 @@ torch>=2.1
 transformers>=4.40
 sentence-transformers>=3.0
 tqdm>=4.66
-
+datasets>=2.18
+matplotlib>=3.8
