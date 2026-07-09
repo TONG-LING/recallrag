@@ -46,6 +46,46 @@ class LossHistoryCallback:
             fout.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def write_loss_history(records: list[dict], path: str | Path) -> None:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as fout:
+        for record in records:
+            fout.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+def records_from_trainer_state(trainer) -> list[dict]:
+    records: list[dict] = []
+    seen: set[tuple[int, float, float | None]] = set()
+    for row in getattr(getattr(trainer, "state", None), "log_history", []) or []:
+        if "loss" not in row:
+            continue
+        try:
+            step = int(row.get("step", 0))
+            loss = float(row["loss"])
+            epoch = None if row.get("epoch") is None else float(row["epoch"])
+        except (TypeError, ValueError):
+            continue
+
+        dedup_key = (step, loss, epoch)
+        if dedup_key in seen:
+            continue
+        seen.add(dedup_key)
+
+        record = {
+            "step": step,
+            "epoch": epoch,
+            "loss": loss,
+        }
+        if row.get("learning_rate") is not None:
+            try:
+                record["learning_rate"] = float(row["learning_rate"])
+            except (TypeError, ValueError):
+                pass
+        records.append(record)
+    return records
+
+
 def write_loss_curve(records: list[dict], path: str | Path) -> None:
     if not records:
         raise RuntimeError("No training loss records were captured; loss curve cannot be generated.")
@@ -98,7 +138,7 @@ def cmd_train(args: argparse.Namespace) -> None:
     from sentence_transformers.sentence_transformer.model import SentenceTransformer
     from transformers import TrainerCallback
 
-    class _LossHistoryCallback(TrainerCallback, LossHistoryCallback):
+    class _LossHistoryCallback(LossHistoryCallback, TrainerCallback):
         def __init__(self, path: str | Path) -> None:
             LossHistoryCallback.__init__(self, path)
 
@@ -209,7 +249,12 @@ def cmd_train(args: argparse.Namespace) -> None:
     export_dir = export_cross_encoder(model, out_dir)
     if not is_loadable_dir(export_dir):
         raise RuntimeError(f"Training finished but export is not loadable: {export_dir}")
-    write_loss_curve(loss_callback.records, loss_curve_path)
+
+    loss_records = loss_callback.records or records_from_trainer_state(trainer)
+    if not loss_records:
+        print("warning: callback and trainer.state.log_history both had no step-level loss records")
+    write_loss_history(loss_records, loss_history_path)
+    write_loss_curve(loss_records, loss_curve_path)
     print(f"saved fine-tuned reranker -> {export_dir}")
     print(f"saved loss history -> {loss_history_path}")
     print(f"saved loss curve -> {loss_curve_path}")
