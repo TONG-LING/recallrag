@@ -134,6 +134,10 @@ Test split 包含 `18` 题，结果如下：
 | base reranker | 0.944444 | 0.668519 | 17 / 18 |
 | fine-tuned reranker | 0.944444 | 0.824074 | 17 / 18 |
 
+优化器为 `AdamW`，训练目标为二分类 `BCE loss`。loss 曲线整体下降。
+
+![Reranker fine-tuning loss curve](experiments/reranker_boundary_finetune/results/loss.png)
+
 结果显示，微调没有扩大召回范围，但能把已有的完整答案块排得更靠前。该实验是主项目的排序侧补充，不替代 Patch Index。
 
 ## 当前结论

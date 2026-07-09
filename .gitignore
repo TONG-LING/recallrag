@@ -60,3 +60,11 @@ experiments/**/data/
 experiments/**/outputs/
 experiments/**/models/
 experiments/**/*.safetensors
+experiments/**/results/**
+!experiments/**/results/
+!experiments/**/results/**/
+!experiments/**/results/**/*.png
+!experiments/**/results/**/*.jpg
+!experiments/**/results/**/*.jpeg
+!experiments/**/results/**/*.svg
+!experiments/**/results/**/*.webp
