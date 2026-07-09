@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
 import random
 from pathlib import Path
@@ -90,8 +91,6 @@ def build_train_dataset(rows: list[dict]):
 
 def cmd_train(args: argparse.Namespace) -> None:
     import torch
-    import transformers
-    from packaging import version
     from sentence_transformers.cross_encoder.losses.binary_cross_entropy import BinaryCrossEntropyLoss
     from sentence_transformers.cross_encoder.losses.cross_entropy import CrossEntropyLoss
     from sentence_transformers.cross_encoder.trainer import CrossEncoderTrainer
@@ -163,10 +162,17 @@ def cmd_train(args: argparse.Namespace) -> None:
         "disable_tqdm": False,
         "seed": args.seed,
     }
-    eval_strategy_key = (
-        "eval_strategy" if version.parse(transformers.__version__) >= version.parse("4.41.0") else "evaluation_strategy"
-    )
-    args_kwargs[eval_strategy_key] = "no"
+
+    training_arg_params = set(inspect.signature(CrossEncoderTrainingArguments.__init__).parameters)
+    if "eval_strategy" in training_arg_params:
+        args_kwargs["eval_strategy"] = "no"
+    elif "evaluation_strategy" in training_arg_params:
+        args_kwargs["evaluation_strategy"] = "no"
+
+    filtered_args_kwargs = {key: value for key, value in args_kwargs.items() if key in training_arg_params}
+    dropped_arg_keys = sorted(set(args_kwargs) - set(filtered_args_kwargs))
+    if dropped_arg_keys:
+        print(f"warning: dropped unsupported training args: {', '.join(dropped_arg_keys)}")
 
     param_optimizer = list(model.named_parameters())
     no_decay = ["bias", "LayerNorm.bias", "LayerNorm.weight"]
@@ -192,7 +198,7 @@ def cmd_train(args: argparse.Namespace) -> None:
     loss_callback = _LossHistoryCallback(loss_history_path)
     trainer = CrossEncoderTrainer(
         model=model,
-        args=CrossEncoderTrainingArguments(**args_kwargs),
+        args=CrossEncoderTrainingArguments(**filtered_args_kwargs),
         train_dataset=train_dataset,
         loss=loss_fct,
         optimizers=(optimizer, scheduler),
