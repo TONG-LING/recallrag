@@ -35,8 +35,6 @@ def detect_reranker_device(device: str | None = None) -> str:
 
 
 class LocalCrossEncoderReranker:
-    """Minimal local cross-encoder reranker wrapper for BGE reranker models."""
-
     def __init__(
         self,
         model_name_or_path: str | None = None,

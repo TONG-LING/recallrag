@@ -51,7 +51,8 @@ def _select_anchor_without_gold(q: dict, chunks: list[dict], result: dict) -> tu
         if not c:
             continue
         rank = int(row.get('rank') or 999)
-        #防异常rank值
+        #dense_rank_score是一个定位用的弱先验特征，防异常rank值，非MRR
+        #MRR：Top-5 里没有成功块 → rank=None → 贡献为0
         dense_rank_score = 1.0 / max(rank, 1)
         text = c.get('text', '')
         section = c.get('section_path', '')

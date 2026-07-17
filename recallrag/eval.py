@@ -18,7 +18,7 @@ def coverage(gold_span: str, chunk_text: str) -> float:
     """计算标准答案片段被某个 chunk 覆盖了多少比例。
     0.65的阈值
     """
-    gw = words(gold_span)  # text_utils.mixed_tokens
+    gw = words(gold_span)
     if not gw:
         return 0.0
     chunk_tokens = set(words(chunk_text))

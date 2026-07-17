@@ -71,7 +71,6 @@ def health(url: str = DEFAULT_URL):
     return _request('GET', f'{url}/collections')
 
 def recreate_collection(url: str, collection: str, dim: int):
-    # Delete is idempotent enough for local experiments.
     drop_collection(url, collection)
     return _request('PUT', f'{url}/collections/{collection}', {
         'vectors': {'size': dim, 'distance': 'Cosine'}
@@ -95,7 +94,6 @@ def upsert_collection(url: str, collection: str, chunks: list[dict], vectors: li
         payload['text_preview'] = c.get('text','')[:240]
         points.append({'id': pid, 'vector': v, 'payload': payload})
         point_map.append({'point_id': pid, 'chunk_id': c['chunk_id'], 'collection': collection})
-    # Batch to avoid giant request.
     for i in range(0, len(points), 64):
         _request('PUT', f'{url}/collections/{collection}/points?wait=true', {'points': points[i:i+64]})
     return {'upserted': len(points), 'dim': dim, 'point_map': point_map}
@@ -141,7 +139,6 @@ def build_qdrant_from_runs(
     if patch_chunks:
         patch = upsert_collection(url, patch_collection, patch_chunks, patch_vectors, 'patch')
     else:
-        # Avoid stale shadow patches from previous runs polluting a fresh evaluation.
         drop_collection(url, patch_collection)
         patch = {'upserted': 0, 'point_map': []}
     meta = {
@@ -163,7 +160,6 @@ def build_qdrant_from_runs(
     return meta
 
 def search_collection(url: str, collection: str, vector: list[float], limit: int):
-    # /points/search is widely supported and enough for this project.
     res = _request('POST', f'{url}/collections/{collection}/points/search', {
         'vector': vector,
         'limit': limit,
@@ -194,10 +190,6 @@ def _patch_can_replace_main(patch_row: dict, main_row: dict | None, score_margin
     return float(patch_row.get('score', 0.0)) + score_margin >= float(main_row.get('score', 0.0))
 
 def merge_qdrant_results(main_points, patch_points, final_k: int):
-    # Production-like merge: combine, but only allow a patch to suppress a main
-    # chunk when the patch actually outranks that replaced chunk for this query.
-    # Otherwise the patch stays as an extra candidate and cannot evict stronger
-    # main evidence.
     main_results = [_to_result(p, i, 'main') for i, p in enumerate(main_points, 1)]
     patch_results = [_to_result(p, i, 'patch') for i, p in enumerate(patch_points, 1)]
     results = main_results + patch_results
@@ -212,7 +204,6 @@ def merge_qdrant_results(main_points, patch_points, final_k: int):
     for r in sorted(results, key=lambda x: x['score'], reverse=True):
         cid = r.get('chunk_id')
         if r.get('source_index') == 'main' and cid in patch_replaces:
-            # If a patch for the same local window is present, keep the patch candidate.
             continue
         if cid in seen:
             continue

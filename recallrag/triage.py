@@ -81,13 +81,6 @@ def final_triage(
     qdrant_dir: str | Path | None = None,
     out_dir: str | Path = 'runs/triage',
 ):
-    """Merge dense failure diagnosis, patch validation and BM25/hybrid evidence.
-
-    This is the production-facing decision layer. The raw diagnosis can say
-    "chunking_failure", but final triage can downgrade it if another retrieval
-    strategy fixes the failure. This prevents over-claiming that all dense
-    failures are chunk bugs.
-    """
     base_dir = Path(base_dir)
     patch_eval_dir = Path(patch_eval_dir)
     bm25_dir = Path(bm25_dir)
@@ -129,7 +122,6 @@ def final_triage(
         rationale = []
 
         if bm25_fixed or dense_bm25_fixed:
-            # Hybrid retrieval fixing the failure means this is not a clean chunk-only case.
             final_family = 'retrieval_strategy_sensitive'
             final_type = 'dense_retrieval_miss_fixed_by_bm25_or_hybrid'
             final_action = 'prefer_hybrid_retrieval_or_mark_patch_needs_review'
