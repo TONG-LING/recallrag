@@ -252,6 +252,25 @@ RECALLRAG_QUERY_REWRITE_API_KEY=
 
 所有命令集中在 [RUN_EXPERIMENTS.md](RUN_EXPERIMENTS.md)。
 
+一键本地工程评估：
+
+```bash
+./scripts/run_local_engineering_eval.sh --limit 120
+```
+
+该命令会检查 embedding endpoint 和本地 Qdrant，运行 baseline、failure diagnosis、patch candidate、main+patch eval、BM25 countercheck、Qdrant 双集合验证和 final triage。临时产物默认写入项目外部：
+
+```text
+../RecallRAG_temp/
+```
+
+
+输出报告入口：
+
+```text
+../RecallRAG_temp/<run>/engineering_report.md
+```
+
 复现实验入口：
 
 1. 运行 `220/0` 诊断版，用于观察 chunk 边界导致的证据断裂。

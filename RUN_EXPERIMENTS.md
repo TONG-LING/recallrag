@@ -21,6 +21,46 @@ http://localhost:1234/v1/embeddings
 text-embedding-bge-large-zh-v1.5
 ```
 
+## 一键本地工程评估
+
+该脚本会检查 embedding endpoint 和本地 Qdrant，按指定题目数量运行 baseline、diagnosis、patch、hybrid eval、BM25 countercheck、Qdrant 双集合验证和 final triage，并在项目外部的 `../RecallRAG_temp/` 下生成完整临时产物和总报告。运行前需要确保 Qdrant 已启动。
+
+运行 120 题：
+
+```bash
+./scripts/run_local_engineering_eval.sh --limit 120
+```
+
+运行小样本调试：
+
+```bash
+./scripts/run_local_engineering_eval.sh --limit 10
+```
+
+
+常用参数：
+
+```bash
+./scripts/run_local_engineering_eval.sh \
+  --limit 120 \
+  --endpoint http://localhost:1234/v1/embeddings \
+  --model text-embedding-bge-large-zh-v1.5 \
+  --qdrant-url http://localhost:6333 \
+  --chunk-size 600 \
+  --overlap 0 \
+  --out ../RecallRAG_temp/engineering_eval_120
+```
+
+输出入口：
+
+```text
+../RecallRAG_temp/<run>/engineering_report.md
+../RecallRAG_temp/<run>/runs/base/failure_diagnosis.md
+../RecallRAG_temp/<run>/runs/hybrid/comparison_report.md
+../RecallRAG_temp/<run>/runs/triage/final_triage_report.md
+../RecallRAG_temp/<run>/logs/
+```
+
 ## 1. 诊断版 `220/0`
 
 这个设置主要用来暴露 chunk 边界问题。
