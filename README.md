@@ -258,17 +258,18 @@ RECALLRAG_QUERY_REWRITE_API_KEY=
 ./scripts/run_local_engineering_eval.sh --limit 120
 ```
 
-该命令会检查 embedding endpoint 和本地 Qdrant，运行 baseline、failure diagnosis、patch candidate、main+patch eval、BM25 countercheck、Qdrant 双集合验证和 final triage。临时产物默认写入项目外部：
+该命令会检查 embedding endpoint 和本地 Qdrant，运行 baseline、failure diagnosis、patch candidate、main+patch eval、BM25 countercheck、Qdrant 双集合验证和 final triage。临时产物默认写入项目内的 `temp/` 目录，该目录已加入 `.gitignore`：
 
 ```text
-../RecallRAG_temp/
+temp/
 ```
 
 
-输出报告入口：
+脚本会生成中文工程化评估报告，包含环境检查、检索指标、失败诊断、patch 决策、BM25 反证检查、Qdrant 双集合验证、逐 case 说明和产物索引。完整临时产物仍在 `temp/`，最终报告会同步复制到当前仓库的 `report/` 目录：
 
 ```text
-../RecallRAG_temp/<run>/engineering_report.md
+report/latest_report.md
+report/report_<run_id>_n<limit>_c<chunk_size>_o<overlap>.md
 ```
 
 复现实验入口：
