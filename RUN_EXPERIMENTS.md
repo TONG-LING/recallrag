@@ -23,7 +23,7 @@ text-embedding-bge-large-zh-v1.5
 
 ## 一键本地工程评估
 
-该脚本会检查 embedding endpoint 和本地 Qdrant，按指定题目数量运行 baseline、diagnosis、patch、hybrid eval、BM25 countercheck、Qdrant 双集合验证和 final triage，并在项目内的 `temp/` 下生成完整临时产物和中文工程化评估报告，`temp/` 已加入 `.gitignore`。运行前需要确保 Qdrant 已启动。
+该脚本会检查 embedding endpoint 和本地 Qdrant，按指定题目数量运行 baseline、diagnosis、patch、hybrid eval、BM25 countercheck、Qdrant 双集合验证和 final triage，并在项目内的 `temp/` 下生成完整临时产物和中文评估报告，`temp/` 已加入 `.gitignore`。运行前需要确保 Qdrant 已启动。
 
 运行 120 题：
 
@@ -63,7 +63,7 @@ temp/<run>/runs/triage/final_triage_report.md
 temp/<run>/logs/
 ```
 
-`report.md` 和 `report/latest_report.md` 包含环境检查、评估配置、证据级评估口径、主指标对比、配对检验、失败诊断统计、patch 生成与筛选、BM25 反证检查、final triage、逐失败样例详细说明、accepted patch 明细、Qdrant 双集合验证、工程化解释和风险边界。
+`report.md` 和 `report/latest_report.md` 包含结论摘要、运行环境、评估设置、向量库检索结果、修复稳定性、失败问题和补丁决策、已接受补丁明细、检索策略对照、结论边界和文件位置。
 
 ## 1. 诊断版 `220/0`
 

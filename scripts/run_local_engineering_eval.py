@@ -203,6 +203,68 @@ def list_or_dash(value: Any) -> str:
     return str(value)
 
 
+def display_path(value: Any) -> str:
+    if value is None:
+        return "-"
+    path = Path(str(value))
+    try:
+        resolved = path.resolve()
+    except Exception:
+        return str(value)
+    try:
+        return str(resolved.relative_to(ROOT))
+    except ValueError:
+        pass
+    try:
+        return str(resolved.relative_to(ROOT.parent))
+    except ValueError:
+        return resolved.name
+
+
+def cn_bool(value: Any) -> str:
+    if value is True:
+        return "是"
+    if value is False:
+        return "否"
+    if value is None:
+        return "-"
+    return str(value)
+
+
+def cn_patch_type(value: Any) -> str:
+    mapping = {
+        "adjacent_merge": "相邻块合并",
+        "contextual": "相关句抽取",
+        "local_proposition": "要点句改写",
+        "local_summary": "局部摘要",
+    }
+    return mapping.get(str(value), str(value) if value else "-")
+
+
+def cn_action(value: Any) -> str:
+    mapping = {
+        "accept_patch_for_shadow_index; optional later merge": "接受补丁，进入旁路索引；后续可考虑合入主索引",
+        "accept_patch_candidate_in_qdrant_shadow_validation": "接受补丁，Qdrant 旁路验证通过",
+        "manual_review_or_new_strategy": "人工复核，当前补丁未解决",
+        "prefer_hybrid_retrieval_or_mark_patch_needs_review": "优先考虑混合检索，该问题不直接归因于切块",
+        "needs_review_before_shadow_index_activation": "补丁进入旁路前需要复核",
+    }
+    return mapping.get(str(value), str(value) if value else "-")
+
+
+def cn_decision(value: Any) -> str:
+    mapping = {
+        "accepted_patch_candidate": "接受补丁",
+        "manual_review": "人工复核",
+        "needs_review": "需要复核",
+        "accepted": "已接受",
+        "rejected": "已拒绝",
+        "candidate_not_selected": "未选中",
+        "retrieval_strategy_sensitive": "检索策略敏感",
+    }
+    return mapping.get(str(value), str(value) if value else "-")
+
+
 def generate_engineering_report(out_dir: Path, config: dict[str, Any]) -> Path:
     runs = out_dir / "runs"
     base_dir = runs / "base"
@@ -219,7 +281,6 @@ def generate_engineering_report(out_dir: Path, config: dict[str, Any]) -> Path:
     comparison = metric(hybrid_dir / "comparison.json")
     patch_meta = metric(patch_dir / "patch_index_meta.json")
     patch_decisions = read_json(hybrid_dir / "patch_decisions.json") if (hybrid_dir / "patch_decisions.json").exists() else []
-    candidate_probe = read_json(hybrid_dir / "candidate_probe_results.json") if (hybrid_dir / "candidate_probe_results.json").exists() else []
     diagnoses = read_json(base_dir / "failure_diagnosis.json") if (base_dir / "failure_diagnosis.json").exists() else []
     triage = metric(triage_dir / "final_triage.json")
     bm25_metrics = metric(bm25_dir / "hybrid_bm25_metrics.json")
@@ -228,33 +289,24 @@ def generate_engineering_report(out_dir: Path, config: dict[str, Any]) -> Path:
     qdrant_patch_metrics = metric(qdrant_patch_dir / "qdrant_metrics.json")
     sig = metric(hybrid_dir / "paired_significance.json")
 
-    diagnosis_family = Counter(d.get("failure_family", "unknown") for d in diagnoses)
-    diagnosis_type = Counter(d.get("diagnosed_failure_type", "unknown") for d in diagnoses)
-    decision_counts = summarize_decisions(patch_decisions)
-    probe_type_counts = Counter(r.get("candidate_type", "unknown") for r in candidate_probe)
     selected = comparison.get("selected_patch_candidates") or []
-    selected_type_counts = Counter(r.get("candidate_type", "unknown") for r in selected)
-
+    selected_type_counts = Counter(cn_patch_type(r.get("candidate_type")) for r in selected)
+    decision_counts = summarize_decisions(patch_decisions)
     triage_rows = triage.get("rows") or []
     triage_by_qid = {r.get("qid"): r for r in triage_rows}
     decisions_by_qid: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for d in patch_decisions:
-        decisions_by_qid[d.get("qid")].append(d)
+    for row in patch_decisions:
+        decisions_by_qid[row.get("qid")].append(row)
 
     delta = comparison.get("delta") or {}
     fixed_qids = comparison.get("fixed", []) if comparison else []
-    regressed_qids = comparison.get("regressed", []) if comparison else []
     unchanged_failed_qids = comparison.get("unchanged_failure", []) if comparison else []
     service_base_metrics = qdrant_main_metrics or base_metrics
     service_patch_metrics = qdrant_patch_metrics or hybrid_metrics
     service_delta = (qdrant_cmp.get("delta") if qdrant_cmp else None) or delta
     service_fixed_qids = (qdrant_cmp.get("fixed") if qdrant_cmp else None) or fixed_qids
-    service_regressed_qids = (qdrant_cmp.get("regressed") if qdrant_cmp else None) or regressed_qids
-    service_metrics_source = "Qdrant 双集合检索" if qdrant_main_metrics and qdrant_patch_metrics else "离线向量产物评估"
+    service_regressed_qids = (qdrant_cmp.get("regressed") if qdrant_cmp else None) or (comparison.get("regressed", []) if comparison else [])
     accepted_decisions = [d for d in patch_decisions if d.get("status") == "accepted"]
-    review_decisions = [d for d in patch_decisions if d.get("status") == "needs_review"]
-    rejected_decisions = [d for d in patch_decisions if d.get("status") == "rejected"]
-    not_selected_decisions = [d for d in patch_decisions if d.get("status") == "candidate_not_selected"]
 
     generated_at = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     emb = config.get("embedding_check") or {}
@@ -263,369 +315,189 @@ def generate_engineering_report(out_dir: Path, config: dict[str, Any]) -> Path:
     qdrant_collections = config.get("qdrant_collections") or {}
 
     lines: list[str] = []
-    lines += ["# RecallRAG 本地工程化评估报告", ""]
+    lines += ["# RecallRAG 本地评估报告", ""]
     lines += [
-        f"- **生成时间**：`{generated_at}`",
-        f"- **运行编号**：`{config.get('run_id')}`",
-        f"- **报告目录**：`{out_dir}`",
-        f"- **评估题目数**：`{qsel.get('selected')}` / `{qsel.get('total_available')}`",
+        f"- 生成时间：`{generated_at}`",
+        f"- 运行编号：`{config.get('run_id')}`",
+        f"- 评估题目：`{qsel.get('selected')}` / `{qsel.get('total_available')}`",
+        f"- 报告目录：`{display_path(out_dir)}`",
         "",
     ]
 
-    lines += ["## 1. 结论摘要", ""]
+    lines += ["## 1. 总体结论", ""]
     lines += [
-        "本次评估围绕 RAG 检索中的证据召回完整性问题展开：主索引保持不变，仅在失败样例触发后生成旁路 Patch Index，并通过验证门决定是否启用 patch。",
+        "本次评估检查的是：在主知识库不重建的情况下，旁路补丁索引能否修复一部分证据召回不完整的问题。最终效果以 Qdrant 向量库中的主集合和补丁集合验证结果为准。",
         "",
-        "| 项目 | 结果 |",
+        "| 指标 | 结果 |",
         "|---|---:|",
-        f"| 指标来源 | {service_metrics_source} |",
-        f"| Main-only Hits | {service_base_metrics.get('hits')} / {service_base_metrics.get('total')} |",
-        f"| Main+Patch Hits | {service_patch_metrics.get('hits')} / {service_patch_metrics.get('total')} |",
-        f"| Hit 增量 | {service_delta.get('hits', 0):+} |",
-        f"| Recall@{top_k} 增量 | {fmt_float(service_delta.get('recall'))} |",
-        f"| MRR 增量 | {fmt_float(service_delta.get('mrr'))} |",
-        f"| 已接受 Patch 数 | {len(accepted_decisions)} |",
-        f"| 修复 query 数 | {len(service_fixed_qids)} |",
-        f"| 回归 query 数 | {len(service_regressed_qids)} |",
+        f"| 主集合命中数 | {service_base_metrics.get('hits')} / {service_base_metrics.get('total')} |",
+        f"| 主集合 + 补丁集合命中数 | {service_patch_metrics.get('hits')} / {service_patch_metrics.get('total')} |",
+        f"| 新增修复数 | {service_delta.get('hits', 0):+} |",
+        f"| 召回率提升 | {fmt_float(service_delta.get('recall'))} |",
+        f"| 排名指标提升 | {fmt_float(service_delta.get('mrr'))} |",
+        f"| 通过验证的补丁数 | {len(accepted_decisions)} |",
+        f"| 发生回退的问题数 | {len(service_regressed_qids)} |",
         "",
     ]
     if service_regressed_qids:
-        lines.append(f"> 风险提示：本次 main+patch 评估出现回归 query：`{list_or_dash(service_regressed_qids)}`，对应 patch 不应直接上线，需要进入复核。")
+        lines.append(f"> 结论：存在回退问题（{list_or_dash(service_regressed_qids)}），相关补丁需要复核后再使用。")
     else:
-        lines.append("> 安全性结论：本次评估未观察到 main+patch 相比 main-only 的成功样例回归。")
+        lines.append("> 结论：本次没有发现补丁导致原本成功的问题失败。")
     lines.append("")
 
-    lines += ["## 2. 环境与依赖检查", ""]
+    lines += ["## 2. 运行环境", ""]
     lines += [
-        "| 检查项 | 状态 | 关键信息 |",
+        "| 项目 | 状态 | 说明 |",
         "|---|---|---|",
-        f"| Embedding 服务 | `{emb.get('status')}` | endpoint=`{emb.get('endpoint')}`, model=`{emb.get('model')}`, dim=`{emb.get('dim')}`, latency=`{emb.get('latency_sec')}s` |",
-        f"| Qdrant 服务 | `{qdrant.get('status')}` | url=`{qdrant.get('url')}`, collections=`{qdrant.get('collection_count')}`, latency=`{qdrant.get('latency_sec')}s` |",
+        f"| 向量模型服务 | `{emb.get('status')}` | 地址 `{emb.get('endpoint')}`，模型 `{emb.get('model')}`，维度 `{emb.get('dim')}` |",
+        f"| Qdrant 向量库 | `{qdrant.get('status')}` | 地址 `{qdrant.get('url')}`，已有集合数 `{qdrant.get('collection_count')}` |",
         "",
     ]
     if qdrant_collections:
         lines += [
-            "本次运行使用临时 Qdrant collection：",
+            "本次运行创建了两个临时集合：",
             "",
-            f"- main collection：`{qdrant_collections.get('main_collection')}`",
-            f"- patch collection：`{qdrant_collections.get('patch_collection')}`",
+            f"- 主集合：`{qdrant_collections.get('main_collection')}`",
+            f"- 补丁集合：`{qdrant_collections.get('patch_collection')}`",
             "",
         ]
 
-    lines += ["## 3. 评估配置", ""]
+    lines += ["## 3. 评估设置", ""]
     lines += [
-        "| 配置项 | 值 |",
+        "| 项目 | 值 |",
         "|---|---|",
-        f"| 文档目录 | `{config.get('docs')}` |",
-        f"| 原始问题集 | `{config.get('questions')}` |",
-        f"| 临时问题集 | `{qsel.get('output')}` |",
-        f"| 题目选择方式 | `{qsel.get('mode')}` |",
-        f"| chunk_size / overlap | `{config.get('chunk_size')}` / `{config.get('overlap')}` |",
-        f"| keep_heading | `{config.get('keep_heading')}` |",
-        f"| top_k | `{top_k}` |",
-        f"| patch_k | `{config.get('patch_k')}` |",
-        f"| coverage_threshold | `{config.get('coverage_threshold')}` |",
-        f"| batch_size | `{config.get('batch_size')}` |",
+        f"| 文档目录 | `{display_path(config.get('docs'))}` |",
+        f"| 问题集 | `{display_path(config.get('questions'))}` |",
+        f"| 本次使用的问题集 | `{display_path(qsel.get('output'))}` |",
+        f"| 题目选择 | `{qsel.get('mode')}` |",
+        f"| 切块长度 | `{config.get('chunk_size')}` |",
+        f"| 重叠长度 | `{config.get('overlap')}` |",
+        f"| 返回条数 | `{top_k}` |",
+        f"| 证据覆盖阈值 | `{config.get('coverage_threshold')}` |",
+        "",
+        "命中标准：检索结果必须来自正确文档，并且覆盖足够多的标准答案证据。只找到正确文档但证据不完整，不算命中。",
         "",
     ]
 
-    lines += ["## 4. 评估口径", ""]
+    lines += ["## 4. 向量库检索结果", ""]
     lines += [
-        "本报告不使用普通文档级命中作为唯一标准，而采用证据级命中：Top-K 结果必须来自正确文档，并且 chunk 对 gold evidence span 的覆盖率达到阈值。",
-        "",
-        f"- **成功标准**：`doc_id` 匹配且 evidence coverage ≥ `{config.get('coverage_threshold')}`。",
-        "- **Patch 触发条件**：仅对 main-only 失败且诊断为 near-miss / 局部上下文不足的样例生成 candidate。",
-        "- **Patch 接受条件**：candidate 单独 probe 能修复源 query，合并后全量评估不引入 regression。",
-        "- **BM25 countercheck**：如果 BM25 或 Dense+BM25 能修复该失败，说明失败可能是检索策略敏感，不应直接归因于 chunking。",
-        "- **Qdrant 验证**：Main Index 与 Patch Index 使用独立 collection，验证旁路 patch 在向量库形态下的检索效果。",
-        "",
-    ]
-
-    lines += ["## 5. Qdrant 主检索指标", ""]
-    lines += [
-        "本脚本默认要求 Qdrant 已启动，最终检索效果以 Qdrant 双集合验证为准。离线向量产物评估只用于诊断、patch candidate 筛选和一致性对照。",
-        "",
-        f"| Route | Recall@{top_k} | MRR | Hits | Failed |",
+        "| 路线 | 召回率 | 排名指标 | 命中数 | 失败数 |",
         "|---|---:|---:|---:|---:|",
-        metric_row("main collection", service_base_metrics, top_k),
-        metric_row("main + patch collections", service_patch_metrics, top_k),
-        f"| delta | {fmt_float(service_delta.get('recall'))} | {fmt_float(service_delta.get('mrr'))} | {service_delta.get('hits')} | - |",
-    ]
-    lines += [
+        metric_row("主集合", service_base_metrics, top_k),
+        metric_row("主集合 + 补丁集合", service_patch_metrics, top_k),
+        f"| 提升 | {fmt_float(service_delta.get('recall'))} | {fmt_float(service_delta.get('mrr'))} | {service_delta.get('hits')} | - |",
         "",
-        "### 5.1 离线候选筛选指标",
-        "",
-        "以下指标来自本地 `chunks.json` / `vectors.json` 产物，用于 patch 生成、probe、回归检查和 Qdrant 写入前的候选筛选。该表不是第二套线上路由。",
-        "",
-        f"| Route | Recall@{top_k} | MRR | Hits | Failed |",
-        "|---|---:|---:|---:|---:|",
-        metric_row("offline main-only", base_metrics, top_k),
-        metric_row("offline main + patch", hybrid_metrics, top_k),
-        f"| offline delta | {fmt_float(delta.get('recall'))} | {fmt_float(delta.get('mrr'))} | {delta.get('hits')} | - |",
+        "说明：补丁不是直接写回主集合，而是单独放在补丁集合中。这样可以单独验证、停用或回滚。",
         "",
     ]
 
     if sig:
-        lines += ["## 6. 配对检验", ""]
+        lines += ["## 5. 修复是否稳定", ""]
         lines += [
-            "| 指标 | 值 |",
+            "| 项目 | 结果 |",
             "|---|---:|",
-            f"| before_hits | {sig.get('before_hits')} |",
-            f"| after_hits | {sig.get('after_hits')} |",
-            f"| wins | {sig.get('wins')} |",
-            f"| losses | {sig.get('losses')} |",
-            f"| ties | {sig.get('ties')} |",
-            f"| recall_delta | {fmt_float(sig.get('recall_delta'))} |",
-            f"| recall_delta_bootstrap_ci95 | `{sig.get('recall_delta_bootstrap_ci95')}` |",
-            f"| mrr_delta | {fmt_float(sig.get('mrr_delta'))} |",
-            f"| mrr_delta_bootstrap_ci95 | `{sig.get('mrr_delta_bootstrap_ci95')}` |",
-            f"| exact_mcnemar_pvalue | {sig.get('exact_mcnemar_pvalue')} |",
-            "",
-            f"逐 query 明细见：`{hybrid_dir / 'paired_significance.json'}`",
+            f"| 修复的问题数 | {sig.get('wins')} |",
+            f"| 变差的问题数 | {sig.get('losses')} |",
+            f"| 不变的问题数 | {sig.get('ties')} |",
+            f"| 召回率变化 | {fmt_float(sig.get('recall_delta'))} |",
+            f"| 排名指标变化 | {fmt_float(sig.get('mrr_delta'))} |",
+            f"| McNemar 检验 p 值 | {sig.get('exact_mcnemar_pvalue')} |",
             "",
         ]
 
-    lines += ["## 7. 失败诊断统计", ""]
-    lines += [
-        f"main-only 失败 query 数：`{len(diagnoses)}`。诊断阶段只基于 retrieval trace 定位 near-miss 窗口，不使用 gold span 来生成 patch。",
-        "",
-        "### 7.1 按 failure family 统计",
-        "",
-        "| failure_family | count |",
-        "|---|---:|",
-    ]
-    if diagnosis_family:
-        for k, v in diagnosis_family.most_common():
-            lines.append(f"| `{k}` | {v} |")
-    else:
-        lines.append("| - | 0 |")
-    lines += ["", "### 7.2 按 diagnosed_failure_type 统计", "", "| diagnosed_failure_type | count |", "|---|---:|"]
-    if diagnosis_type:
-        for k, v in diagnosis_type.most_common():
-            lines.append(f"| `{k}` | {v} |")
-    else:
-        lines.append("| - | 0 |")
-    lines.append("")
-
-    lines += ["## 8. Patch 生成与筛选", ""]
-    lines += [
-        "Patch 采用旁路索引策略：主索引不被改写；candidate 先进入临时 patch 集，经过 probe 和全量回归检查后，才允许进入 selected patch 集。",
-        "",
-        "| 项目 | 数量 / 分布 |",
-        "|---|---|",
-        f"| materialized patch candidates | `{patch_meta.get('count')}` |",
-        f"| candidate probe results | `{len(candidate_probe)}` |",
-        f"| probe candidate type counts | `{dict(probe_type_counts)}` |",
-        f"| selected patch candidates | `{len(selected)}` |",
-        f"| selected patch type counts | `{dict(selected_type_counts)}` |",
-        f"| patch decision counts | `{dict(decision_counts)}` |",
-        "",
-        "| movement | qids |",
-        "|---|---|",
-        f"| fixed | `{list_or_dash(fixed_qids)}` |",
-        f"| regressed | `{list_or_dash(regressed_qids)}` |",
-        f"| unchanged_failure | `{list_or_dash(unchanged_failed_qids)}` |",
-        "",
-    ]
-
-    if bm25_metrics:
-        lines += ["## 9. BM25 / Dense+BM25 反证检查", ""]
-        lines += [
-            "该部分用于判断失败是否只是 dense retrieval 策略问题。如果 BM25 或 Dense+BM25 能修复，则该样例不应简单归因于 chunk 边界问题。",
-            "",
-            f"| Route | Recall@{top_k} | MRR | Hits | Failed |",
-            "|---|---:|---:|---:|---:|",
-        ]
-        for name in ["dense", "bm25", "dense_bm25"]:
-            row = bm25_metrics.get(name) or {}
-            if row:
-                lines.append(metric_row(name, row, top_k))
-        lines.append("")
-
+    lines += ["## 6. 失败问题和补丁决策", ""]
     if triage:
-        lines += ["## 10. Final Triage 汇总", ""]
         lines += [
-            "Final triage 综合 dense 失败、patch 修复、BM25 countercheck 和 Qdrant 验证信号，输出最终工程动作。",
-            "",
             "| 项目 | 数量 |",
             "|---|---:|",
-            f"| total_dense_failures | {triage.get('total_dense_failures')} |",
-            f"| accepted_patch_candidates | {triage.get('accepted_patch_candidates')} |",
-            f"| retrieval_strategy_sensitive | {triage.get('retrieval_strategy_sensitive')} |",
-            f"| manual_review | {triage.get('manual_review')} |",
+            f"| 主集合失败问题 | {triage.get('total_dense_failures')} |",
+            f"| 接受补丁 | {triage.get('accepted_patch_candidates')} |",
+            f"| 更适合改检索策略 | {triage.get('retrieval_strategy_sensitive')} |",
+            f"| 需要人工复核 | {triage.get('manual_review')} |",
             "",
         ]
-
-    lines += ["## 11. 逐失败样例工程决策表", ""]
+    lines += [
+        "| 问题编号 | 问题 | 是否补丁修复 | 补丁类型 | 修复前覆盖率 | 修复后覆盖率 | 最终处理 |",
+        "|---|---|---:|---|---:|---:|---|",
+    ]
     if not diagnoses:
-        lines += ["本次评估中 main-only 没有产生 dense retrieval 失败样例，因此没有触发 patch 诊断。", ""]
+        lines.append("| - | 本次没有失败问题 | - | - | - | - | - |")
     else:
-        lines += [
-            "| qid | question | raw diagnosis | patch_allowed | final_decision | accepted_patch_type | base_cov | patch_cov | bm25_fixed | qdrant_patch_fixed | action |",
-            "|---|---|---|---:|---|---|---:|---:|---:|---:|---|",
-        ]
         for d in diagnoses:
             qid = d.get("qid")
             tr = triage_by_qid.get(qid, {})
             signals = tr.get("signals", {}) or {}
-            q_decisions = decisions_by_qid.get(qid, [])
-            accepted = [x for x in q_decisions if x.get("status") == "accepted"]
-            accepted_types = sorted({x.get("candidate_type") for x in accepted if x.get("candidate_type")})
+            accepted = [x for x in decisions_by_qid.get(qid, []) if x.get("status") == "accepted"]
+            patch_types = sorted({cn_patch_type(x.get("candidate_type")) for x in accepted})
             lines.append(
-                f"| {qid} | {short_text(d.get('question'), 42)} | `{d.get('diagnosed_failure_type')}` | "
-                f"{d.get('patch_allowed')} | `{zh_status(tr.get('final_decision', '-'))}` | "
-                f"`{','.join(accepted_types) if accepted_types else '-'}` | "
+                f"| {qid} | {short_text(d.get('question'), 34)} | "
+                f"{cn_bool(bool(accepted))} | {', '.join(patch_types) if patch_types else '-'} | "
                 f"{signals.get('base_best_coverage')} | {signals.get('patch_best_coverage')} | "
-                f"{signals.get('bm25_fixed')} | {signals.get('qdrant_patch_fixed')} | "
-                f"`{tr.get('recommended_action', '-')}` |"
+                f"{cn_action(tr.get('recommended_action'))} |"
+            )
+    lines.append("")
+
+    lines += ["## 7. 已接受补丁明细", ""]
+    if not accepted_decisions:
+        lines += ["本次没有补丁通过验证。", ""]
+    else:
+        lines += [
+            "| 补丁编号 | 来源问题 | 补丁类型 | 影响的主索引块 | 覆盖率变化 | 选择原因 |",
+            "|---|---|---|---|---:|---|",
+        ]
+        for d in accepted_decisions:
+            lines.append(
+                f"| `{d.get('patch_id')}` | {d.get('qid')} | {cn_patch_type(d.get('candidate_type'))} | "
+                f"`{d.get('affected_main_chunks')}` | {d.get('before_best_coverage')} -> {d.get('after_best_coverage')} | "
+                f"补丁修复了来源问题，且没有发现回退 |"
             )
         lines.append("")
 
-    lines += ["## 12. 逐失败样例详细说明", ""]
-    if not diagnoses:
-        lines.append("无失败样例详情。")
+    if bm25_metrics:
+        lines += ["## 8. 检索策略对照", ""]
+        lines += [
+            "这里检查失败是否只是因为单一向量检索不够好。如果关键词检索或混合检索能修复，则该问题不应简单归因于切块。",
+            "",
+            "| 路线 | 召回率 | 排名指标 | 命中数 | 失败数 |",
+            "|---|---:|---:|---:|---:|",
+        ]
+        labels = {"dense": "向量检索", "bm25": "关键词检索", "dense_bm25": "向量 + 关键词"}
+        for name in ["dense", "bm25", "dense_bm25"]:
+            row = bm25_metrics.get(name) or {}
+            if row:
+                lines.append(metric_row(labels[name], row, top_k))
         lines.append("")
-    else:
-        for d in diagnoses:
-            qid = d.get("qid")
-            tr = triage_by_qid.get(qid, {})
-            signals = tr.get("signals", {}) or {}
-            q_decisions = decisions_by_qid.get(qid, [])
-            accepted = [x for x in q_decisions if x.get("status") == "accepted"]
-            reviewed = [x for x in q_decisions if x.get("status") == "needs_review"]
-            rejected = [x for x in q_decisions if x.get("status") == "rejected"]
-            not_selected = [x for x in q_decisions if x.get("status") == "candidate_not_selected"]
-            lines += [
-                f"### {qid} — {md_escape(d.get('question'))}",
-                "",
-                f"- gold：`{d.get('gold_doc')} > {d.get('gold_section', '')}`",
-                f"- 原始诊断：`{d.get('failure_family')} / {d.get('diagnosed_failure_type')}`",
-                f"- 诊断置信度：`{d.get('confidence')}`",
-                f"- 诊断原因：{md_escape(d.get('reason'))}",
-                f"- 是否允许生成 patch：`{d.get('patch_allowed')}`",
-                f"- final_decision：`{zh_status(tr.get('final_decision', '-'))}`",
-                f"- recommended_action：`{tr.get('recommended_action', '-')}`",
-                "",
-                "检索信号：",
-                "",
-                f"- dense_failed：`{signals.get('dense_failed')}`",
-                f"- json_patch_fixed：`{signals.get('json_patch_fixed')}`",
-                f"- qdrant_patch_fixed：`{signals.get('qdrant_patch_fixed')}`",
-                f"- bm25_fixed：`{signals.get('bm25_fixed')}`",
-                f"- dense_bm25_fixed：`{signals.get('dense_bm25_fixed')}`",
-                f"- coverage：`{signals.get('base_best_coverage')}` -> `{signals.get('patch_best_coverage')}`",
-                "",
-                "Patch 决策：",
-                "",
-                f"- accepted：`{[x.get('patch_id') for x in accepted]}`",
-                f"- needs_review：`{[x.get('patch_id') for x in reviewed]}`",
-                f"- rejected：`{[x.get('patch_id') for x in rejected]}`",
-                f"- candidate_not_selected：`{[x.get('patch_id') for x in not_selected]}`",
-                "",
-            ]
-            rationale = tr.get("rationale") or []
-            if rationale:
-                lines += ["决策依据：", ""]
-                for item in rationale:
-                    lines.append(f"- {md_escape(item)}")
-                lines.append("")
 
-    lines += ["## 13. 已接受 Patch 详情", ""]
-    if not accepted_decisions:
-        lines += ["本次运行没有 accepted patch candidate。", ""]
-    else:
-        for d in accepted_decisions:
-            probe = d.get("candidate_probe") or {}
-            lines += [
-                f"### {d.get('patch_id')}",
-                "",
-                "| 字段 | 值 |",
-                "|---|---|",
-                f"| qid | `{d.get('qid')}` |",
-                f"| candidate_type | `{d.get('candidate_type')}` |",
-                f"| failure_type | `{d.get('failure_type')}` |",
-                f"| anchor_chunk_id | `{d.get('anchor_chunk_id')}` |",
-                f"| affected_main_chunks | `{d.get('affected_main_chunks')}` |",
-                f"| before_rank / after_rank | `{d.get('before_rank')}` -> `{d.get('after_rank')}` |",
-                f"| before_coverage / after_coverage | `{d.get('before_best_coverage')}` -> `{d.get('after_best_coverage')}` |",
-                f"| individual_probe_rank | `{probe.get('rank')}` |",
-                f"| individual_probe_coverage | `{probe.get('best_topk_coverage')}` |",
-                f"| decision_reason | {md_escape(d.get('decision_reason'))} |",
-                "",
-            ]
-
-    if review_decisions or rejected_decisions or not_selected_decisions:
-        lines += ["## 14. 未接受 Patch 统计", ""]
-        lines += [
-            "| 状态 | 数量 | 说明 |",
-            "|---|---:|---|",
-            f"| needs_review | {len(review_decisions)} | 可能存在回归或证据不足，需要人工复核 |",
-            f"| rejected | {len(rejected_decisions)} | 源 query 未被修复 |",
-            f"| candidate_not_selected | {len(not_selected_decisions)} | 同一 query 下存在更优候选，当前候选未被选中 |",
-            "",
-        ]
-
-    if qdrant_cmp:
-        lines += ["## 15. Qdrant 双集合验证", ""]
-        lines += [
-            "Qdrant 验证用于确认 Main Index 和 Patch Index 分离后的检索行为。Patch collection 仅加载通过验证的 selected patch。",
-            "",
-            f"- qdrant fixed qids：`{list_or_dash(qdrant_cmp.get('fixed'))}`",
-            f"- qdrant regressed qids：`{list_or_dash(qdrant_cmp.get('regressed'))}`",
-            f"- qdrant unchanged_failure：`{list_or_dash(qdrant_cmp.get('unchanged_failure'))}`",
-            f"- qdrant comparison report：`{qdrant_patch_dir / 'qdrant_comparison_report.md'}`",
-            "",
-        ]
-
-    lines += ["## 16. 工程化解释与上线边界", ""]
+    lines += ["## 9. 结论和边界", ""]
     lines += [
-        "- 主索引在整个流程中不被直接改写，patch 作为旁路增量层存在。",
-        "- patch 必须经过 source query probe 和全量 regression check，不能因为生成成功就直接进入检索系统。",
-        "- BM25 / Dense+BM25 反证检查用于避免把检索策略问题误判为 chunking 问题。",
-        "- Qdrant 侧采用 main collection 与 patch collection 分离，便于回滚、停用和重新验证。",
-        "- 如果源文档或来源窗口发生变化，应重新计算来源窗口 hash，并将旧 patch 标记为 stale 后重新验证。",
-        "- 本报告只评估检索证据召回，不评估最终 LLM 答案生成质量。",
+        "- 主集合没有被直接改写，补丁作为旁路集合存在。",
+        "- 补丁只有在修复来源问题、且没有造成其他问题回退时，才会被接受。",
+        "- 如果源文档变化，补丁需要重新验证。",
+        "- 本报告只评估检索阶段是否找到了完整证据，不评估最终大模型回答质量。",
+        "- 小样本运行只适合检查流程，正式结论应以完整题目数运行结果为准。",
         "",
     ]
 
-    lines += ["## 17. 风险与局限", ""]
-    lines += [
-        "1. 本次评估依赖当前 embedding 模型和本地服务状态，替换 embedding 后指标可能变化。",
-        "2. 评估集规模由 `--limit` 控制，小样本运行只适合作为流程检查，不应作为最终效果结论。",
-        "3. Patch 主要修复局部上下文不足或 chunk 边界断裂，不覆盖文档缺失、语义表达差异过大或 embedding 模型能力不足等失败。",
-        "4. Qdrant collection 为本次运行创建的临时集合；若需要长期保留，应另行制定 collection 命名、版本和清理策略。",
-        "5. accepted patch 仍应结合人工 case review，尤其是业务知识库场景中的事实一致性和时效性。",
-        "",
-    ]
-
-    lines += ["## 18. 输出产物索引", ""]
+    lines += ["## 10. 文件位置", ""]
     artifact_paths = [
         out_dir / "run_config.json",
-        base_dir / "eval_report.md",
+        out_dir / "report.md",
         base_dir / "failure_diagnosis.md",
-        base_dir / "failure_diagnosis.json",
-        patch_dir / "patch_log.json",
-        patch_dir / "patch_log_evaluated.json",
         hybrid_dir / "comparison_report.md",
-        hybrid_dir / "comparison.json",
         hybrid_dir / "patch_decisions.json",
-        hybrid_dir / "paired_significance.md",
         bm25_dir / "hybrid_bm25_report.md",
         triage_dir / "final_triage_report.md",
-        triage_dir / "final_triage.json",
         qdrant_patch_dir / "qdrant_comparison_report.md",
-        qdrant_patch_dir / "qdrant_comparison_report.json",
         out_dir / "logs",
     ]
-    for p in artifact_paths:
-        if p.exists():
-            lines.append(f"- `{p}`")
+    for path in artifact_paths:
+        if path.exists() or path == out_dir / "report.md":
+            lines.append(f"- `{display_path(path)}`")
     lines.append("")
 
     report_path = out_dir / "report.md"
     report_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return report_path
-
 
 def copy_report_to_project(report_path: Path, config: dict[str, Any]) -> dict[str, str]:
     report_dir = ROOT / "report"
